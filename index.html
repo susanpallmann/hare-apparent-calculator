@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MTG Hare Apparent Token Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="calculator">
+        <h1></h1>
+        <form>
+          <div class="number-input">
+            <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
+            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+            <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
+            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+          </div>
+          <div class="number-input">
+            <label>How many <em>Hare Apparent</em>s are entering?</label>
+            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+            <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
+            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+          </div>
+          <button id="calculate-button" class="green-button">Calculate</button>
+        </form>
+      </div>
+      <div id="answer">
+        <div id="answer-content">
+          <p class="large=body">You will create</p>
+          <p class="huge-number">0</p>
+          <p class="large=body">1/1 rabbit tokens</p>
+          <p class="flavor-text">funny flavor text</p>
+        </div>
+        <button id="back-button" class="green-button">Back to calculator</button>
+      </div>
+    </main>
+  </body>
