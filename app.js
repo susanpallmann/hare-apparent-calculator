@@ -12,5 +12,12 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(tokensMade);
+    $('#calculator').hide();
+    $('#answer').show();
+  });
+  $('#back-button').click(function(){
+    $('#huge-answer-number').text(0);
+    $('#answer').hide();
+    $('#calculator').show();
   });
 });
