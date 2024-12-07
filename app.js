@@ -16,6 +16,9 @@ $(document).ready(function () {
     $('#answer').show();
   });
   $('#back-button').click(function(){
+    existingHares = 0;
+    enteringHares = 0;
+    tokensMade = 0;
     $('#huge-answer-number').text(0);
     $('#answer').hide();
     $('#calculator').show();
