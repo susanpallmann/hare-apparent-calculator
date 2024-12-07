@@ -80,10 +80,12 @@ p.flavor-text {
   color: #FFFFFF;
   min-height: 44px;
   width: 100%;
+  outline: none;
+  -webkit-appearance: none;
 }
 
 .iterator-button {
-  outline:none;
+  outline: none;
   -webkit-appearance: none;
   background-color: transparent;
   border: 1px solid #A2CACA;
@@ -92,7 +94,6 @@ p.flavor-text {
   justify-content: center;
   height: 44px;
   cursor: pointer;
-  
 }
 
 input[type="number"].quantity {
