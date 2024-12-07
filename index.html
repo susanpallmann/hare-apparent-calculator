@@ -15,16 +15,14 @@
       <div id="calculator">
         <h1>Hare Apparent<br>Token Calculator</h1>
         <form>
+          <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
           <div class="number-input">
-            <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
-            <br>
             <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
             <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
             <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
           </div>
+          <label>How many <em>Hare Apparent</em>s are entering?</label>
           <div class="number-input">
-            <label>How many <em>Hare Apparent</em>s are entering?</label>
-            <br>
             <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
             <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
             <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
