@@ -2,7 +2,7 @@ var existingHares = 0;
 var enteringHares = 0;
 var tokensMade = 0;
 $(document).ready(function () {
-  $('#calculate').click(function(){
+  $('#calculate-button').click(function(){
     existingHares = $('#existingHares').val();
     enteringHares = $('#enteringHares').val();
     existingHares = +existingHares;
