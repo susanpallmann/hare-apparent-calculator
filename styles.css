@@ -84,6 +84,10 @@ p.flavor-text {
   -webkit-appearance: none;
 }
 
+.number-input {
+  display: flex;
+}
+
 .iterator-button {
   outline: none;
   -webkit-appearance: none;
@@ -107,6 +111,13 @@ input[type="number"].quantity {
   line-height: 32px;
   color: #5B5B5B;
   height: 44px;
+  width: 100px;
+  margin: 0 24px;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  text-align: center;
 }
 
 input[type="number"].quantity::-webkit-inner-spin-button,
