@@ -14,15 +14,15 @@
         <form>
           <div class="number-input">
             <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
-            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
             <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
-            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
           </div>
           <div class="number-input">
             <label>How many <em>Hare Apparent</em>s are entering?</label>
-            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
             <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
-            <button class="iterator-button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
           </div>
           <button id="calculate-button" class="green-button">Calculate</button>
         </form>
