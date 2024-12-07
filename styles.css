@@ -74,6 +74,7 @@ p.large-body {
   line-height: 24px;
   text-align: center;
   color: #5B5B5B;
+  margin: 0;
 }
 
 p.huge-number {
@@ -84,6 +85,7 @@ p.huge-number {
   line-height: 72px;
   text-align: center;
   color: #4BA815;
+  margin: 0 0 8px 0;
 }
 
 p.flavor-text {
@@ -94,6 +96,7 @@ p.flavor-text {
   line-height: 16px;
   text-align: center;
   color: #557777;
+  margin: 24px 0 0 0;
 }
 
 .green-button {
