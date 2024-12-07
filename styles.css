@@ -1,0 +1,114 @@
+body {
+  background-color: #E0FDF6;
+}
+
+h1 {
+  font-family: 'Bagel Fat One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: #4BA815;
+}
+
+label {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #5B5B5B;
+}
+
+label em {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 20px;
+  color: #437C22;
+}
+
+p {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #5B5B5B;
+}
+
+p.large-body {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 24px;
+  text-align: center;
+  color: #5B5B5B;
+}
+
+p.huge-number {
+  font-family: 'Bagel Fat One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  text-align: center;
+  color: #4BA815;
+}
+
+p.flavor-text {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: #557777;
+}
+
+.green-button {
+  background-color: #4BA815;
+  border-radius: 4px;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: #FFFFFF;
+  min-height: 44px;
+  width: 100%;
+}
+
+.iterator-button {
+  outline:none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px solid #A2CACA;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  cursor: pointer;
+  
+}
+
+input[type="number"].quantity {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  color: #5B5B5B
+  height: 44px;
+}
+
+input[type="number"].quantity::-webkit-inner-spin-button,
+input[type="number"].quantity::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
