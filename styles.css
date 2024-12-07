@@ -82,6 +82,7 @@ p.flavor-text {
   width: 100%;
   outline: none;
   -webkit-appearance: none;
+  cursor: pointer;
 }
 
 .number-input {
