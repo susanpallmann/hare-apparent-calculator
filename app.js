@@ -12,15 +12,15 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(tokensMade);
-    $('#calculator').hide();
-    $('#answer').show();
+    $('#calculator').fadeOut();
+    $('#answer').fadeIn();
   });
   $('#back-button').click(function(){
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
     $('#huge-answer-number').text(0);
-    $('#answer').hide();
-    $('#calculator').show();
+    $('#answer').fadeOut();
+    $('#calculator').fadeIn();
   });
 });
