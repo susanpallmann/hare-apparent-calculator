@@ -130,6 +130,7 @@ p.flavor-text {
 .number-input {
   display: flex;
   padding-bottom: 64px;
+  justify-content: center;
 }
 
 .iterator-button {
