@@ -17,7 +17,7 @@ $(document).ready(function () {
       $('#huge-answer-number').each(function () {
         var $this = $(this);
         jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-          duration: 1000,
+          duration: 500,
           easing: 'linear',
           step: function (now) {
             $this.text(Math.ceil(now));
