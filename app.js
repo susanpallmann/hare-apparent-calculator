@@ -12,8 +12,8 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(0);
-    $('#calculator').fadeOut(500,function(){
-      $('#answer').fadeIn();
+    $('#calculator').fadeOut(300,function(){
+      $('#answer').fadeIn(300);
       $('#huge-answer-number').each(function () {
         var $this = $(this);
         jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
@@ -30,8 +30,8 @@ $(document).ready(function () {
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
-    $('#answer').fadeOut(500,function(){
-      $('#calculator').fadeIn(500,function(){
+    $('#answer').fadeOut(300,function(){
+      $('#calculator').fadeIn(300,function(){
         $('#huge-answer-number').text(0);
       });
     });
