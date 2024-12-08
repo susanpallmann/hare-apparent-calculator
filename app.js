@@ -11,7 +11,16 @@ $(document).ready(function () {
       tokensMade = tokensMade + existingHares;
       existingHares++;
     }
-    $('#huge-answer-number').text(tokensMade);
+    $('#huge-answer-number').each(function () {
+      var $this = $(this);
+      jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+        duration: 1000,
+        easing: 'swing',
+        step: function (now) {
+          $this.text(Math.ceil(now));
+        }
+      });
+    });
     $('#calculator').fadeOut();
     $('#answer').fadeIn();
   });
