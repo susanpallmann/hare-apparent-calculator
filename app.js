@@ -11,18 +11,20 @@ $(document).ready(function () {
       tokensMade = tokensMade + existingHares;
       existingHares++;
     }
-    $('#huge-answer-number').each(function () {
-      var $this = $(this);
-      jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-        duration: 1000,
-        easing: 'swing',
-        step: function (now) {
-          $this.text(Math.ceil(now));
-        }
-      });
-    });
+    $('#huge-answer-number').text(0);
     $('#calculator').fadeOut(500,function(){
-      $('#answer').fadeIn();
+      $('#answer').fadeIn(500,function(){
+        $('#huge-answer-number').each(function () {
+          var $this = $(this);
+          jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+            duration: 1000,
+            easing: 'swing',
+            step: function (now) {
+              $this.text(Math.ceil(now));
+            }
+          });
+        });
+      });
     });
 });
 
