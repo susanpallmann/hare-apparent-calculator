@@ -18,7 +18,7 @@ $(document).ready(function () {
         var $this = $(this);
         jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
           duration: 1000,
-          easing: 'swing',
+          easing: 'linear',
           step: function (now) {
             $this.text(Math.ceil(now));
           }
