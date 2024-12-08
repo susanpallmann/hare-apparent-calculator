@@ -21,15 +21,20 @@ $(document).ready(function () {
         }
       });
     });
-    $('#calculator').fadeOut();
-    $('#answer').fadeIn();
+    $('#calculator').fadeOut(500,function(){
+      $('#answer').fadeIn();
+    });
+});
+
+    
   });
   $('#back-button').click(function(){
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
     $('#huge-answer-number').text(0);
-    $('#answer').fadeOut();
-    $('#calculator').fadeIn();
+    $('#answer').fadeOut(500,function(){
+      $('#calculator').fadeIn();
+    });
   });
 });
