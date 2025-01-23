@@ -170,7 +170,7 @@ function queueRabbitAnimation(numberRabbits) {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
 			//console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
-			console.log(rabbit.offset().top);
+			//console.log(rabbit.offset().top);
 			resolve(rabbit);
 		});
 		
