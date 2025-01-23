@@ -185,7 +185,7 @@ function queueRabbitAnimation(numberRabbits) {
 				'left': xPos,
 				'transition': `top ${gravitySpeed}s linear !important`,
 			});
-			rabbitsDropped++;
+			
 			const animTimeout2 = setTimeout(function () {
 				rabbit.data('falling', false);
 				rabbit.attr('animation', 'bouncing');
@@ -196,6 +196,7 @@ function queueRabbitAnimation(numberRabbits) {
 			}, gravitySpeed * 1000);
 
 			// Increase the number of rabbits dropped
+			rabbitsDropped++;
 		});
 	}
 	
