@@ -337,7 +337,7 @@ function generateRows (containerWidth, numberRabbits, rows) {
 			
 			// If the current row is empty, we'll add a randomized leading space between -1*rabbit width buffer and +1*rabbit width buffer
             if (currentRow.length === 0) {
-                leadingSpace = Math.floor(Math.random() * widthBuffer*2) - widthBuffer*2;
+                leadingSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
             }
 
 			// Initialize a variable for storing the x position of the rabbit we're currently calculating for
