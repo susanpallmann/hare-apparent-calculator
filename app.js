@@ -8,12 +8,12 @@ const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 const maxAnimatedRabbits = 500; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
 const fewRabbits = [
-    	"A modest gathering of fluff.",
+	"A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
-    	"Sparse, but stylish; like a minimalist rabbit exhibit.",
-    	"The rabbit equivalent of a quiet afternoon.",
-    	"Not enough rabbits to swarm, but definitely enough to be plotting something.",
-    	"Just a smattering of cottontails."
+	"Sparse, but stylish; like a minimalist rabbit exhibit.",
+	"The rabbit equivalent of a quiet afternoon.",
+	"Not enough rabbits to swarm, but definitely enough to be plotting something.",
+	"Just a smattering of cottontails."
 	];
 const someRabbits = [
 	"The bunny brigade is assembling.",
@@ -223,7 +223,7 @@ function queueRabbitAnimation(numberRabbits) {
 		xPos -= widthBuffer;
 		console.log((rows[currentRowIndex]).length*rabbitWidth*0.8 + ' <= ' + containerWidth);
 		console.log((containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2);
-		if ((rows[currentRowIndex]).length*rabbitWidth*0.8 <= containerWidth/2) {
+		if ((rows[currentRowIndex]).length*rabbitWidth*0.8 <= containerWidth) {
 			xPos += (containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2;
 		}
 		
