@@ -97,6 +97,11 @@ $(document).ready(function () {
   });
 });
 
+//dynamic maxanimated rabbits??
+//maximum number of possible rows given container Height
+//maximum number of possible rabbits in a row
+//multiply the maximums
+
 function queueRabbitAnimation(numberRabbits) {
   // Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
@@ -104,8 +109,8 @@ function queueRabbitAnimation(numberRabbits) {
 	const containerHeight = container.height();
 	const containerWidth = container.width();
 
-  // Array to store randomized x positions for rabbit animation
-  let rows = []; 
+	// Array to store randomized x positions for rabbit animation
+	let rows = []; 
 	
 	// Initializing an array for storing the rabbits we will be managing.
 	const rabbits = [];
@@ -124,7 +129,7 @@ function queueRabbitAnimation(numberRabbits) {
 	
 	// Tracks available x positions for the current row
 	let availableXPositions = [];
-	
+	/*
 	// Interval to track gravity for each rabbit across the full animation runtime. 
 	let gravityTicker = setInterval(function() {
 
@@ -159,7 +164,6 @@ function queueRabbitAnimation(numberRabbits) {
 			
 			// Get the rabbit's row
 			const rabbitRow = rabbit.data('row');
-			console.log(rabbitRow);
 			let destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(rabbitRow));
 			
 			// Get existing rabbit yPos and our gravity amount
@@ -187,6 +191,7 @@ function queueRabbitAnimation(numberRabbits) {
 			rabbit.css({'top': yPos, 'left': xPos});
 		}
 	}, tickRate); // tickRate was defined as a global constant at the start of the code
+	*/
 	
 	// Function "drops rabbits," creating the DOM element to represent a rabbit, initializing it with some data attributes, and adding it to the rabbits array
 	function dropRabbit() {
@@ -205,9 +210,12 @@ function queueRabbitAnimation(numberRabbits) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
+		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
+		const dropSpeed = destination*(0.45)/1000;
+		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${-rabbitHeight}px;left:${xPos}px"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${-rabbitHeight}px;left:${xPos}px;transition: top ${dropSpeed}s;"></div>`);
 		
 		// Adds the created rabbit to the container in the DOM
 		container.prepend(rabbit);
@@ -222,6 +230,9 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
+		
+		rabbit.data('yPos', destination);
+		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + dropSpeed + 's'});
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
