@@ -210,35 +210,35 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 .rabbit:nth-last-child(8n) {
-  animation-delay: 10ms;
+  animation-delay: 200ms;
 }
 
 .rabbit:nth-last-child(8n + 1) {
-  animation-delay: 20ms;
+  animation-delay: 400ms;
 }
 
 .rabbit:nth-last-child(8n + 2) {
-  animation-delay: 30ms;
+  animation-delay: 600ms;
 }
 
 .rabbit:nth-last-child(8n + 3) {
-  animation-delay: 40ms;
+  animation-delay: 800ms;
 }
 
 .rabbit:nth-last-child(8n + 4) {
-  animation-delay: 50ms;
+  animation-delay: 1000ms;
 }
 
 .rabbit:nth-last-child(8n + 5) {
-  animation-delay: 60ms;
+  animation-delay: 1200ms;
 }
 
 .rabbit:nth-last-child(8n + 6) {
-  animation-delay: 70ms;
+  animation-delay: 1400ms;
 }
 
 .rabbit:nth-last-child(8n + 7) {
-  animation-delay: 0ms;
+  animation-delay: 1600ms;
 }
 
 .rabbit:after {
@@ -252,6 +252,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   background-size: contain;
   animation: blink 10s infinite;
   background-repeat: no-repeat;
+  opacity: 0;
 }
 
 .rabbit:nth-last-child(2n):after {
@@ -265,6 +266,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   background-size: contain;
   animation: blink 10s infinite;
   background-repeat: no-repeat;
+  opacity: 0;
 }
 
 .rabbit:nth-last-child(8n):after {
