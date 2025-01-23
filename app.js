@@ -179,7 +179,7 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbits.push(rabbit);
 		
 		rabbit.data('yPos', destination);
-		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
+		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear !important'});
 		const animTimeout2 = setTimeout(function(){
 			rabbit.data('falling', false);
 			rabbit.attr('animation','bouncing');
