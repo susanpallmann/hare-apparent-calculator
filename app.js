@@ -48,69 +48,69 @@ $(document).ready(function () {
 	const containerHeight = container.height();
 	const containerWidth = container.width();
 	
-  $('#calculate-button').click(function(){
-    existingHares = $('#existingHares').val();
-    enteringHares = $('#enteringHares').val();
-    existingHares = +existingHares;
-    enteringHares = +enteringHares;
-    for(i=0;i<enteringHares;i++){
-      tokensMade = tokensMade + existingHares;
-      existingHares++;
-    }
-    $('#huge-answer-number').text(0);
-    if (tokensMade < 10) {
-        $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
-    } else if (tokensMade < 30) {
-        $('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
-    } else {
-		$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
-    }
-    $('#calculator').fadeOut(300,function(){
-      $('#answer').fadeIn(300);
-      $('#rabbit-container').empty();
-      $('#rabbit-container').fadeIn(300);
-      $('#huge-answer-number').each(function () {
-        var $this = $(this);
-        jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-          duration: 500,
-          easing: 'linear',
-          step: function (now) {
-            $this.text(Math.ceil(now));
-          }
-        });
-      });
-	  
-	  //dynamic maxanimated rabbits??
-	  //maximum number of possible rows given container Height
-	  let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-	  //maximum number of possible rabbits in a row
-	  let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-	  //multiply the maximums
-	  let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
-	  
-      if(tokensMade < rabbitCeiling) {
-	  queueRabbitAnimation(tokensMade);
-      } else {
-	  queueRabbitAnimation(rabbitCeiling);
-      }
-    });
-  });
-  $('#back-button').click(function(){
-    existingHares = 0;
-    enteringHares = 0;
-    tokensMade = 0;
-    $('#rabbit-container').fadeOut(300);
-    $('#answer').fadeOut(300,function(){
-      $('#rabbit-container').empty();
-      $('#calculator').fadeIn(300,function(){
-        $('#huge-answer-number').text(0);
-      });
-    });
-  });
+	$('#calculate-button').click(function(){
+		existingHares = $('#existingHares').val();
+		enteringHares = $('#enteringHares').val();
+		existingHares = +existingHares;
+		enteringHares = +enteringHares;
+		for(i=0;i<enteringHares;i++){
+		  tokensMade = tokensMade + existingHares;
+		  existingHares++;
+		}
+		$('#huge-answer-number').text(0);
+		if (tokensMade < 10) {
+			$('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
+		} else if (tokensMade < 30) {
+			$('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
+		} else {
+			$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
+		}
+		$('#calculator').fadeOut(300,function(){
+			$('#answer').fadeIn(300);
+			$('#rabbit-container').empty();
+			$('#rabbit-container').fadeIn(300);
+			$('#huge-answer-number').each(function () {
+				var $this = $(this);
+				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+				  duration: 500,
+				  easing: 'linear',
+				  step: function (now) {
+					$this.text(Math.ceil(now));
+				  }
+				});
+			});
+		  
+			//dynamic maxanimated rabbits??
+			//maximum number of possible rows given container Height
+			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+			//maximum number of possible rabbits in a row
+			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+			//multiply the maximums
+			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+
+			if(tokensMade < rabbitCeiling) {
+				queueRabbitAnimation(tokensMade);
+			} else {
+				queueRabbitAnimation(rabbitCeiling);
+			}
+		});
+	});
+	$('#back-button').click(function(){
+		existingHares = 0;
+		enteringHares = 0;
+		tokensMade = 0;
+	$('#rabbit-container').fadeOut(300);
+	$('#answer').fadeOut(300,function(){
+		$('#rabbit-container').empty();
+			$('#calculator').fadeIn(300,function(){
+				$('#huge-answer-number').text(0);
+			});
+		});
+	});
 });
 
 function queueRabbitAnimation(numberRabbits) {
-  // Declaring some more constants here, as these require the scene to have loaded to be retrieved
+	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
 	const containerHeight = container.height();
@@ -164,8 +164,6 @@ function queueRabbitAnimation(numberRabbits) {
 		const rabbitPromise = new Promise((resolve, reject) => {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
-			console.log('rabbit created!');
-			console.log(rabbit.offset().top);
 			resolve(rabbit);
 		});
 		
@@ -181,25 +179,23 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbits.push(rabbit);
 		
 		rabbitPromise.then((rabbit) => {
-		  rabbit.data('yPos', destination);
-		  console.log('rabbit top value updating!');
-		  console.log(rabbit.offset().top);
-		  rabbit.css({
-			'top': destination,
-			'left': xPos,
-			'transition': `top ${animationSpeed}s linear !important`,
-		  });
-		  const animTimeout2 = setTimeout(function () {
-			rabbit.data('falling', false);
-			rabbit.attr('animation', 'bouncing');
-			const animTimeout3 = setTimeout(function () {
-			  rabbit.attr('animation', 'grounded');
-			  rabbit.data('grounded', true);
-			}, 300);
-		  }, animationSpeed * 1000);
+			rabbit.data('yPos', destination);
+			rabbit.css({
+				'top': destination,
+				'left': xPos,
+				'transition': `top ${animationSpeed}s linear !important`,
+			});
+			rabbitsDropped++;
+			const animTimeout2 = setTimeout(function () {
+				rabbit.data('falling', false);
+				rabbit.attr('animation', 'bouncing');
+				const animTimeout3 = setTimeout(function () {
+					rabbit.attr('animation', 'grounded');
+					rabbit.data('grounded', true);
+				}, 300);
+			}, animationSpeed * 1000);
 
-		  // Increase the number of rabbits dropped
-		  rabbitsDropped++;
+			// Increase the number of rabbits dropped
 		});
 	}
 	
