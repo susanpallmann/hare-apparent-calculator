@@ -56,9 +56,9 @@ $(document).ready(function () {
     }
     $('#huge-answer-number').text(0);
     if (tokensMade < 3) {
-        $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length]);
+        $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
     } else if (tokensMade < 15) {
-        $('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length]);
+        $('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
     } else {
 	$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
     }
