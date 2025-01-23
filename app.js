@@ -181,9 +181,9 @@ function queueRabbitAnimation(numberRabbits) {
 				}, 500);
 				
 			// Next we check if the rabbit's intended movement would cause it to collide with the "ground" of the container
-			} else if (yPos + movement >= containerHeight - rabbitHeight + heightBuffer/3) {
+			} else if (yPos + movement >= containerHeight - rabbitHeight) {
 				// If it would collide with the ground, set the yPos of the rabbit to the height of the container minus the rabbit's height so it lands evenly on the ground
-				yPos = containerHeight - rabbitHeight + heightBuffer/3;
+				yPos = containerHeight - rabbitHeight;
 				// Updates rabbit data to signify that it is grounded and no longer falling
 				rabbit.data('grounded', true);
                 rabbit.data('falling', false);
@@ -220,10 +220,6 @@ function queueRabbitAnimation(numberRabbits) {
         // Select a random index from the *available* x positions
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
-		console.log(containerWidth);
-		console.log(rows[currentRowIndex][(rows[currentRowIndex]).length-1]);
-		console.log(rows[currentRowIndex][0]);
-		console.log((containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2);
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
