@@ -180,8 +180,8 @@ function queueRabbitAnimation(numberRabbits) {
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
 		
-		rabbit.data('yPos', destination);
-		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
+		//rabbit.data('yPos', destination);
+		//rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
 
 		const animationTimeout = setTimeout(function(){
 			rabbit.data('falling', false);
