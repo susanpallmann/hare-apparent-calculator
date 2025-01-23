@@ -152,17 +152,37 @@ function queueRabbitAnimation(numberRabbits) {
 			// Defining the rabbit we want to currently handle, getting the DOM *reference* from the rabbits array
 			const rabbit = rabbits[i];
 			
+			// If the rabbit we grabbed is grounded, we don't need to do any gravity calculations on it and we can skip to the next iteration in our loop
+			if (rabbit.data('grounded')) continue;
+			
 			// Get the height of the rabbit DOM element for use in collision calculations
 			const rabbitHeight = rabbit.height();
 			
-			// "continue" is new syntax to me, but I'm assuming this means if the rabbit we grabbed is grounded, we don't need to do any gravity calculations on it and we can skip to the next iteration in our for loop. Neat!
-			if (rabbit.data('grounded')) continue;
+			// Get the rabbit's row
+			const rabbitRow = rabbit.data('row');
+			let destination = containerHeight - (rabbitHeight-heightBuffer)*(rabbitRow+1);
 			
 			// Get existing rabbit yPos and our gravity amount
 			let yPos = rabbit.data('yPos');
 			let xPos = rabbit.data('xPos');
 			let movement = gravityMovement;
 			
+			if (yPos + movement >= destination) {
+				yPos = destination;
+				
+				rabbit.data('grounded', true);
+                rabbit.data('falling', false);
+				
+				// TODO add bounce animation
+				rabbit.attr('animation','bouncing');
+				const animationTimeout = setTimeout(function(){
+					rabbit.attr('animation','grounded');
+				}, 500);
+			} else {
+				yPos += movement;
+			}
+			
+			/*
 			// Get a collisionY value by checking if this rabbit's intended movement would collide with a grounded rabbit's "hitbox"
 			const collisionY =  assessCollision(rabbit, movement, rabbits);
 			
@@ -198,7 +218,7 @@ function queueRabbitAnimation(numberRabbits) {
 			} else {
 				yPos += movement;
 			}
-			
+			*/
 			// After determining the new yPos through the if statement above, we can assign the new yPos to the rabbit's data, and also update the css "top" value on the DOM element
 			rabbit.data('yPos', yPos);
 			rabbit.css({'top': yPos, 'left': xPos});
@@ -362,3 +382,9 @@ function generateRows (containerWidth, numberRabbits, rows) {
 	// Return the complete rows array
     return rows;
 }
+
+// Here's my thinking, right?
+// So the rabbits' x positions are generated in "rows" and in theory rabbits in the same row shouldn't ever collide with each other
+// If we go a step further, does this mean for each row we know when they will collide? This is true if each row necessarily fills the available "landing" space
+// So assuming that they do, we should actually know the landing position of each rabbit and not need to check for collision at all
+// That might be a big refactor, but it should speed things up significantly
