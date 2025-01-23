@@ -1,5 +1,5 @@
 // Global constants
-const animationSpeed = 1; // Animation speed, 1 = 1 second, a fraction is multiplied by this variable to determine the speed at which rabbits fall
+const animationSpeed = 1.5;
 const tickRate = 30; // Animation speed - higher number = faster animation
 const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
 const animationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
@@ -212,9 +212,7 @@ function queueRabbitAnimation(numberRabbits) {
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
-		console.log(destination);
 		const dropSpeed = (destination/containerHeight)*animationSpeed;
-		console.log(dropSpeed);
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
