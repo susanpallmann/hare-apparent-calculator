@@ -1,13 +1,10 @@
 // Global constants
 const animationSpeed = 1.5;
-const tickRate = 30; // Animation speed - higher number = faster animation
-const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
-const animationTime = 2000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
+const totalAnimationTime = 2000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
-const maxAnimatedRabbits = 150; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
 const fewRabbits = [
 	"A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
@@ -126,7 +123,7 @@ function queueRabbitAnimation(numberRabbits) {
 	const rabbits = [];
 	
 	// Now a constant calculated by dividing the animation time by our number of rabbits to drop so that the drops are equally spaced. We may want to add some additional math to account for the time it takes for a rabbit to drop as otherwise technically the animation time will be exceeded by at most the length of time it takes for a rabbit to fall completely.
-	const dropInterval = animationTime/numberRabbits;
+	const dropInterval = totalAnimationTime/numberRabbits;
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
@@ -192,7 +189,7 @@ function queueRabbitAnimation(numberRabbits) {
 					rabbit.data('grounded', true);
 				}, 300); 
 			}, animationSpeed*1000); 
-		}, animationSpeed*1); 
+		}, 1); 
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
