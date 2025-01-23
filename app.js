@@ -187,7 +187,7 @@ function queueRabbitAnimation(numberRabbits) {
 			const animationTimeout = setTimeout(function(){
 				rabbit.attr('animation','grounded');
 				rabbit.data('grounded', true);
-			}, animationSpeed*300); 
+			}, 300); 
 		}, animationSpeed*1000); 
 		
 		// Increase the number of rabbits dropped
