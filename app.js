@@ -158,7 +158,6 @@ function queueRabbitAnimation(numberRabbits) {
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
-		const dropSpeed = ((destination+rabbitHeight*2)/containerHeight)*animationSpeed;
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
@@ -170,16 +169,17 @@ function queueRabbitAnimation(numberRabbits) {
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
 		rabbit.data('yPos', 0);
-		rabbit.data('yPos', -2*rabbit.height()); // Adjusting the yPos so that the rabbit starts off-screen.
+		rabbit.data('yPos', destination-containerHeight-2*rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
+		
 		
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
 		
 		rabbit.data('yPos', destination);
-		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + dropSpeed + 's linear'});
+		rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
 
 		const animationTimeout = setTimeout(function(){
 			rabbit.data('falling', false);
@@ -187,8 +187,8 @@ function queueRabbitAnimation(numberRabbits) {
 			const animationTimeout = setTimeout(function(){
 				rabbit.attr('animation','grounded');
 				rabbit.data('grounded', true);
-			}, dropSpeed*300); 
-		}, dropSpeed*1000); 
+			}, animationSpeed*300); 
+		}, animationSpeed*1000); 
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
