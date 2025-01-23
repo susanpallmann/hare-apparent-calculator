@@ -68,7 +68,7 @@ function queueRabbitAnimation(numberRabbits) {
 	const dropInterval = animationTime / numberRabbits;
 	
 	// Generate x value "rows" for dropping rabbits
-	rows = generateRows(containerWidth, numberRabbits);
+	rows = generateRows(containerWidth, numberRabbits, rows);
 	
 	// This variable is to track how many rabbits have been dropped. I'm not sure if this is actually necessary, so we'll come back and review this later.
 	let rabbitsDropped = 0;
@@ -263,7 +263,7 @@ function assessCollision(rabbit, movement, allRabbits) {
 }
 
 // Function to create one or more rows of x position values
-function generateRows (containerWidth, numberRabbits) {
+function generateRows (containerWidth, numberRabbits, rows) {
 	let rabbitsCalculated = 0;
 	let currentRow = [];
 	let rowMax = containerWidth + 2*widthBuffer;
