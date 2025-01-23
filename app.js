@@ -23,7 +23,7 @@ const someRabbits = [
     "The lawn is theirs now.",
     "We're going to need more carrots.",
     "They're could hold a carrot convention.",
-    "A flurry of fur and twitching noses."
+    "A flurry of fur and twitching noses.",
     "Sufficiently fluffy.",
     "They're multiplying. It's only a matter of time."
     ];
@@ -31,7 +31,7 @@ const manyRabbits = [
     "It's a bunny-pocalypse!",
     "Carrots are a distant memory now. Panic is setting in.",
     "The ground is moving... it's all rabbits.",
-    "They've formed a single, giant, pulsating mass of fur. It demands tribute."
+    "They've formed a single, giant, pulsating mass of fur. It demands tribute.",
     "They've achieved critical fluff mass.",
     "The very air vibrates with the sound of chewing.",
     "The fuzzy hoard is large enough to have its own gravitational pull.",
