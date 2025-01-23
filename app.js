@@ -48,6 +48,7 @@ let tokensMade = 0; // Number of rabbit tokens created
 $(document).ready(function () {
 	
 	const container = $('#rabbit-container');
+	const containerHeight = container.height();
 	const containerWidth = container.width();
 	
   $('#calculate-button').click(function(){
