@@ -161,8 +161,11 @@ function queueRabbitAnimation(numberRabbits) {
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
 		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important;"></div>`);
 		
-		// Adds the created rabbit to the container in the DOM
-		container.prepend(rabbit);
+		const rabbitPromise = new Promise((resolve, reject) => {
+			container.prepend(rabbit);
+			// Resolve the promise when the element is added successfully
+			resolve(rabbit);
+		});
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
@@ -174,23 +177,28 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
 		
-		
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
 		
-		rabbit.data('yPos', destination);
-		rabbit.css({'top': destination, 'left': xPos, 'transition': `top ${animationSpeed}s linear !important`});
-		const animTimeout2 = setTimeout(function(){
+		rabbitPromise.then((rabbit) => {
+		  rabbit.data('yPos', destination);
+		  rabbit.css({
+			'top': destination,
+			'left': xPos,
+			'transition': `top ${animationSpeed}s linear !important`,
+		  });
+		  const animTimeout2 = setTimeout(function () {
 			rabbit.data('falling', false);
-			rabbit.attr('animation','bouncing');
-			const animTimeout3 = setTimeout(function(){
-				rabbit.attr('animation','grounded');
-				rabbit.data('grounded', true);
-			}, 300); 
-		}, animationSpeed*1000); 
-		
-		// Increase the number of rabbits dropped
-		rabbitsDropped++;
+			rabbit.attr('animation', 'bouncing');
+			const animTimeout3 = setTimeout(function () {
+			  rabbit.attr('animation', 'grounded');
+			  rabbit.data('grounded', true);
+			}, 300);
+		  }, animationSpeed * 1000);
+
+		  // Increase the number of rabbits dropped
+		  rabbitsDropped++;
+		});
 	}
 	
 	// Drop the first rabbit immediately once everything is initialized
