@@ -170,17 +170,21 @@ function queueRabbitAnimation(numberRabbits) {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
 			console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
+			console.log(rabbit.attr('style'));
 			resolve(rabbit);
 		});
 		
 		rabbitPromise.then((rabbit) => {
 			rabbit.data('yPos', destination);
-			console.log('dropping rabbit ' + rabbit.attr('id') + ' to top: ' + destination);
+			
+			
 			rabbit.css({
 				'top': destination + 'px',
 				'left': xPos + 'px',
 				'transition': `top ${gravitySpeed}s linear`,
 			});
+			console.log('dropping rabbit ' + rabbit.attr('id') + ' to top: ' + destination);
+			console.log(rabbit.attr('style'));
 			
 			const animTimeout2 = setTimeout(function () {
 				rabbit.data('falling', false);
