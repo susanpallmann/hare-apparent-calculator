@@ -170,7 +170,7 @@ function queueRabbitAnimation(numberRabbits) {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
 			console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
-			console.log(rabbit.attr('style'));
+			console.log(rabbit.offset().top);
 			resolve(rabbit);
 		});
 		
@@ -184,29 +184,29 @@ function queueRabbitAnimation(numberRabbits) {
 				'transition': `top ${gravitySpeed}s linear`,
 			});
 			console.log('dropping rabbit ' + rabbit.attr('id') + ' to top: ' + destination);
-			console.log(rabbit.attr('style'));
+			console.log(rabbit.offset().top);
 			
-			const animTimeout2 = setTimeout(function () {
+			const animTimeout1 = setTimeout(function () {
 				rabbit.data('falling', false);
 				rabbit.attr('animation', 'bouncing');
-				const animTimeout3 = setTimeout(function () {
+				const animTimeout1 = setTimeout(function () {
 					rabbit.attr('animation', 'grounded');
 					rabbit.data('grounded', true);
 				}, 300);
 			}, gravitySpeed * 1000);
+			// Increase the number of rabbits dropped
+			rabbitsDropped++;
 		});
 	}
 	
 	// Drop the first rabbit immediately once everything is initialized
 	dropRabbit();
-	rabbitsDropped++;
 	
 	// Then drop the remaining rabbits at intervals to space the rabbits evenly through the animation time
 	let dropTimer = setInterval(function() {
 		// Drops the next rabbit
 		dropRabbit();
-		// Increase the number of rabbits dropped
-		rabbitsDropped++;
+		
 		// If the number of rabbits dropped is equal to or greater than the number of rabbits we expect to drop (though it should never be greater), we end this interval
 		if (rabbitsDropped >= numberRabbits) {
 			clearInterval(dropTimer);
