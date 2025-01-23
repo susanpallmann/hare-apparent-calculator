@@ -55,7 +55,6 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(0);
-	console.log(tokensMade);
     if (tokensMade < 10) {
         $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
     } else if (tokensMade < 30) {
@@ -160,7 +159,7 @@ function queueRabbitAnimation(numberRabbits) {
 			
 			// Get the rabbit's row
 			const rabbitRow = rabbit.data('row');
-			let destination = containerHeight - (rabbitHeight-heightBuffer)*(rabbitRow+1);
+			let destination = containerHeight - (rabbitHeight-(rabbitRow*heightBuffer))*(rabbitRow+1);
 			
 			// Get existing rabbit yPos and our gravity amount
 			let yPos = rabbit.data('yPos');
