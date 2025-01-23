@@ -218,7 +218,8 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   content: '';
   background-image: url('images/rabbit-blink.svg');
   background-size: contain;
-  animation: blink 0.3s;
+  animation: blink 5s infinite;
+  background-repeat: no-repeat;
 }
 
 .rabbit:nth-last-child(2n):after {
@@ -230,7 +231,8 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   content: '';
   background-image: url('images/rabbit2-blink.svg');
   background-size: contain;
-  animation: blink 0.3s;
+  animation: blink 5s infinite;
+  background-repeat: no-repeat;
 }
 
 @keyframes blink {
