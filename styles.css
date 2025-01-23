@@ -175,6 +175,9 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   position: absolute;
   overflow: hidden;
   box-sizing: border-box;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .rabbit {
