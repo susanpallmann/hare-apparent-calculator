@@ -7,6 +7,37 @@ const rabbitHeight = 76; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 const maxAnimatedRabbits = 500; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
+const fewRabbits = [
+    "A modest gathering of fluff.",
+	"Just a few bunnies, minding their own business... for now.",
+    "Sparse, but stylish; like a minimalist rabbit exhibit.",
+    "The rabbit equivalent of a quiet afternoon.",
+    "Not enough rabbits to swarm, but definitely enough to be plotting something.",
+    "Just a smattering of cottontails."
+	];
+const someRabbits = [
+    "The bunny brigade is assembling.",
+    "Things are starting to get hoppy around here.",
+    "A decent-sized warren. Prepare for scattered droppings.",
+    "Now we're talking. This is a respectable amount of rabbit.",
+    "The lawn is theirs now.",
+    "We're going to need more carrots.",
+    "They're could hold a carrot convention.",
+    "A flurry of fur and twitching noses."
+    "Sufficiently fluffy.",
+    "They're multiplying. It's only a matter of time."
+    ];
+const manyRabbits = [
+    "It's a bunny-pocalypse!",
+    "Carrots are a distant memory now. Panic is setting in.",
+    "The ground is moving... it's all rabbits.",
+    "They've formed a single, giant, pulsating mass of fur. It demands tribute."
+    "They've achieved critical fluff mass.",
+    "The very air vibrates with the sound of chewing.",
+    "The fuzzy hoard is large enough to have its own gravitational pull.",
+    "The fluff has consumed everything. Resistance is futile.",
+    "The earth is now 90% rabbit"
+    ];
 
 // Global variables
 let existingHares = 0; // Number of Hare Apparents on the battlefield
@@ -24,6 +55,13 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(0);
+    if (tokensMade < 3) {
+        $('#flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
+    } else if (tokensMade < 15) {
+        $('#flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
+    } else {
+        $('#flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
+    }
     $('#calculator').fadeOut(300,function(){
       $('#answer').fadeIn(300);
       $('#rabbit-container').empty();
