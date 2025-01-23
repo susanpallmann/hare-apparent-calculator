@@ -1,5 +1,5 @@
 // Global constants
-const animationSpeed = 1.5;
+const animationSpeed = 1; // Animation speed, 1 = 1 second, a fraction is multiplied by this variable to determine the speed at which rabbits fall
 const tickRate = 30; // Animation speed - higher number = faster animation
 const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
 const animationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
