@@ -119,12 +119,8 @@ function queueRabbitAnimation(numberRabbits) {
 	// Array to store randomized x positions for rabbit animation
 	let rows = []; 
 	
-	// Initializing an array for storing the rabbits we will be managing.
-	const rabbits = [];
-	
 	// Now a constant calculated by dividing the animation time by our number of rabbits to drop so that the drops are equally spaced. We may want to add some additional math to account for the time it takes for a rabbit to drop as otherwise technically the animation time will be exceeded by at most the length of time it takes for a rabbit to fall completely.
 	const dropInterval = totalAnimationTime/numberRabbits;
-	console.log(dropInterval);
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
@@ -165,6 +161,7 @@ function queueRabbitAnimation(numberRabbits) {
 		const rabbitPromise = new Promise((resolve, reject) => {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
+			console.log('created rabbit');
 			resolve(rabbit);
 		});
 		
@@ -176,11 +173,9 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
 		
-		// Add this newly created rabbit to our rabbits array
-		rabbits.push(rabbit);
-		
 		rabbitPromise.then((rabbit) => {
 			rabbit.data('yPos', destination);
+			console.log('dropping rabbit');
 			rabbit.css({
 				'top': destination,
 				'left': xPos,
