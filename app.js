@@ -2,7 +2,7 @@
 const animationSpeed = 1.5;
 const tickRate = 30; // Animation speed - higher number = faster animation
 const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
-const animationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
+const animationTime = 2000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
@@ -161,15 +161,14 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${destination-containerHeight-2*rabbitHeight}px;left:${xPos}px;transition: top ${animationSpeed}s linear;"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${destination-containerHeight-rabbitHeight}px;left:${xPos}px;transition: top ${animationSpeed}s linear;"></div>`);
 		
 		// Adds the created rabbit to the container in the DOM
 		container.prepend(rabbit);
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
-		rabbit.data('yPos', 0);
-		rabbit.data('yPos', destination-containerHeight-2*rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
+		rabbit.data('yPos', destination-containerHeight-rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
