@@ -37,7 +37,7 @@ $(document).ready(function () {
         });
       });
     });
-    queueRabbitAnimation(enteringHares);
+    queueRabbitAnimation(tokensMade);
   });
   $('#back-button').click(function(){
     existingHares = 0;
