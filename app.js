@@ -220,6 +220,8 @@ function queueRabbitAnimation(numberRabbits) {
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos -= widthBuffer;
+		console.log((rows[currentRowIndex]).length*rabbitWidth + ' <= ' + containerWidth/2);
+		console.log((containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2);
 		if ((rows[currentRowIndex]).length*rabbitWidth <= containerWidth/2) {
 			xPos += (containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2;
 		}
