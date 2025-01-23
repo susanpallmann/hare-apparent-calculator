@@ -221,7 +221,7 @@ function queueRabbitAnimation(numberRabbits) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos -= widthBuffer;
 		if ((rows[currentRowIndex]).length*rabbitWidth <= containerWidth/2) {
-			xPos += containerWidth/4;
+			xPos += (containerWidth - rows[currentRowIndex]).length*rabbitWidth)/2;
 		}
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
