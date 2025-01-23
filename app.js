@@ -171,6 +171,7 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
 		console.log(destination);
 		console.log(startPoint);
+		rabbit.data('yPos', 0);
 		rabbit.data('yPos', startPoint); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
