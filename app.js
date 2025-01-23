@@ -126,7 +126,7 @@ function queueRabbitAnimation(numberRabbits) {
 	const rabbits = [];
 	
 	// Now a constant calculated by dividing the animation time by our number of rabbits to drop so that the drops are equally spaced. We may want to add some additional math to account for the time it takes for a rabbit to drop as otherwise technically the animation time will be exceeded by at most the length of time it takes for a rabbit to fall completely.
-	const dropInterval = animationSpeed*1000/numberRabbits;
+	const dropInterval = animationTime/numberRabbits;
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
@@ -161,7 +161,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${-rabbitHeight}px;left:${xPos}px;transition: top ${dropSpeed}s linear;"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${-rabbitHeight}px;left:${xPos}px;transition: top ${animationSpeed}s linear;"></div>`);
 		
 		// Adds the created rabbit to the container in the DOM
 		container.prepend(rabbit);
@@ -188,7 +188,7 @@ function queueRabbitAnimation(numberRabbits) {
 				rabbit.attr('animation','grounded');
 				rabbit.data('grounded', true);
 			}, 300); 
-		}, animationSpeed*1000); 
+		}, animationTime); 
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
