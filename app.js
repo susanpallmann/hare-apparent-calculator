@@ -43,7 +43,9 @@ $(document).ready(function () {
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
+    $('#rabbit-container').fadeOut(300);
     $('#answer').fadeOut(300,function(){
+      $('#rabbit-container').empty();
       $('#calculator').fadeIn(300,function(){
         $('#huge-answer-number').text(0);
       });
