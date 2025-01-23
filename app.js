@@ -26,6 +26,7 @@ $(document).ready(function () {
     $('#huge-answer-number').text(0);
     $('#calculator').fadeOut(300,function(){
       $('#answer').fadeIn(300);
+      $('#rabbit-container').empty();
       $('#rabbit-container').fadeIn(300);
       $('#huge-answer-number').each(function () {
         var $this = $(this);
@@ -48,6 +49,8 @@ $(document).ready(function () {
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
+    clearInterval(dropTimer);
+    clearInterval(gravityTicker);
     $('#rabbit-container').fadeOut(300);
     $('#answer').fadeOut(300,function(){
       $('#rabbit-container').empty();
