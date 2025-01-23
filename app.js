@@ -212,7 +212,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
 		console.log(destination);
-		const dropSpeed = destination*(0.45)/1000;
+		const dropSpeed = destination*45/1000;
 		console.log(dropSpeed);
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
