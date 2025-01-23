@@ -188,7 +188,7 @@ function queueRabbitAnimation(numberRabbits) {
 				rabbit.attr('animation','grounded');
 				rabbit.data('grounded', true);
 			}, 300); 
-		}, animationTime); 
+		}, animationSpeed*1000); 
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
