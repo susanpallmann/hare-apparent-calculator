@@ -1,5 +1,5 @@
 // Global constants
-const animationSpeed = 1.2;
+const gravitySpeed = 1.2;
 const totalAnimationTime = 1200; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
@@ -159,7 +159,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important;"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${gravitySpeed}s linear !important;"></div>`);
 		
 		const rabbitPromise = new Promise((resolve, reject) => {
 			container.prepend(rabbit);
@@ -183,7 +183,7 @@ function queueRabbitAnimation(numberRabbits) {
 			rabbit.css({
 				'top': destination,
 				'left': xPos,
-				'transition': `top ${animationSpeed}s linear !important`,
+				'transition': `top ${gravitySpeed}s linear !important`,
 			});
 			rabbitsDropped++;
 			const animTimeout2 = setTimeout(function () {
@@ -193,7 +193,7 @@ function queueRabbitAnimation(numberRabbits) {
 					rabbit.attr('animation', 'grounded');
 					rabbit.data('grounded', true);
 				}, 300);
-			}, animationSpeed * 1000);
+			}, gravitySpeed * 1000);
 
 			// Increase the number of rabbits dropped
 		});
