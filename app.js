@@ -239,6 +239,7 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbit.data('yPos', -rabbit.height()); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
+		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
 		
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
@@ -269,6 +270,7 @@ function assessCollision(rabbit, movement, allRabbits) {
 	const yMax = rabbit.data('yPos') + rabbitHeight;
 	const xMin = rabbit.data('xPos');
 	const xMax = rabbit.data('xPos') + rabbitWidth;
+	const rabbitRow = rabbit.data('row');
 	
 	// Create a variable for containing the closest point of collision, if any are found. If not, this will stay "false"
 	let collisionPoint = false;
@@ -278,7 +280,12 @@ function assessCollision(rabbit, movement, allRabbits) {
 		// Reference current iteration's rabbit
 		const otherRabbit =  allRabbits[i];
 		
-		// If the current iteration's rabbit is the same as the rabbit we're checking the collision of, or if the current iteration's rabbit is grounded, we ignore it and continue to the next iteration as there is no logic to do here
+		const otherRow = otherRabbit.data('row');
+		
+		// If the current iteration's rabbit is in the same row as the rabbit we're checking the collision of, we ignore it and continue to the next iteration (this also handles if the rabbit being checked is the same as the passed in rabbit)
+		if (otherRow === rabbitRow) continue;
+		
+		// If the current iteration's rabbit is grounded, we ignore it and continue to the next iteration as there is no logic to do here
 		if (otherRabbit === rabbit || !otherRabbit.data('grounded')) continue;
 		
 		// Getting the other rabbit's yPos. I don't think we need the other rabbit's max as our rabbit should stop if it would pass the top of the rabbit it's about to collide with
