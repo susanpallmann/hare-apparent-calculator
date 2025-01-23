@@ -235,6 +235,38 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   background-repeat: no-repeat;
 }
 
+.rabbit:nth-last-child(8n):after {
+  animation-delay: 625ms;
+}
+
+.rabbit:nth-last-child(8n + 1):after {
+  animation-delay: 1250ms;
+}
+
+.rabbit:nth-last-child(8n + 2):after {
+  animation-delay: 1875ms;
+}
+
+.rabbit:nth-last-child(8n + 3):after {
+  animation-delay: 2500ms;
+}
+
+.rabbit:nth-last-child(8n + 4):after {
+  animation-delay: 3125ms;
+}
+
+.rabbit:nth-last-child(8n + 5):after {
+  animation-delay: 3750ms;
+}
+
+.rabbit:nth-last-child(8n + 6):after {
+  animation-delay: 4375ms;
+}
+
+.rabbit:nth-last-child(8n + 7):after {
+  animation-delay: 0ms;
+}
+
 @keyframes blink {
     0% { opacity: 0;  }
    45% { opacity: 0;  }
