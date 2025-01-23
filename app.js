@@ -220,11 +220,10 @@ function queueRabbitAnimation(numberRabbits) {
         // Select a random index from the *available* x positions
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
-		xPos -= widthBuffer;
 		console.log(containerWidth);
 		console.log(rows[currentRowIndex][(rows[currentRowIndex]).length-1]);
 		console.log(rows[currentRowIndex][0]);
-		console.log(rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0]);
+		console.log((containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2);
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
