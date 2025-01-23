@@ -1,11 +1,10 @@
 body {
   background-color: #E0FDF6;
-  padding: 0;
   margin: 0;
+  padding: 72px 24px 36px 24px;
 }
 
 main {
-  padding: 72px 24px 36px 24px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -168,6 +167,14 @@ input[type="number"].quantity {
 input[type="number"].quantity::-webkit-inner-spin-button,
 input[type="number"].quantity::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+#rabbit-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .rabbit {
