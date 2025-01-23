@@ -178,6 +178,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   box-sizing: border-box;
   top: 0;
   max-width: 1200px;
+  max-height: 800px;
   left: 0;
   right: 0;
   margin-inline: auto;
