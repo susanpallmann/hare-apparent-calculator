@@ -195,11 +195,12 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 .rabbit {
-  height: 76px;
-  width: 104px;
+  height: 114px;
+  width: 156px;
   background-image: url('images/rabbit.svg');
   position: absolute;
   transition: top 0.01s;
+  background-repeat: no-repeat;
 }
 
 .rabbit:nth-last-child(2n) {
