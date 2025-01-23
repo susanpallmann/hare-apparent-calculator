@@ -182,43 +182,6 @@ function queueRabbitAnimation(numberRabbits) {
 				yPos += movement;
 			}
 			
-			/*
-			// Get a collisionY value by checking if this rabbit's intended movement would collide with a grounded rabbit's "hitbox"
-			const collisionY =  assessCollision(rabbit, movement, rabbits);
-			
-			// This if statement checks if the rabbit's intended movement would cause it to collide with another rabbit first. This is because a rabbit collision should be "closer" to the rabbit's current position than the ground would be, if such a collision exists. If we were to check for a ground collision first, we could potentially miss that the current rabbit was supposed to collide with another rabbit
-			if (collisionY !== false) {
-				// Set our rabbit's yPos to the collision amount returned from the assessCollision function
-				yPos = collisionY;
-				// Updates rabbit data to signify that it is grounded and no longer falling
-				rabbit.data('grounded', true);
-                rabbit.data('falling', false);
-				
-				// TODO add bounce animation
-				rabbit.attr('animation','bouncing');
-				const animationTimeout = setTimeout(function(){
-					rabbit.attr('animation','grounded');
-				}, 500);
-				
-			// Next we check if the rabbit's intended movement would cause it to collide with the "ground" of the container
-			} else if (yPos + movement >= containerHeight - rabbitHeight) {
-				// If it would collide with the ground, set the yPos of the rabbit to the height of the container minus the rabbit's height so it lands evenly on the ground
-				yPos = containerHeight - rabbitHeight;
-				// Updates rabbit data to signify that it is grounded and no longer falling
-				rabbit.data('grounded', true);
-                rabbit.data('falling', false);
-				
-				// TODO add bounce animation
-				rabbit.attr('animation','bouncing');
-				const animationTimeout = setTimeout(function(){
-					rabbit.attr('animation','grounded');
-				}, 300);
-				
-			// If neither of the above cases happen, the rabbit can continue falling, so we add the intended movement to the rabbit's yPos
-			} else {
-				yPos += movement;
-			}
-			*/
 			// After determining the new yPos through the if statement above, we can assign the new yPos to the rabbit's data, and also update the css "top" value on the DOM element
 			rabbit.data('yPos', yPos);
 			rabbit.css({'top': yPos, 'left': xPos});
@@ -278,64 +241,6 @@ function queueRabbitAnimation(numberRabbits) {
 	}, dropInterval); // dropInterval was defined as a constant at the start of our document ready function
 }
 
-// Function to detemine if a provided rabbit (rabbit) and its intended movement (movement) will cause it to collide with any grounded rabbits in the provided array (allRabbits), and returns the point of collision that is closest, if any exist
-function assessCollision(rabbit, movement, allRabbits) {
-	// Defining the "top" of the rabbit's "hitbox" as yPos, adding the rabbit's height calculates the "bottom" of said hitbox
-	// Defining "left" of the rabbit's "hitbox" as xPos, adding the rabbit's width calculates the "right" of said hitbox
-	const yMin = rabbit.data('yPos');
-	const yMax = rabbit.data('yPos') + rabbitHeight;
-	const xMin = rabbit.data('xPos');
-	const xMax = rabbit.data('xPos') + rabbitWidth;
-	const rabbitRow = rabbit.data('row');
-	
-	// Create a variable for containing the closest point of collision, if any are found. If not, this will stay "false"
-	let collisionPoint = false;
-	
-	// For each rabbit in our passed in rabbits array
-	for (let i = 0; i < allRabbits.length; i++) {
-		// Reference current iteration's rabbit
-		const otherRabbit =  allRabbits[i];
-		
-		const otherRow = otherRabbit.data('row');
-		
-		// If the current iteration's rabbit is in the same row as the rabbit we're checking the collision of, we ignore it and continue to the next iteration (this also handles if the rabbit being checked is the same as the passed in rabbit)
-		if (otherRow === rabbitRow) continue;
-		
-		// If the current iteration's rabbit is grounded, we ignore it and continue to the next iteration as there is no logic to do here
-		if (otherRabbit === rabbit || !otherRabbit.data('grounded')) continue;
-		
-		// Getting the other rabbit's yPos. I don't think we need the other rabbit's max as our rabbit should stop if it would pass the top of the rabbit it's about to collide with
-		otherYPos = otherRabbit.data('yPos');
-		
-		// Getting the left and right value for the other rabbit
-		otherXMin = otherRabbit.data('xPos');
-		otherXMax = otherRabbit.data('xPos') + rabbitWidth;
-		
-		// If the rabbit is out of horizontal range of the other rabbit, accounting for some buffer spacing, we can ignore it and continue to the next iteration
-		if (xMin > otherXMax - widthBuffer || xMax < otherXMin + widthBuffer) continue;
-		
-		// If the rabbit is further down than the other rabbit, accounting for some buffer spacing, we can ignore it and continue to the next iteration
-		if (yMax >= otherYPos + heightBuffer) continue;
-		
-		// If the bottom of the rabbit after moving would equal or pass the top of the other rabbit and the buffer spacing
-		if (yMax + movement >= otherYPos + heightBuffer) {
-			// If the new collision pointis closer (less than) any prior identified collision points, or if this is the first collision point we've identified, set the collisionPoint variable to this value
-			if (otherYPos - rabbitHeight + heightBuffer < collisionPoint || !collisionPoint) {
-				collisionPoint = otherYPos - rabbitHeight + heightBuffer;
-			// Otherwise, continue iterating
-			} else {
-				continue;
-			}
-		// Otherwise, continue iterating
-		} else {
-			continue;
-		}
-	}
-	
-	// Return collisionPoint after all rabbits have been checked
-	return collisionPoint;
-}
-
 // Function to create one or more rows of x position values
 function generateRows (containerWidth, numberRabbits, rows) {
 	let rabbitsCalculated = 0;
@@ -382,9 +287,3 @@ function generateRows (containerWidth, numberRabbits, rows) {
 	// Return the complete rows array
     return rows;
 }
-
-// Here's my thinking, right?
-// So the rabbits' x positions are generated in "rows" and in theory rabbits in the same row shouldn't ever collide with each other
-// If we go a step further, does this mean for each row we know when they will collide? This is true if each row necessarily fills the available "landing" space
-// So assuming that they do, we should actually know the landing position of each rabbit and not need to check for collision at all
-// That might be a big refactor, but it should speed things up significantly
