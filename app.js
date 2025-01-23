@@ -194,19 +194,19 @@ function queueRabbitAnimation(numberRabbits) {
 					rabbit.data('grounded', true);
 				}, 300);
 			}, gravitySpeed * 1000);
-
-			// Increase the number of rabbits dropped
-			rabbitsDropped++;
 		});
 	}
 	
 	// Drop the first rabbit immediately once everything is initialized
 	dropRabbit();
+	rabbitsDropped++;
 	
 	// Then drop the remaining rabbits at intervals to space the rabbits evenly through the animation time
 	let dropTimer = setInterval(function() {
 		// Drops the next rabbit
 		dropRabbit();
+		// Increase the number of rabbits dropped
+		rabbitsDropped++;
 		// If the number of rabbits dropped is equal to or greater than the number of rabbits we expect to drop (though it should never be greater), we end this interval
 		if (rabbitsDropped >= numberRabbits) {
 			clearInterval(dropTimer);
