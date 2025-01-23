@@ -86,10 +86,8 @@ $(document).ready(function () {
 	  //dynamic maxanimated rabbits??
 	  //maximum number of possible rows given container Height
 	  let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-	  console.log('max rows is ' + maxRowsPossible);
 	  //maximum number of possible rabbits in a row
 	  let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-	  console.log('max rabbits per row is ' + maxRabbitsPerRow);
 	  //multiply the maximums
 	  let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 	  
@@ -128,7 +126,7 @@ function queueRabbitAnimation(numberRabbits) {
 	const rabbits = [];
 	
 	// Now a constant calculated by dividing the animation time by our number of rabbits to drop so that the drops are equally spaced. We may want to add some additional math to account for the time it takes for a rabbit to drop as otherwise technically the animation time will be exceeded by at most the length of time it takes for a rabbit to fall completely.
-	const dropInterval = animationSpeed*750/numberRabbits;
+	const dropInterval = animationSpeed*1000/numberRabbits;
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
