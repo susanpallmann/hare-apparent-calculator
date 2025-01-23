@@ -170,7 +170,7 @@ function queueRabbitAnimation(numberRabbits) {
 			container.prepend(rabbit);
 			
 			// Magic variable that breaks everything if removed :')
-			//let magicTopOffset = rabbit.offset().top;
+			let magicOffset = rabbit.offset().top;
 			
 			// Resolve the promise when the element is added successfully
 			resolve(rabbit);
