@@ -8,36 +8,36 @@ const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 const maxAnimatedRabbits = 500; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
 const fewRabbits = [
-    "A modest gathering of fluff.",
+    	"A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
-    "Sparse, but stylish; like a minimalist rabbit exhibit.",
-    "The rabbit equivalent of a quiet afternoon.",
-    "Not enough rabbits to swarm, but definitely enough to be plotting something.",
-    "Just a smattering of cottontails."
+    	"Sparse, but stylish; like a minimalist rabbit exhibit.",
+    	"The rabbit equivalent of a quiet afternoon.",
+    	"Not enough rabbits to swarm, but definitely enough to be plotting something.",
+    	"Just a smattering of cottontails."
 	];
 const someRabbits = [
-    "The bunny brigade is assembling.",
-    "Things are starting to get hoppy around here.",
-    "A decent-sized warren. Prepare for scattered droppings.",
-    "Now we're talking. This is a respectable amount of rabbit.",
-    "The lawn is theirs now.",
-    "We're going to need more carrots.",
-    "They could hold a carrot convention.",
-    "A flurry of fur and twitching noses.",
-    "Sufficiently fluffy.",
-    "They're multiplying. It's only a matter of time."
-    ];
+	"The bunny brigade is assembling.",
+	"Things are starting to get hoppy around here.",
+	"A decent-sized warren. Prepare for scattered droppings.",
+	"Now we're talking. This is a respectable amount of rabbit.",
+	"The lawn is theirs now.",
+	"We're going to need more carrots.",
+	"They could hold a carrot convention.",
+	"A flurry of fur and twitching noses.",
+	"Sufficiently fluffy.",
+	"They're multiplying. It's only a matter of time."
+	];
 const manyRabbits = [
-    "It's a bunny-pocalypse!",
-    "Carrots are a distant memory now. Panic is setting in.",
-    "The ground is moving... it's all rabbits.",
-    "They've formed a single, giant, pulsating mass of fur. It demands tribute.",
-    "They've achieved critical fluff mass.",
-    "The very air vibrates with the sound of chewing.",
-    "The fuzzy hoard is large enough to have its own gravitational pull.",
-    "The fluff has consumed everything. Resistance is futile.",
-    "The earth is now 90% rabbit"
-    ];
+	"It's a bunny-pocalypse!",
+	"Carrots are a distant memory now. Panic is setting in.",
+	"The ground is moving... it's all rabbits.",
+	"They've formed a single, giant, pulsating mass of fur. It demands tribute.",
+	"They've achieved critical fluff mass.",
+	"The very air vibrates with the sound of chewing.",
+	"The fuzzy hoard is large enough to have its own gravitational pull.",
+	"The fluff has consumed everything. Resistance is futile.",
+	"The earth is now 90% rabbit"
+	];
 
 // Global variables
 let existingHares = 0; // Number of Hare Apparents on the battlefield
@@ -221,9 +221,9 @@ function queueRabbitAnimation(numberRabbits) {
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos -= widthBuffer;
-		console.log((rows[currentRowIndex]).length*rabbitWidth + ' <= ' + containerWidth);
+		console.log((rows[currentRowIndex]).length*rabbitWidth*0.8 + ' <= ' + containerWidth);
 		console.log((containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2);
-		if ((rows[currentRowIndex]).length*rabbitWidth <= containerWidth/2) {
+		if ((rows[currentRowIndex]).length*rabbitWidth*0.8 <= containerWidth/2) {
 			xPos += (containerWidth - (rows[currentRowIndex]).length*rabbitWidth*0.8)/2;
 		}
 		
