@@ -1,5 +1,5 @@
 // Global constants
-const tickRate = 30; // Animation speed - higher number = faster animation
+const tickRate = 100; // Animation speed - higher number = faster animation
 const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
 const animationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 104; // Width of rabbits (must match CSS)
@@ -57,12 +57,15 @@ $(document).ready(function () {
     $('#huge-answer-number').text(0);
     if (tokensMade < 3) {
 	let randomNum = Math.floor(Math.random() * fewRabbits.length);
+	    console.log(randomNum);
         $('#flavor-text').text(fewRabbits[randomNum]);
     } else if (tokensMade < 15) {
 	let randomNum = Math.floor(Math.random() * someRabbits.length);
+	    console.log(randomNum);
         $('#flavor-text').text(someRabbits[randomNum]);
     } else {
 	let randomNum = Math.floor(Math.random() * manyRabbits.length);
+	    console.log(randomNum);
 	$('#flavor-text').text(manyRabbits[randomNum]);
     }
     $('#calculator').fadeOut(300,function(){
