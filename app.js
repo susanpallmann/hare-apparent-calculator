@@ -221,6 +221,9 @@ function queueRabbitAnimation(numberRabbits) {
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos -= widthBuffer;
+		console.log(rows[currentRowIndex]);
+		console.log(rows[currentRowIndex].length);
+		console.log((rows[currentRowIndex]).length);
 		console.log(rows[currentRowIndex][(rows[currentRowIndex]).length]);
 		console.log(rows[currentRowIndex][0]);
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length] - rows[currentRowIndex][0] + rabbitWidth))/2;
