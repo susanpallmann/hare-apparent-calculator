@@ -87,8 +87,6 @@ $(document).ready(function () {
     existingHares = 0;
     enteringHares = 0;
     tokensMade = 0;
-    clearInterval(dropTimer);
-    clearInterval(gravityTicker);
     $('#rabbit-container').fadeOut(300);
     $('#answer').fadeOut(300,function(){
       $('#rabbit-container').empty();
