@@ -159,19 +159,18 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		console.log(`top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important`);
 		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important;"></div>`);
 		
 		const rabbitPromise = new Promise((resolve, reject) => {
 			container.prepend(rabbit);
 			// Resolve the promise when the element is added successfully
+			console.log('rabbit created!');
+			console.log(rabbit.offset().top);
 			resolve(rabbit);
 		});
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
-		console.log(destination);
-		console.log(startPoint);
 		rabbit.data('yPos', 0);
 		rabbit.data('yPos', startPoint); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
@@ -183,6 +182,8 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		rabbitPromise.then((rabbit) => {
 		  rabbit.data('yPos', destination);
+		  console.log('rabbit top value updating!');
+		  console.log(rabbit.offset().top);
 		  rabbit.css({
 			'top': destination,
 			'left': xPos,
