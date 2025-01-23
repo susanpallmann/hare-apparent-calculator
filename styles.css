@@ -101,12 +101,14 @@ p.huge-number {
 p.flavor-text {
   font-family: 'Noto Sans';
   font-style: normal;
+  text-transform: 
   font-weight: 600;
   font-size: 15px;
   line-height: 18px;
   text-align: center;
   color: #557777;
-  margin: 24px 0 0 0;
+  margin: 64px 0 0 0;
+  font-style: italic;
 }
 
 .green-button {
