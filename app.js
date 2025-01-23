@@ -158,10 +158,11 @@ function queueRabbitAnimation(numberRabbits) {
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
+		const startPoint = destination-containerHeight-rabbitHeight; 
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${destination-containerHeight-rabbitHeight}px;left:${xPos}px;transition: top ${animationSpeed}s linear;"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear;"></div>`);
 		
 		// Adds the created rabbit to the container in the DOM
 		container.prepend(rabbit);
@@ -169,8 +170,8 @@ function queueRabbitAnimation(numberRabbits) {
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
 		console.log(destination);
-		console.log(destination - containerHeight - rabbitHeight);
-		rabbit.data('yPos', destination - containerHeight - rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
+		console.log(startPoint);
+		rabbit.data('yPos', startPoint); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
