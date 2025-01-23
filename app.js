@@ -156,14 +156,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${gravitySpeed}s linear !important;"></div>`);
-		
-		const rabbitPromise = new Promise((resolve, reject) => {
-			container.prepend(rabbit);
-			// Resolve the promise when the element is added successfully
-			console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
-			resolve(rabbit);
-		});
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" style="top:${startPoint}px;left:${xPos}px;transition: top ${gravitySpeed}s linear;"></div>`);
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
@@ -173,13 +166,20 @@ function queueRabbitAnimation(numberRabbits) {
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
 		
+		const rabbitPromise = new Promise((resolve, reject) => {
+			container.prepend(rabbit);
+			// Resolve the promise when the element is added successfully
+			console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
+			resolve(rabbit);
+		});
+		
 		rabbitPromise.then((rabbit) => {
 			rabbit.data('yPos', destination);
 			console.log('dropping rabbit ' + rabbit.attr('id') + ' to top: ' + destination);
 			rabbit.css({
 				'top': destination + 'px',
 				'left': xPos + 'px',
-				'transition': `top ${gravitySpeed}s linear !important`,
+				'transition': `top ${gravitySpeed}s linear`,
 			});
 			
 			const animTimeout2 = setTimeout(function () {
