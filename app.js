@@ -333,26 +333,18 @@ function generateRows (containerWidth, numberRabbits, rows) {
 
 		// While the row is not full (the row width sum + the width of an additional rabbit would not exceed the container width)
         while (rowWidth + rabbitWidth <= rowMax && rabbitsCalculated < numberRabbits) {
-			
-			// Initialize a variable for a leading space
-            let leadingSpace = 0;
-			
-			// If the current row is empty, we'll add a randomized leading space between -1*rabbit width buffer and +1*rabbit width buffer
-            if (currentRow.length === 0) {
-                leadingSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
-            }
 
 			// Initialize a variable for storing the x position of the rabbit we're currently calculating for
 			let rabbitX;
 			
 			// Add the row's sum so far and the leading space calculated above
-			rabbitX = rowWidth + leadingSpace;
+			rabbitX = rowWidth;
 			
 			// Add the calculated x value to the row array
             currentRow.push(rabbitX);
 			
 			// Update the row sum to include the calculated space and the added rabbit's width
-            rowWidth += leadingSpace + rabbitWidth;
+            rowWidth += rabbitWidth;
 
 			// Initialize a randomized trailing space between -1*rabbit width buffer and +1*rabbit width buffer
             let bufferSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
