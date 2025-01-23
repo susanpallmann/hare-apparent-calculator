@@ -6,7 +6,7 @@ const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
-const maxAnimatedRabbits = 200; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
+const maxAnimatedRabbits = 500; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
 const fewRabbits = [
     "A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
@@ -220,6 +220,9 @@ function queueRabbitAnimation(numberRabbits) {
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos -= widthBuffer;
+		if (currentRowIndex >= 0 && rows[currentRowIndex]/rows[currentRowIndex - 1] <= 0.5) {
+			xPos += containerWidth/4;
+		}
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
