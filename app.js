@@ -160,7 +160,7 @@ function queueRabbitAnimation(numberRabbits) {
 			// Get the rabbit's row
 			const rabbitRow = rabbit.data('row');
 			console.log(rabbitRow);
-			let destination = containerHeight - (rabbitHeight-(rabbitRow*heightBuffer))*(rabbitRow+1);
+			let destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(rabbitRow));
 			
 			// Get existing rabbit yPos and our gravity amount
 			let yPos = rabbit.data('yPos');
