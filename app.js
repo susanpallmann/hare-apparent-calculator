@@ -56,17 +56,11 @@ $(document).ready(function () {
     }
     $('#huge-answer-number').text(0);
     if (tokensMade < 3) {
-	let randomNum = Math.floor(Math.random() * fewRabbits.length);
-	    console.log(randomNum);
-        $('#flavor-text').text(fewRabbits[randomNum]);
+        $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length]);
     } else if (tokensMade < 15) {
-	let randomNum = Math.floor(Math.random() * someRabbits.length);
-	    console.log(randomNum);
-        $('#flavor-text').text(someRabbits[randomNum]);
+        $('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length]);
     } else {
-	let randomNum = Math.floor(Math.random() * manyRabbits.length);
-	    console.log(randomNum);
-	$('#flavor-text').text(manyRabbits[randomNum]);
+	$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
     }
     $('#calculator').fadeOut(300,function(){
       $('#answer').fadeIn(300);
