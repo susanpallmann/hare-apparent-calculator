@@ -1,5 +1,5 @@
 // Global constants
-const animationSpeed = 4.5;
+const animationSpeed = 1.5;
 const tickRate = 30; // Animation speed - higher number = faster animation
 const gravityMovement = 15; // Amount in pixels a rabbit moves due to gravity each "tick" - higher number = faster movement
 const animationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
@@ -213,7 +213,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
 		console.log(destination);
-		const dropSpeed = destination*animationSpeed/1000;
+		const dropSpeed = (destination/containerHeight)*animationSpeed;
 		console.log(dropSpeed);
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
