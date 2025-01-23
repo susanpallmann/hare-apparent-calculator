@@ -168,9 +168,9 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		const rabbitPromise = new Promise((resolve, reject) => {
 			container.prepend(rabbit);
+			// Magic variable that breaks everything if removed :')
+			let magicTopOffset = rabbit.offset().top;
 			// Resolve the promise when the element is added successfully
-			//console.log('created rabbit ' + rabbit.attr('id') + ' at top: ' + startPoint);
-			console.log(rabbit.offset().top);
 			resolve(rabbit);
 		});
 		
@@ -183,8 +183,6 @@ function queueRabbitAnimation(numberRabbits) {
 				'left': xPos + 'px',
 				'transition': `top ${gravitySpeed}s linear`,
 			});
-			//console.log('dropping rabbit ' + rabbit.attr('id') + ' to top: ' + destination);
-			//console.log(rabbit.offset().top);
 			
 			const animTimeout1 = setTimeout(function () {
 				rabbit.data('falling', false);
