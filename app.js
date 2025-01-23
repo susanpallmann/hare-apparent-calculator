@@ -6,7 +6,7 @@ const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
-const maxAnimatedRabbits = 200; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
+const maxAnimatedRabbits = 150; // Maximum number of rabbits we'll ever create for the animation to avoid destroying someone's mobile browser
 const fewRabbits = [
 	"A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
