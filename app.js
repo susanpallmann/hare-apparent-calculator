@@ -22,7 +22,7 @@ const someRabbits = [
     "Now we're talking. This is a respectable amount of rabbit.",
     "The lawn is theirs now.",
     "We're going to need more carrots.",
-    "They're could hold a carrot convention.",
+    "They could hold a carrot convention.",
     "A flurry of fur and twitching noses.",
     "Sufficiently fluffy.",
     "They're multiplying. It's only a matter of time."
