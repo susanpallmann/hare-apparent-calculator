@@ -191,7 +191,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   position: absolute;
   display: block;
   content: '';
-  background-image: linear-gradient(to right, rgba(224,253,246,100), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,100);
+  background-image: linear-gradient(to right, rgba(224,253,246,100), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,100));
   background-size: contain;
 }
 
