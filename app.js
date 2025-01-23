@@ -49,6 +49,8 @@ $(document).ready(function () {
 	
 	const container = $('#rabbit-container');
 	const containerHeight = container.height();
+
+	console.log(containerHeight);
 	const containerWidth = container.width();
 	
   $('#calculate-button').click(function(){
