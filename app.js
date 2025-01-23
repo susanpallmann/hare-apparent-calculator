@@ -77,10 +77,19 @@ $(document).ready(function () {
           }
         });
       });
-      if(tokensMade < maxAnimatedRabbits) {
+	  
+	  //dynamic maxanimated rabbits??
+	  //maximum number of possible rows given container Height
+	  let maxRowsPossible = Math.round((rabbitHeight - (rabbitHeight-heightBuffer)) / containerHeight);
+	  //maximum number of possible rabbits in a row
+	  let maxRabbitsPerRow = Math.round((rabbitWidth - widthBuffer) / containerWidth);
+	  //multiply the maximums
+	  let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+	  
+      if(tokensMade < rabbitCeiling) {
 	  queueRabbitAnimation(tokensMade);
       } else {
-	  queueRabbitAnimation(maxAnimatedRabbits);
+	  queueRabbitAnimation(rabbitCeiling);
       }
     });
   });
@@ -97,11 +106,6 @@ $(document).ready(function () {
     });
   });
 });
-
-//dynamic maxanimated rabbits??
-//maximum number of possible rows given container Height
-//maximum number of possible rabbits in a row
-//multiply the maximums
 
 function queueRabbitAnimation(numberRabbits) {
   // Declaring some more constants here, as these require the scene to have loaded to be retrieved
@@ -130,69 +134,6 @@ function queueRabbitAnimation(numberRabbits) {
 	
 	// Tracks available x positions for the current row
 	let availableXPositions = [];
-	/*
-	// Interval to track gravity for each rabbit across the full animation runtime. 
-	let gravityTicker = setInterval(function() {
-
-		function allRabbitsGrounded(rabbits) {
-			// First assume all rabbits are grounded
-			let allGrounded = true;
-			
-			for (let i = 0; i < rabbits.length; i++) {
-				if (!rabbits[i].data('grounded')) { // If even one is NOT grounded
-				  allGrounded = false; // Set the flag to false
-				  break; // No need to continue checking
-				}
-			}
-			return allGrounded;
-		}
-		
-		// Check if all rabbits are grounded. If so, clear the interval
-		if (allRabbitsGrounded(rabbits)) {
-			clearInterval(gravityTicker);
-		}
-		
-		// For each rabbit that currently exists (stored in our rabbits array)
-		for (let i = 0; i < rabbits.length; i++) {
-			// Defining the rabbit we want to currently handle, getting the DOM *reference* from the rabbits array
-			const rabbit = rabbits[i];
-			
-			// If the rabbit we grabbed is grounded, we don't need to do any gravity calculations on it and we can skip to the next iteration in our loop
-			if (rabbit.data('grounded')) continue;
-			
-			// Get the height of the rabbit DOM element for use in collision calculations
-			const rabbitHeight = rabbit.height();
-			
-			// Get the rabbit's row
-			const rabbitRow = rabbit.data('row');
-			let destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(rabbitRow));
-			
-			// Get existing rabbit yPos and our gravity amount
-			let yPos = rabbit.data('yPos');
-			let xPos = rabbit.data('xPos');
-			let movement = gravityMovement;
-			
-			if (yPos + movement >= destination) {
-				yPos = destination;
-				
-				rabbit.data('grounded', true);
-                rabbit.data('falling', false);
-				
-				// TODO add bounce animation
-				rabbit.attr('animation','bouncing');
-				const animationTimeout = setTimeout(function(){
-					rabbit.attr('animation','grounded');
-				}, 500);
-			} else {
-				yPos += movement;
-			}
-			
-			// After determining the new yPos through the if statement above, we can assign the new yPos to the rabbit's data, and also update the css "top" value on the DOM element
-			rabbit.data('yPos', yPos);
-			rabbit.css({'top': yPos, 'left': xPos});
-		}
-	}, tickRate); // tickRate was defined as a global constant at the start of the code
-	*/
 	
 	// Function "drops rabbits," creating the DOM element to represent a rabbit, initializing it with some data attributes, and adding it to the rabbits array
 	function dropRabbit() {
