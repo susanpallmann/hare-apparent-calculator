@@ -180,17 +180,18 @@ function queueRabbitAnimation(numberRabbits) {
 		// Add this newly created rabbit to our rabbits array
 		rabbits.push(rabbit);
 		
-		//rabbit.data('yPos', destination);
-		//rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
-
-		const animationTimeout = setTimeout(function(){
-			rabbit.data('falling', false);
-			rabbit.attr('animation','bouncing');
-			const animationTimeout = setTimeout(function(){
-				rabbit.attr('animation','grounded');
-				rabbit.data('grounded', true);
-			}, 300); 
-		}, animationSpeed*1000); 
+		const animTimeout1 = setTimeout(function(){
+			rabbit.data('yPos', destination);
+			rabbit.css({'top': destination, 'left': xPos, 'transition': 'top ' + animationSpeed + 's linear'});
+			const animTimeout2 = setTimeout(function(){
+				rabbit.data('falling', false);
+				rabbit.attr('animation','bouncing');
+				const animTimeout3 = setTimeout(function(){
+					rabbit.attr('animation','grounded');
+					rabbit.data('grounded', true);
+				}, 300); 
+			}, animationSpeed*1000); 
+		}, animationSpeed*1); 
 		
 		// Increase the number of rabbits dropped
 		rabbitsDropped++;
