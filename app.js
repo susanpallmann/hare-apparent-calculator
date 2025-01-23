@@ -85,7 +85,7 @@ $(document).ready(function () {
 	  
 	  //dynamic maxanimated rabbits??
 	  //maximum number of possible rows given container Height
-	  let maxRowsPossible = Math.round(rabbitHeight - (rabbitHeight-heightBuffer) / containerHeight);
+	  let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
 	  console.log('max rows is ' + maxRowsPossible);
 	  //maximum number of possible rabbits in a row
 	  let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
