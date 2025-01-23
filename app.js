@@ -159,6 +159,7 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
+		console.log(`top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important`);
 		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" row="${currentRowIndex}" style="top:${startPoint}px;left:${xPos}px;transition: top ${animationSpeed}s linear !important;"></div>`);
 		
 		const rabbitPromise = new Promise((resolve, reject) => {
