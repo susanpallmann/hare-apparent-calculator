@@ -26,6 +26,7 @@ $(document).ready(function () {
     $('#huge-answer-number').text(0);
     $('#calculator').fadeOut(300,function(){
       $('#answer').fadeIn(300);
+      $('#rabbit-container').fadeIn(300);
       $('#huge-answer-number').each(function () {
         var $this = $(this);
         jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
@@ -37,7 +38,11 @@ $(document).ready(function () {
         });
       });
     });
-    queueRabbitAnimation(tokensMade);
+    if(tokensMade < maxAnimatedRabbits) {
+    	queueRabbitAnimation(tokensMade);
+    } else {
+	queueRabbitAnimation(maxAnimatedRabbits);
+    }
   });
   $('#back-button').click(function(){
     existingHares = 0;
