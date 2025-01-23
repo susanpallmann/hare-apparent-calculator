@@ -168,7 +168,9 @@ function queueRabbitAnimation(numberRabbits) {
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
-		rabbit.data('yPos', destination-containerHeight-rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
+		console.log(destination);
+		console.log(destination - containerHeight - rabbitHeight);
+		rabbit.data('yPos', destination - containerHeight - rabbitHeight); // Adjusting the yPos so that the rabbit starts off-screen.
 		rabbit.data('falling', true); // Rabbits start in a falling state
 		rabbit.data('grounded', false);  // Rabbits start not grounded by definition
 		rabbit.data('row', currentRowIndex); // Track row current rabbit belongs to
