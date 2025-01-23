@@ -331,9 +331,9 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 
 @keyframes idle {
     0% { transform: scaleY(1) scaleX(1) rotate(0deg);}
-   25% { transform: scaleY(1.05) scaleX(1) rotate(1deg);}
+   25% { transform: scaleY(1.025) scaleX(1) rotate(0.5deg);}
    50% { transform: scaleY(1) scaleX(1) rotate(0deg);}
-   75% { transform: scaleY(1.05) scaleX(1) rotate(-1deg);}
+   75% { transform: scaleY(1.025) scaleX(1) rotate(-0.5deg);}
   100% { transform: scaleY(1) scaleX(1) rotate(0deg);}
 }
 
