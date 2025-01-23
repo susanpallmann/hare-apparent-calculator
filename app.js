@@ -55,12 +55,13 @@ $(document).ready(function () {
       existingHares++;
     }
     $('#huge-answer-number').text(0);
+	console.log(tokensMade);
     if (tokensMade < 10) {
         $('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
     } else if (tokensMade < 30) {
         $('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
     } else {
-	$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
+		$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
     }
     $('#calculator').fadeOut(300,function(){
       $('#answer').fadeIn(300);
