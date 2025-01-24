@@ -1,4 +1,4 @@
-// V0.15 // Attempting to make totalAnimationTime more accurate by accounting for the time it will take the rabbits to fall. This might make things absurdly fast at first, so we'll adjust if needed
+// V0.15.1 // Fixing a mistake where I tried to reassign a constant like an idiot
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -223,9 +223,9 @@ function queueRabbitAnimation (numberRabbits) {
 	let rows = []; 
 	
 	// Drop interval is calculated by taking our totalAnimationTime, subtracting the time it takes for a rabbit to fall (as technically the last rabbit's falling animation needs to considered in the total animation time), and then dividing by how many rabbits we will be dropping
-	const dropInterval = 30;
+	let dropInterval = 30;
 	// If the totalAnimationTime is longer than our falling animation, we'll set the dropInterval so that all of the rabbits are able to fall within the desired animation time
-	// If the totalAnimationTime is shorter than our falling animation, it will not be possible to drop rabbits completely within the desired duration, so we'll instead drop them all very rapidly (every 30ms)
+	// If the totalAnimationTime is shorter than our falling animation, it will not be possible to drop rabbits completely within the desired duration, so we'll instead drop them all pretty rapidly (every 30ms)
 	if (totalAnimationTime >= gravitySpeed*1000*containerHeight/800) {
 		dropInterval = (totalAnimationTime - (gravitySpeed*containerHeight/800))/numberRabbits;
 	}
