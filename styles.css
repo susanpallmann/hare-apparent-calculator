@@ -314,7 +314,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 .rabbit[animation="bouncing"] {
-  animation: bounce 0.3s;
+  animation: bounce 0.2s;
 }
 
 .rabbit[animation="grounded"] {
