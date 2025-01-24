@@ -1,4 +1,4 @@
-// V0.15.5 // Code was actually working correctly; now tweaking the values of gravitySpeed and totalAnimationTime to see if we can get it feeling good and using the calculated drop interval all the time
+// V0.15.6 // More console logs, animation is definitely not always the same length
 
 // Global constants
 const gravitySpeed = 1;
@@ -230,6 +230,8 @@ function queueRabbitAnimation (numberRabbits) {
 		console.log('animation time is longer than fall time, in theory');
 		dropInterval = (totalAnimationTime - (gravitySpeed*1000*containerHeight/800))/numberRabbits;
 	}
+	console.log(dropInterval);
+	console.log(dropInterval*numberRabbits+(gravitySpeed*1000*containerHeight/800));
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
