@@ -1,4 +1,4 @@
-// V0.11.1 // Moving the animation did fix the jerky fade issue, but I don't like the timing, so now I'm trying to reset elements that have been faded out to visibility: hidden so that their children can still be manipulated, I returned my number animation to its original position inside the first callback
+// V0.11.2 // It's difficult to tell if the prior fix worked, but it introduced another issue (fade in elements don't fade in because they keep visibility hidden, which I knew I needed to account for, but didn't), so fixing that and we'll see. Also cleaned up some old console logs from the previous bug
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -44,19 +44,15 @@ $(document).ready(function () {
 				});
 				$('.flavor-text').text(flavorText);
 				$('#rabbit-container').empty();
-				console.log('this is running 1');
 				resolve();
 			});
 		},function() {		
 			
-			console.log('this is running 2');
 			//dynamic maxanimated rabbits??
 			//maximum number of possible rows given container Height
 			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-			console.log(maxRowsPossible);
 			//maximum number of possible rabbits in a row
 			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-			console.log(maxRabbitsPerRow);
 			//multiply the maximums
 			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 
@@ -126,7 +122,9 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 			// After the callback's promise resolves, fade in the second element
 			callback1Promise.then(() => {
 				// Fade second element in, then execute the second callback
-				$elementEntering.fadeIn(300, function() {
+				$elementEntering.css('visibility', 'visible').fadeIn(300, function() {
+					
+					$(this).css('display', ''); // Reset display so fadeIn works correctly.
 					// Check if second callback function was provided
 					if (typeof callback2 === 'function') {
 						// Execute callback
@@ -216,12 +214,10 @@ function chooseFlavorText (rabbitsQuantity) {
 
 
 function queueRabbitAnimation (numberRabbits) {
-	console.log('this is running 3');
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
 	const containerHeight = container.height();
-	console.log(container.height());
 	const containerWidth = container.width();
 
 	// Array to store randomized x positions for rabbit animation
