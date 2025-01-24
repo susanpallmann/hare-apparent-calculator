@@ -5,39 +5,6 @@ const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
-const noRabbits = [];
-const oneRabbit = [];
-const fewRabbits = [
-	"A modest gathering of fluff.",
-	"Just a few bunnies, minding their own business... for now.",
-	"Sparse, but stylish; like a minimalist rabbit exhibit.",
-	"The rabbit equivalent of a quiet afternoon.",
-	"Not enough rabbits to swarm, but definitely enough to be plotting something.",
-	"Just a smattering of cottontails."
-	];
-const someRabbits = [
-	"The bunny brigade is assembling.",
-	"Things are starting to get hoppy around here.",
-	"A decent-sized warren. Prepare for scattered droppings.",
-	"Now we're talking. This is a respectable amount of rabbit.",
-	"The lawn is theirs now.",
-	"We're going to need more carrots.",
-	"They could hold a carrot convention.",
-	"A flurry of fur and twitching noses.",
-	"Sufficiently fluffy.",
-	"They're multiplying. It's only a matter of time."
-	];
-const manyRabbits = [
-	"It's a bunny-pocalypse!",
-	"Carrots are a distant memory now. Panic is setting in.",
-	"The ground is moving... it's all rabbits.",
-	"They've formed a single, giant, pulsating mass of fur. It demands tribute.",
-	"They've achieved critical fluff mass.",
-	"The very air vibrates with the sound of chewing.",
-	"The fuzzy hoard is large enough to have its own gravitational pull.",
-	"The fluff has consumed everything. Resistance is futile.",
-	"The earth is now 90% rabbit"
-	];
 
 // Global variables
 let existingHares = 0; // Number of Hare Apparents on the battlefield
@@ -64,8 +31,9 @@ $(document).ready(function () {
 		let flavorText = chooseFlavorText(tokensMade);
 		$('.flavor-text').text(flavorText);
 		
-		$('#calculator').fadeOut(300,function(){
-			$('#answer').fadeIn(300);
+		let calculator = $('#calculator');
+		let answer = $('#answer');
+		transitionSandwich (calculator, answer, function() {
 			$('#rabbit-container').empty();
 			$('#rabbit-container').fadeIn(300);
 			$('#huge-answer-number').each(function () {
@@ -78,7 +46,7 @@ $(document).ready(function () {
 				  }
 				});
 			});
-		  
+			
 			//dynamic maxanimated rabbits??
 			//maximum number of possible rows given container Height
 			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
@@ -98,18 +66,46 @@ $(document).ready(function () {
 		existingHares = 0;
 		enteringHares = 0;
 		tokensMade = 0;
-	$('#rabbit-container').fadeOut(300);
-	$('#answer').fadeOut(300,function(){
-		$('#rabbit-container').empty();
-			$('#calculator').fadeIn(300,function(){
-				$('#huge-answer-number').text(0);
-			});
+		let answer = $('#answer');
+		let calculator = $('#calculator');
+		transitionSandwich (answer, calculator, function() {
+			$('#rabbit-container').fadeOut(300);
+			$('#rabbit-container').empty();
+			$('#huge-answer-number').text(0);
 		});
 	});
 });
 
+// Given two elements, function fades one element out, executes the callback, and then fades the other element in
+// Used for transitioning between layouts
+// This is definitely my finest function name
+function transitionSandwich (elementLeaving, elementEntering, callback) {
+	// Ensure provided elements are jQuery objects
+	const $elementLeaving = $(elementLeaving);
+	const $elementEntering = $(elementEntering);
+	
+	// Check if both elements exist in the DOM
+	if ($elementLeaving.length && $elementEntering.length) {
+		// Fade out first element
+		$elementLeaving.fadeOut(300, function() {
+            // Check if callback function was provided
+            if (typeof callback === 'function') {
+				// Execute callback
+                callback();
+            }
+			
+			// Fade second element in
+            $elementEntering.fadeIn(300);
+        });
+		
+	// If one or both elements don't exist, log an error
+	} else {
+		console.log('Could not locate one or both elements in the DOM.');
+	}
+}
+
 // Given a number of rabbits being created (rabbitsQuantity), chooses and returns appropriate flavor text
-function chooseFlavorText(rabbitsQuantity) {
+function chooseFlavorText (rabbitsQuantity) {
 	
 	// Flavor text options
 	const textOptions = [
@@ -180,7 +176,7 @@ function chooseFlavorText(rabbitsQuantity) {
 }
 
 
-function queueRabbitAnimation(numberRabbits) {
+function queueRabbitAnimation (numberRabbits) {
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
