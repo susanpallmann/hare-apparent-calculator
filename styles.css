@@ -15,14 +15,13 @@ main {
 
 #calculator {
   width: 100%;
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  row-gap: 64px;
 }
 
 #answer {
+  width: 100%;
+}
+
+.content-container {
   width: 100%;
   max-width: 500px;
   margin: auto;
