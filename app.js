@@ -1,8 +1,8 @@
 // V0.16.1 // Small timing adjustments, removing console logs from debugging
 
 // Global constants
-const gravitySpeed = 0.95; // Controls how long it takes the rabbits fall, a higher number results in slower falling
-const dropRateModifier = 0.5; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
+const gravitySpeed = 0.75; // Controls how long it takes the rabbits fall, a higher number results in slower falling
+const dropRateModifier = 0.2; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
