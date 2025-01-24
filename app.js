@@ -1,4 +1,4 @@
-// V0.8.2
+// V0.8.3
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -189,6 +189,7 @@ function queueRabbitAnimation (numberRabbits) {
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
 	const containerHeight = container.height();
+	console.log(container.height());
 	const containerWidth = container.width();
 
 	// Array to store randomized x positions for rabbit animation
