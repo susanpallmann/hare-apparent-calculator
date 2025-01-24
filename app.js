@@ -1,4 +1,4 @@
-// V0.13 // Experimenting with a shorter totalAnimationTime; shouldn't break anything with the magic variable in play, but we'll see
+// V0.14 // Attempting to make gravity always the same speed regardless of the container height, while keeping a global constant that we can change the value of to adjust it
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -239,7 +239,6 @@ function queueRabbitAnimation (numberRabbits) {
 	
 	// Function "drops rabbits," creating the DOM element to represent a rabbit, initializing it with some data attributes, and adding it to the rabbits array
 	function dropRabbit() {
-		console.log('dropRabbit ran');
 		// More of a failsafe I think, but if the number of rabbits already dropped is larger than or equal to the number of rabbits we are expecting to drop, we can end this function. (Note: this number really should not ever be larger than the number of rabbits we are expecting to drop.) Also, if we add a maximum number of rabbits, we'll either need to account for that before setting the variable, or come back to this function later to update it. (TODO)
 		if (rabbitsDropped >= numberRabbits) return;
 		
@@ -258,9 +257,11 @@ function queueRabbitAnimation (numberRabbits) {
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
 		const startPoint = destination-containerHeight; 
 		
+		const adjustedGravitySpeed = gravitySpeed*800/containerHeight;
+		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
-		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" style="top: ${startPoint}px; left: ${xPos}px; transition: top ${gravitySpeed}s linear;"></div>`);
+		const rabbit = $(`<div class="rabbit" id="rabbit${rabbitsDropped}" animation="falling" style="top: ${startPoint}px; left: ${xPos}px; transition: top ${adjustedGravitySpeed}s linear;"></div>`);
 		
 		// Adds some data attributes we'll use to track the rabbit's collision, positioning, and movement
 		rabbit.data('xPos', xPos); // TODO: want to make the xPos random (or at least seem random) upon initializing
@@ -287,7 +288,7 @@ function queueRabbitAnimation (numberRabbits) {
 			rabbit.css({
 				'top': destination + 'px',
 				'left': xPos + 'px',
-				'transition': `top ${gravitySpeed}s linear`,
+				'transition': `top ${adjustedGravitySpeed}s linear`,
 			});
 			
 			const animTimeout1 = setTimeout(function () {
@@ -297,7 +298,7 @@ function queueRabbitAnimation (numberRabbits) {
 					rabbit.attr('animation', 'grounded');
 					rabbit.data('grounded', true);
 				}, 300);
-			}, gravitySpeed * 1000);
+			}, adjustedGravitySpeed * 1000);
 			// Increase the number of rabbits dropped
 			rabbitsDropped++;
 		});
