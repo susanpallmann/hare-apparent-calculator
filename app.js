@@ -1,4 +1,4 @@
-// V0.10 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it
+// V0.10 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it, also lightly refactored this code
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -28,28 +28,25 @@ $(document).ready(function () {
 		  tokensMade = tokensMade + existingHares;
 		  existingHares++;
 		}
-		$('#huge-answer-number').text(0);
 		
 		let calculator = $('#calculator');
 		let answer = $('#answer');
 		transitionSandwich (calculator, answer, function() {
 			return new Promise(resolve => {
 				let flavorText = chooseFlavorText(tokensMade);
+				$('#huge-answer-number').text(0);
 				$('.flavor-text').text(flavorText);
 				$('#rabbit-container').empty();
 				console.log('this is running 1');
 				resolve();
 			});
-		},function() {
-			$('#huge-answer-number').each(function () {
-				var $this = $(this);
-				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-				  duration: 500,
-				  easing: 'linear',
-				  step: function (now) {
-					$this.text(Math.ceil(now));
-				  }
-				});
+		},function() {		
+			jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+				duration: 500,
+				easing: 'linear',
+				step: function (now) {
+					$('#huge-answer-number').text(Math.ceil(now));
+				}
 			});
 			
 			console.log('this is running 2');
