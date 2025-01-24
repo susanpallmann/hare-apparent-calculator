@@ -315,6 +315,7 @@ function queueRabbitAnimation (numberRabbits) {
 	// Drop the first rabbit immediately once everything is initialized
 	dropRabbit();
 	
+	console.log(dropInterval);
 	// Then drop the remaining rabbits at intervals to space the rabbits evenly through the animation time
 	let dropTimer = setInterval(function() {
 		// Drops the next rabbit
