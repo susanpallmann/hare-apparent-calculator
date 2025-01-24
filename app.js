@@ -1,4 +1,4 @@
-// V0.11.2 // It's difficult to tell if the prior fix worked, but it introduced another issue (fade in elements don't fade in because they keep visibility hidden, which I knew I needed to account for, but didn't), so fixing that and we'll see. Also cleaned up some old console logs from the previous bug
+// V0.12 // Moving rabbit falling animation into the first callback in our transition sandwich call so it is already moving when the "page" transitions, hoping nothing breaks
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -44,23 +44,22 @@ $(document).ready(function () {
 				});
 				$('.flavor-text').text(flavorText);
 				$('#rabbit-container').empty();
+				//dynamic maxanimated rabbits??
+				//maximum number of possible rows given container Height
+				let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+				//maximum number of possible rabbits in a row
+				let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+				//multiply the maximums
+				let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+
+				if(tokensMade < rabbitCeiling) {
+					queueRabbitAnimation(tokensMade);
+				} else {
+					queueRabbitAnimation(rabbitCeiling);
+				}
 				resolve();
 			});
 		},function() {		
-			
-			//dynamic maxanimated rabbits??
-			//maximum number of possible rows given container Height
-			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-			//maximum number of possible rabbits in a row
-			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-			//multiply the maximums
-			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
-
-			if(tokensMade < rabbitCeiling) {
-				queueRabbitAnimation(tokensMade);
-			} else {
-				queueRabbitAnimation(rabbitCeiling);
-			}
 		});
 		
 	});
