@@ -15,10 +15,14 @@ main {
 
 #calculator {
   width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 #answer {
   width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 .content-container {
