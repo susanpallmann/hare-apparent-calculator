@@ -1,4 +1,4 @@
-// V0.10 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it, also lightly refactored this code
+// V0.11 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it, also lightly refactored this code, also realized we had an extra closing bracket somewhere
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -75,7 +75,7 @@ $(document).ready(function () {
 		let answer = $('#answer');
 		let calculator = $('#calculator');
 		// If there are any rabbits from our falling animation visible, fade them out
-		if ($('.rabbit')).length) { 
+		if ($('.rabbit').length) { 
 			$('.rabbit').fadeOut(300);
 		};
 		transitionSandwich (answer, calculator, function() {
