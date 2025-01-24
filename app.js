@@ -248,7 +248,8 @@ function queueRabbitAnimation (numberRabbits) {
 	// Function "drops rabbits," creating the DOM element to represent a rabbit, initializing it with some data attributes, and adding it to the rabbits array
 	function dropRabbit() {
 		
-		console.log(Math.floor(Date.now() / 1000));
+		const timeStamp = Math.floor(Date.now() / 1000)
+		console.log(timeStamp);
 		// More of a failsafe I think, but if the number of rabbits already dropped is larger than or equal to the number of rabbits we are expecting to drop, we can end this function. (Note: this number really should not ever be larger than the number of rabbits we are expecting to drop.) Also, if we add a maximum number of rabbits, we'll either need to account for that before setting the variable, or come back to this function later to update it. (TODO)
 		if (rabbitsDropped >= numberRabbits) return;
 		
