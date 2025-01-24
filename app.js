@@ -1,4 +1,4 @@
-// V0.8.10
+// V0.8.11 // Fixed the bug, now just fine-tuning animation timing using my transitionsandwich function
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -76,13 +76,12 @@ $(document).ready(function () {
 		tokensMade = 0;
 		let answer = $('#answer');
 		let calculator = $('#calculator');
+		$('.rabbit').fadeOut(300);
 		transitionSandwich (answer, calculator, function() {
 			return new Promise(resolve => {
-				$('.rabbit').fadeOut(300, function () {
-					$('#rabbit-container').empty();
-					$('#huge-answer-number').text(0);
-					resolve();
-				});
+				$('#rabbit-container').empty();
+				$('#huge-answer-number').text(0);
+				resolve();
 			});
 		});
 	});
