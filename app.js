@@ -1,8 +1,8 @@
-// V0.15.6 // More console logs, animation is definitely not always the same length
+// V0.16 // Giving up on totalAnimationTime, and instead using a global dropRateModifier to influence drop speed without implying a level of precision that can't be delivered
 
 // Global constants
-const gravitySpeed = 0.75;
-const totalAnimationTime = 750; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
+const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
+const dropRateModifier = 0.7; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
@@ -222,16 +222,11 @@ function queueRabbitAnimation (numberRabbits) {
 	// Array to store randomized x positions for rabbit animation
 	let rows = []; 
 	
-	// Drop interval is calculated by taking our totalAnimationTime, subtracting the time it takes for a rabbit to fall (as technically the last rabbit's falling animation needs to considered in the total animation time), and then dividing by how many rabbits we will be dropping
-	let dropInterval = 30;
-	// If the totalAnimationTime is longer than our falling animation, we'll set the dropInterval so that all of the rabbits are able to fall within the desired animation time
-	// If the totalAnimationTime is shorter than our falling animation, it will not be possible to drop rabbits completely within the desired duration, so we'll instead drop them all pretty rapidly (every 30ms)
-	if (totalAnimationTime >= gravitySpeed*1000*containerHeight/800) {
-		console.log('animation time is longer than fall time, in theory');
-		dropInterval = (totalAnimationTime - (gravitySpeed*1000*containerHeight/800))/numberRabbits;
+	// Initial dropInterval is calculated by taking our dropRateModifier (converted to milliseconds), and then dividing by the number of rabbits to drop. The dropInterval is capped at ~100ms so that it is not too slow when there are not very many rabbits falling
+	let dropInterval = 1000 * dropRateModifier / numberRabbits;
+	if (dropInterval >= 100) {
+		dropInterval = 100;
 	}
-	console.log(dropInterval);
-	console.log(dropInterval*numberRabbits+(gravitySpeed*1000*containerHeight/800));
 	
 	// Generate x value "rows" for dropping rabbits
 	rows = generateRows(containerWidth, numberRabbits, rows);
