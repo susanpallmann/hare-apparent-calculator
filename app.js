@@ -1,4 +1,4 @@
-// V0.8.11 // Fixed the bug, now just fine-tuning animation timing using my transitionsandwich function
+// V0.9.0 // Discovered a new bug where trying to return to the calculator after creating 0 rabbits results in a blank screen, added if logic so that we only fade out ".rabbit" elements if any exist
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -76,7 +76,10 @@ $(document).ready(function () {
 		tokensMade = 0;
 		let answer = $('#answer');
 		let calculator = $('#calculator');
-		$('.rabbit').fadeOut(300);
+		// If there are any rabbits from our falling animation visible, fade them out
+		if ($('.rabbit')).length) { 
+			$('.rabbit').fadeOut(300);
+		};
 		transitionSandwich (answer, calculator, function() {
 			return new Promise(resolve => {
 				$('#rabbit-container').empty();
