@@ -1,8 +1,8 @@
-// V0.16 // Giving up on totalAnimationTime, and instead using a global dropRateModifier to influence drop speed without implying a level of precision that can't be delivered
+// V0.16.1 // Small timing adjustments, removing console logs from debugging
 
 // Global constants
-const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
-const dropRateModifier = 0.7; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
+const gravitySpeed = 0.95; // Controls how long it takes the rabbits fall, a higher number results in slower falling
+const dropRateModifier = 0.5; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
@@ -61,7 +61,6 @@ $(document).ready(function () {
 			});
 		},function() {		
 		});
-		
 	});
 	$('#back-button').click(function(){
 		existingHares = 0;
@@ -281,9 +280,6 @@ function queueRabbitAnimation (numberRabbits) {
 			// Magic variable that breaks everything if removed :')
 			let magicOffset = rabbit.offset().top;
 			
-			const timeStamp = Math.floor(Date.now() / 1)
-			console.log(timeStamp);
-			
 			// Resolve the promise when the element is added successfully
 			resolve(rabbit);
 		});
@@ -314,7 +310,6 @@ function queueRabbitAnimation (numberRabbits) {
 	// Drop the first rabbit immediately once everything is initialized
 	dropRabbit();
 	
-	console.log(dropInterval);
 	// Then drop the remaining rabbits at intervals to space the rabbits evenly through the animation time
 	let dropTimer = setInterval(function() {
 		// Drops the next rabbit
