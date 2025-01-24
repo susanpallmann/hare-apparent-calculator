@@ -1,4 +1,4 @@
-// V0.9.0 // Discovered a new bug where trying to return to the calculator after creating 0 rabbits results in a blank screen, added if logic so that we only fade out ".rabbit" elements if any exist
+// V0.10 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -37,20 +37,21 @@ $(document).ready(function () {
 				let flavorText = chooseFlavorText(tokensMade);
 				$('.flavor-text').text(flavorText);
 				$('#rabbit-container').empty();
-				$('#huge-answer-number').each(function () {
-					var $this = $(this);
-					jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-					  duration: 500,
-					  easing: 'linear',
-					  step: function (now) {
-						$this.text(Math.ceil(now));
-					  }
-					});
-				});
 				console.log('this is running 1');
 				resolve();
 			});
 		},function() {
+			$('#huge-answer-number').each(function () {
+				var $this = $(this);
+				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+				  duration: 500,
+				  easing: 'linear',
+				  step: function (now) {
+					$this.text(Math.ceil(now));
+				  }
+				});
+			});
+			
 			console.log('this is running 2');
 			//dynamic maxanimated rabbits??
 			//maximum number of possible rows given container Height
