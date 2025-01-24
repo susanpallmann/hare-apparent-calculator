@@ -29,6 +29,7 @@ main {
   flex-direction: column;
   row-gap: 64px;
   padding: 64px 24px;
+  box-sizing: border-box;
 }
 
 form {
