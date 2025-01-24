@@ -1,4 +1,4 @@
-// V0.8.6
+// V0.8.7
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -33,21 +33,25 @@ $(document).ready(function () {
 		let calculator = $('#calculator');
 		let answer = $('#answer');
 		transitionSandwich (calculator, answer, function() {
-			let flavorText = chooseFlavorText(tokensMade);
-			$('.flavor-text').text(flavorText);
-			$('.rabbit').fadeOut(300);
-			$('#rabbit-container').empty();
-			$('#huge-answer-number').each(function () {
-				var $this = $(this);
-				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-				  duration: 500,
-				  easing: 'linear',
-				  step: function (now) {
-					$this.text(Math.ceil(now));
-				  }
+			return new Promise(resolve => {
+				let flavorText = chooseFlavorText(tokensMade);
+				$('.flavor-text').text(flavorText);
+				$('.rabbit').fadeOut(300, function () {
+					$('#rabbit-container').empty();
+					$('#huge-answer-number').each(function () {
+						var $this = $(this);
+						jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+						  duration: 500,
+						  easing: 'linear',
+						  step: function (now) {
+							$this.text(Math.ceil(now));
+						  }
+						});
+					});
+					console.log('this is running 1');
+					resolve();
 				});
 			});
-			console.log('this is running 1');
 		},function() {
 			console.log('this is running 2');
 			//dynamic maxanimated rabbits??
@@ -75,9 +79,13 @@ $(document).ready(function () {
 		let answer = $('#answer');
 		let calculator = $('#calculator');
 		transitionSandwich (answer, calculator, function() {
-			$('.rabbit').fadeOut(300);
-			$('#rabbit-container').empty();
-			$('#huge-answer-number').text(0);
+			return new Promise(resolve => {
+				$('.rabbit').fadeOut(300, function () {
+					$('#rabbit-container').empty();
+					$('#huge-answer-number').text(0);
+					resolve();
+				});
+			});
 		});
 	});
 });
