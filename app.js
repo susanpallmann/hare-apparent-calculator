@@ -1,4 +1,4 @@
-// V0.8.7
+// V0.8.8
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -100,20 +100,40 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 	// Check if both elements exist in the DOM
 	if ($elementLeaving.length && $elementEntering.length) {
 		// Fade out first element
-		$elementLeaving.fadeOut(300, function() {
-            // Check if first callback function was provided
-            if (typeof callback1 === 'function') {
-				// Execute callback
-                callback1();
-            }
-			
-			// Fade second element in
-            $elementEntering.fadeIn(300, function() {
-				// Check if second callback function was provided
-				if (typeof callback2 === 'function') {
-					// Execute callback
-					callback2();
+		$elementLeaving.fadeOut(300, function () {
+			// Create promise to manage callback's asynchronous operations
+			const callback1Promise = new Promise((resolve) => {
+				// Check if first callback function was provided
+				if (typeof callback1 === 'function') {
+					
+					// Call revole() when callback's asynchronous operations are complete
+					const callbackResult1 = callback1(); // Execute callback and save the result
+					
+					// Check if callbackResult is a Promise
+                    if (callbackResult1 && typeof callbackResult1.then === 'function') {
+                        // If it is, wait for it to resolve
+                        callbackResult1.then(resolve);
+                    } else {
+                        // If not, resolve immediately
+                        resolve();
+                    }
+					
+				} else {
+					// Resolve immediately if there is no callback provided
+					resolve();
 				}
+				
+				// After the callback's promise resolves, fade in the second element
+				callback1Promise.then(() => {
+					// Fade second element in, then execute the second callback
+					$elementEntering.fadeIn(300, function() {
+						// Check if second callback function was provided
+						if (typeof callback2 === 'function') {
+							// Execute callback
+							callback2();
+						}
+					});
+				});
 			});
         });
 		
