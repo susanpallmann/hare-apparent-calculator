@@ -1,3 +1,5 @@
+// V0.8
+
 // Global constants
 const gravitySpeed = 1.2;
 const totalAnimationTime = 1200; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
