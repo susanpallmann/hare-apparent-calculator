@@ -1,8 +1,8 @@
 // V0.15.6 // More console logs, animation is definitely not always the same length
 
 // Global constants
-const gravitySpeed = 1;
-const totalAnimationTime = 1100; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
+const gravitySpeed = 0.75;
+const totalAnimationTime = 750; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
@@ -248,8 +248,6 @@ function queueRabbitAnimation (numberRabbits) {
 	// Function "drops rabbits," creating the DOM element to represent a rabbit, initializing it with some data attributes, and adding it to the rabbits array
 	function dropRabbit() {
 		
-		const timeStamp = Math.floor(Date.now() / 1)
-		console.log(timeStamp);
 		// More of a failsafe I think, but if the number of rabbits already dropped is larger than or equal to the number of rabbits we are expecting to drop, we can end this function. (Note: this number really should not ever be larger than the number of rabbits we are expecting to drop.) Also, if we add a maximum number of rabbits, we'll either need to account for that before setting the variable, or come back to this function later to update it. (TODO)
 		if (rabbitsDropped >= numberRabbits) return;
 		
@@ -287,6 +285,9 @@ function queueRabbitAnimation (numberRabbits) {
 			
 			// Magic variable that breaks everything if removed :')
 			let magicOffset = rabbit.offset().top;
+			
+			const timeStamp = Math.floor(Date.now() / 1)
+			console.log(timeStamp);
 			
 			// Resolve the promise when the element is added successfully
 			resolve(rabbit);
