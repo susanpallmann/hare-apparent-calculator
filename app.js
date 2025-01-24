@@ -1,8 +1,8 @@
-// V0.15.1 // Fixing a mistake where I tried to reassign a constant like an idiot
+// V0.15.2 // Fine-tuning totalAnimationTime to feel good; I may decide to make the drop interval time a bit more dynamic (effectively create a maximum drop interval) if it feels too slow for very few rabbits
 
 // Global constants
 const gravitySpeed = 1.2;
-const totalAnimationTime = 2000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
+const totalAnimationTime = 1000; // Time in ms in which all created rabbits will be created and dropped - higher number = longer animation duration. We may want to reassess if this should remain a constant if it turns out to be awkward when the number of rabbits greatly differs.
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
