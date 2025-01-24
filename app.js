@@ -122,19 +122,19 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 					// Resolve immediately if there is no callback provided
 					resolve();
 				}
-				
-				// After the callback's promise resolves, fade in the second element
-				callback1Promise.then(() => {
-					// Fade second element in, then execute the second callback
-					$elementEntering.fadeIn(300, function() {
-						// Check if second callback function was provided
-						if (typeof callback2 === 'function') {
-							// Execute callback
-							callback2();
-						}
-					});
+			});
+			// After the callback's promise resolves, fade in the second element
+			callback1Promise.then(() => {
+				// Fade second element in, then execute the second callback
+				$elementEntering.fadeIn(300, function() {
+					// Check if second callback function was provided
+					if (typeof callback2 === 'function') {
+						// Execute callback
+						callback2();
+					}
 				});
 			});
+			
         });
 		
 	// If one or both elements don't exist, log an error
