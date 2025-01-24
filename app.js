@@ -115,10 +115,10 @@ function chooseFlavorText(rabbitsQuantity) {
 	const textOptions = [
 		// No rabbit tokens created
 		{ range: [0, 0], texts: [
-				"Not a single bunny in sight. It's unsettling",
-				"Absolutely zero fluff. What a tragedy.",
-				"No rabbits here. Maybe try checking under a hat?",
-				"The field is suspiciously free of rabbits."
+			"Not a single bunny in sight. It's unsettling",
+			"Absolutely zero fluff. What a tragedy.",
+			"No rabbits here. Maybe try checking under a hat?",
+			"The field is suspiciously free of rabbits."
 			]
 		},
 		// One rabbit token created
