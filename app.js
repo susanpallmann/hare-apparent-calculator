@@ -1,4 +1,4 @@
-// V0.8.5
+// V0.8.6
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -35,6 +35,7 @@ $(document).ready(function () {
 		transitionSandwich (calculator, answer, function() {
 			let flavorText = chooseFlavorText(tokensMade);
 			$('.flavor-text').text(flavorText);
+			$('.rabbit').fadeOut(300);
 			$('#rabbit-container').empty();
 			$('#huge-answer-number').each(function () {
 				var $this = $(this);
@@ -74,6 +75,7 @@ $(document).ready(function () {
 		let answer = $('#answer');
 		let calculator = $('#calculator');
 		transitionSandwich (answer, calculator, function() {
+			$('.rabbit').fadeOut(300);
 			$('#rabbit-container').empty();
 			$('#huge-answer-number').text(0);
 		});
