@@ -1,4 +1,4 @@
-// V0.14 // Attempting to make gravity always the same speed regardless of the container height, while keeping a global constant that we can change the value of to adjust it
+// V0.14.1 // Probably had my container height/tallest possible container height division flipped. Fixed that
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -257,7 +257,7 @@ function queueRabbitAnimation (numberRabbits) {
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
 		const startPoint = destination-containerHeight; 
 		
-		const adjustedGravitySpeed = gravitySpeed*800/containerHeight;
+		const adjustedGravitySpeed = gravitySpeed*containerHeight/800;
 		
 		// Creates a rabbit div element with an ID# for which rabbit it is, and adds some attributes to handle our animation states. I have a hunch that we don't need the xPos/yPos parts anymore though. TODO
 		// May also refactor my CSS logic to use one attribute for all animation states since my code shouldn't be referencing these anymore
