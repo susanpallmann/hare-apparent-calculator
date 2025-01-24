@@ -1,4 +1,4 @@
-// V0.15.2 // Fine-tuning totalAnimationTime to feel good; I may decide to make the drop interval time a bit more dynamic (effectively create a maximum drop interval) if it feels too slow for very few rabbits
+// V0.15.3 // Forgot to adjust the gravity speed from seconds to milliseconds when I define the drop interval, let's see what that changes
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -227,7 +227,7 @@ function queueRabbitAnimation (numberRabbits) {
 	// If the totalAnimationTime is longer than our falling animation, we'll set the dropInterval so that all of the rabbits are able to fall within the desired animation time
 	// If the totalAnimationTime is shorter than our falling animation, it will not be possible to drop rabbits completely within the desired duration, so we'll instead drop them all pretty rapidly (every 30ms)
 	if (totalAnimationTime >= gravitySpeed*1000*containerHeight/800) {
-		dropInterval = (totalAnimationTime - (gravitySpeed*containerHeight/800))/numberRabbits;
+		dropInterval = (totalAnimationTime - (gravitySpeed*1000*containerHeight/800))/numberRabbits;
 	}
 	
 	// Generate x value "rows" for dropping rabbits
