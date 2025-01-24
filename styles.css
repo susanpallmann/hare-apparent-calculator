@@ -183,6 +183,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   right: 0;
   margin-inline: auto;
   z-index: -1;
+  opacity: 0.65;
 }
 
 #rabbit-container::after {
