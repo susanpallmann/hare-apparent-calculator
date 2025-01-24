@@ -1,4 +1,4 @@
-// V0.8.4
+// V0.8.5
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -52,8 +52,10 @@ $(document).ready(function () {
 			//dynamic maxanimated rabbits??
 			//maximum number of possible rows given container Height
 			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+			console.log(maxRowsPossible);
 			//maximum number of possible rabbits in a row
 			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+			console.log(maxRabbitsPerRow);
 			//multiply the maximums
 			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 
