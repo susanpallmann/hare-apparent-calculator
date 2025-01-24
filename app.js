@@ -1,4 +1,4 @@
-// V0.16.1 // Small timing adjustments, removing console logs from debugging
+// V0.17 // Adjusted timing and animation speeds
 
 // Global constants
 const gravitySpeed = 0.65; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -300,7 +300,7 @@ function queueRabbitAnimation (numberRabbits) {
 				const animTimeout1 = setTimeout(function () {
 					rabbit.attr('animation', 'grounded');
 					rabbit.data('grounded', true);
-				}, 300);
+				}, 200);
 			}, adjustedGravitySpeed * 1000);
 			// Increase the number of rabbits dropped
 			rabbitsDropped++;
