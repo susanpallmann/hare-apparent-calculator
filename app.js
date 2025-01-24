@@ -28,12 +28,11 @@ $(document).ready(function () {
 		}
 		$('#huge-answer-number').text(0);
 		
-		let flavorText = chooseFlavorText(tokensMade);
-		$('.flavor-text').text(flavorText);
-		
 		let calculator = $('#calculator');
 		let answer = $('#answer');
 		transitionSandwich (calculator, answer, function() {
+			let flavorText = chooseFlavorText(tokensMade);
+			$('.flavor-text').text(flavorText);
 			$('#rabbit-container').empty();
 			$('#huge-answer-number').each(function () {
 				var $this = $(this);
@@ -45,21 +44,20 @@ $(document).ready(function () {
 				  }
 				});
 			});
-			
-			//dynamic maxanimated rabbits??
-			//maximum number of possible rows given container Height
-			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-			//maximum number of possible rabbits in a row
-			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-			//multiply the maximums
-			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
-
-			if(tokensMade < rabbitCeiling) {
-				queueRabbitAnimation(tokensMade);
-			} else {
-				queueRabbitAnimation(rabbitCeiling);
-			}
 		});
+		//dynamic maxanimated rabbits??
+		//maximum number of possible rows given container Height
+		let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+		//maximum number of possible rabbits in a row
+		let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+		//multiply the maximums
+		let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+
+		if(tokensMade < rabbitCeiling) {
+			queueRabbitAnimation(tokensMade);
+		} else {
+			queueRabbitAnimation(rabbitCeiling);
+		}
 	});
 	$('#back-button').click(function(){
 		existingHares = 0;
