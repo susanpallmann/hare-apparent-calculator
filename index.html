@@ -15,32 +15,36 @@
   <body>
     <main>
       <div id="calculator">
-        <h1>Hare Apparent<br>Token Calculator</h1>
-        <form>
-          <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
-          <div class="number-input">
-            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
-            <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
-            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
-          </div>
-          <label>How many <em>Hare Apparent</em>s are entering?</label>
-          <div class="number-input">
-            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
-            <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
-            <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
-          </div>
-          <button id="calculate-button" class="green-button" type="button">Calculate</button>
-        </form>
+        <div class="content-container">
+          <h1>Hare Apparent<br>Token Calculator</h1>
+          <form>
+            <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
+            <div class="number-input">
+              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
+              <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
+              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
+            </div>
+            <label>How many <em>Hare Apparent</em>s are entering?</label>
+            <div class="number-input">
+              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
+              <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
+              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
+            </div>
+            <button id="calculate-button" class="green-button" type="button">Calculate</button>
+          </form>
+        </div>
       </div>
       <div id="answer" style="display: none;">
-        <div id="answer-content">
-          <p class="large-body">You will create</p>
-          <p class="huge-number" id="huge-answer-number">0</p>
-          <p class="large-body">1/1 rabbit tokens</p>
-          <p class="flavor-text">funny flavor text</p>
+        <div class="content-container">
+          <div id="answer-content">
+            <p class="large-body">You will create</p>
+            <p class="huge-number" id="huge-answer-number">0</p>
+            <p class="large-body">1/1 rabbit tokens</p>
+            <p class="flavor-text">funny flavor text</p>
+          </div>
+          <button id="back-button" class="green-button" type="button">Back to calculator</button>
         </div>
-        <button id="back-button" class="green-button" type="button">Back to calculator</button>
+        <div id="rabbit-container" style="display: none;"></div>
       </div>
-      <div id="rabbit-container" style="display: none;"></div>
     </main>
   </body>
