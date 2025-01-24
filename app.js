@@ -1,4 +1,4 @@
-// V0.11 // Discovered new issue where the answer div doesn't fade in cleanly, testing if moving our number animation to the second callback for the transition sandwich fixes it, also lightly refactored this code, also realized we had an extra closing bracket somewhere
+// V0.11.1 // Moving the animation did fix the jerky fade issue, but I don't like the timing, so now I'm trying to reset elements that have been faded out to visibility: hidden so that their children can still be manipulated, I returned my number animation to its original position inside the first callback
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -35,19 +35,19 @@ $(document).ready(function () {
 			return new Promise(resolve => {
 				let flavorText = chooseFlavorText(tokensMade);
 				$('#huge-answer-number').text(0);
+				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+					duration: 500,
+					easing: 'linear',
+					step: function (now) {
+						$('#huge-answer-number').text(Math.ceil(now));
+					}
+				});
 				$('.flavor-text').text(flavorText);
 				$('#rabbit-container').empty();
 				console.log('this is running 1');
 				resolve();
 			});
 		},function() {		
-			jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-				duration: 500,
-				easing: 'linear',
-				step: function (now) {
-					$('#huge-answer-number').text(Math.ceil(now));
-				}
-			});
 			
 			console.log('this is running 2');
 			//dynamic maxanimated rabbits??
@@ -99,6 +99,8 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 	if ($elementLeaving.length && $elementEntering.length) {
 		// Fade out first element
 		$elementLeaving.fadeOut(300, function () {
+			$(this).css('visibility', 'hidden'); // Set visibility: hidden in the callback
+			$(this).css('display', ''); // Reset display so fadeIn works correctly.
 			// Create promise to manage callback's asynchronous operations
 			const callback1Promise = new Promise((resolve) => {
 				// Check if first callback function was provided
