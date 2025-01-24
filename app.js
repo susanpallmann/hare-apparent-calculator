@@ -1,4 +1,4 @@
-// V0.8.8
+// V0.8.9
 
 // Global constants
 const gravitySpeed = 1.2;
