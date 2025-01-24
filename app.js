@@ -1,4 +1,4 @@
-// V0.8.9
+// V0.8.10
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -36,21 +36,19 @@ $(document).ready(function () {
 			return new Promise(resolve => {
 				let flavorText = chooseFlavorText(tokensMade);
 				$('.flavor-text').text(flavorText);
-				$('.rabbit').fadeOut(300, function () {
-					$('#rabbit-container').empty();
-					$('#huge-answer-number').each(function () {
-						var $this = $(this);
-						jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
-						  duration: 500,
-						  easing: 'linear',
-						  step: function (now) {
-							$this.text(Math.ceil(now));
-						  }
-						});
+				$('#rabbit-container').empty();
+				$('#huge-answer-number').each(function () {
+					var $this = $(this);
+					jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
+					  duration: 500,
+					  easing: 'linear',
+					  step: function (now) {
+						$this.text(Math.ceil(now));
+					  }
 					});
-					console.log('this is running 1');
-					resolve();
 				});
+				console.log('this is running 1');
+				resolve();
 			});
 		},function() {
 			console.log('this is running 2');
