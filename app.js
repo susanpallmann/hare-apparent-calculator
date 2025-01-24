@@ -5,6 +5,8 @@ const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
+const noRabbits = [];
+const oneRabbit = [];
 const fewRabbits = [
 	"A modest gathering of fluff.",
 	"Just a few bunnies, minding their own business... for now.",
@@ -58,13 +60,10 @@ $(document).ready(function () {
 		  existingHares++;
 		}
 		$('#huge-answer-number').text(0);
-		if (tokensMade < 10) {
-			$('.flavor-text').text(fewRabbits[Math.floor(Math.random() * fewRabbits.length)]);
-		} else if (tokensMade < 30) {
-			$('.flavor-text').text(someRabbits[Math.floor(Math.random() * someRabbits.length)]);
-		} else {
-			$('.flavor-text').text(manyRabbits[Math.floor(Math.random() * manyRabbits.length)]);
-		}
+		
+		let flavorText = chooseFlavorText(tokensMade);
+		$('.flavor-text').text(flavorText);
+		
 		$('#calculator').fadeOut(300,function(){
 			$('#answer').fadeIn(300);
 			$('#rabbit-container').empty();
@@ -108,6 +107,78 @@ $(document).ready(function () {
 		});
 	});
 });
+
+// Given a number of rabbits being created (rabbitsQuantity), chooses and returns appropriate flavor text
+function chooseFlavorText(rabbitsQuantity) {
+	
+	// Flavor text options
+	const textOptions = [
+		// No rabbit tokens created
+		{ range: [0, 0], texts: [
+				"Not a single bunny in sight. It's unsettling",
+				"Absolutely zero fluff. What a tragedy.",
+				"No rabbits here. Maybe try checking under a hat?",
+				"The field is suspiciously free of rabbits."
+			]
+		},
+		// One rabbit token created
+		{ range: [1, 1], texts: [
+			"A single harbinger of fluff.",
+			"A lone rabbit, bravely contemplating life.",
+			"One tiny nose, twitching with curiosity.",
+			"Perhaps the first of many?"
+			]
+		},
+		// A few rabbit tokens created
+		{ range: [2, 9], texts: [
+			"A modest gathering of fluff.",
+			"Just a few bunnies, minding their own business... for now.",
+			"Sparse, but stylish; like a minimalist rabbit exhibit.",
+			"The rabbit equivalent of a quiet afternoon.",
+			"Not enough rabbits to swarm, but definitely enough to be plotting something.",
+			"Just a smattering of cottontails."
+			]
+		},
+		// Some rabbit tokens created
+		{ range: [10, 29], texts: [
+			"The bunny brigade is assembling.",
+			"Things are starting to get hoppy around here.",
+			"A decent-sized warren. Prepare for scattered droppings.",
+			"Now we're talking. This is a respectable amount of rabbit.",
+			"The lawn is theirs now.",
+			"We're going to need more carrots.",
+			"They could hold a carrot convention.",
+			"A flurry of fur and twitching noses.",
+			"Sufficiently fluffy.",
+			"They're multiplying. It's only a matter of time."
+			]
+		},
+		// Many rabbit tokens created
+		{ range: [30, Infinity], texts: [
+			"It's a bunny-pocalypse!",
+			"Carrots are a distant memory now. Panic is setting in.",
+			"The ground is moving... it's all rabbits.",
+			"They've formed a single, giant, pulsating mass of fur. It demands tribute.",
+			"They've achieved critical fluff mass.",
+			"The very air vibrates with the sound of chewing.",
+			"The fuzzy hoard is large enough to have its own gravitational pull.",
+			"The fluff has consumed everything. Resistance is futile.",
+			"The earth is now 90% rabbit"
+			]
+		}
+	];
+	
+	// If rabbitsQuantity is within the range for a given list of flavor texts, one is randomly chosen from the list and returned
+	for (const option of textOptions) {
+		if (rabbitsQuantity >= option.range[0] && rabbitsQuantity <= option.range[1]) {
+			return option.texts[Math.floor(Math.random() * option.texts.length)];
+		}
+	}
+	
+	// Error for case where negative number is passed into this function
+	return 'Invalid number of rabbits.';
+}
+
 
 function queueRabbitAnimation(numberRabbits) {
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
