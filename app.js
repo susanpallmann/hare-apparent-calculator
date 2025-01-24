@@ -35,7 +35,6 @@ $(document).ready(function () {
 		let answer = $('#answer');
 		transitionSandwich (calculator, answer, function() {
 			$('#rabbit-container').empty();
-			$('#rabbit-container').fadeIn(300);
 			$('#huge-answer-number').each(function () {
 				var $this = $(this);
 				jQuery({ Counter: 0 }).animate({ Counter: tokensMade }, {
@@ -69,7 +68,6 @@ $(document).ready(function () {
 		let answer = $('#answer');
 		let calculator = $('#calculator');
 		transitionSandwich (answer, calculator, function() {
-			$('#rabbit-container').fadeOut(300);
 			$('#rabbit-container').empty();
 			$('#huge-answer-number').text(0);
 		});
@@ -77,8 +75,7 @@ $(document).ready(function () {
 });
 
 // Given two elements, function fades one element out, executes the callback, and then fades the other element in
-// Used for transitioning between layouts
-// This is definitely my finest function name
+// Used for transitioning between layouts, and is objectively my best function name to date
 function transitionSandwich (elementLeaving, elementEntering, callback) {
 	// Ensure provided elements are jQuery objects
 	const $elementLeaving = $(elementLeaving);
