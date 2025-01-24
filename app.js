@@ -1,4 +1,4 @@
-// V0.8
+// V0.8.1
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -46,7 +46,10 @@ $(document).ready(function () {
 				  }
 				});
 			});
+			console.log('this is running 1');
 		});
+		
+		console.log('this is running 2');
 		//dynamic maxanimated rabbits??
 		//maximum number of possible rows given container Height
 		let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
@@ -174,6 +177,7 @@ function chooseFlavorText (rabbitsQuantity) {
 
 
 function queueRabbitAnimation (numberRabbits) {
+	console.log('this is running 3');
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
