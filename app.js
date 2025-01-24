@@ -1,4 +1,4 @@
-// V0.8.1
+// V0.8.2
 
 // Global constants
 const gravitySpeed = 1.2;
@@ -47,22 +47,23 @@ $(document).ready(function () {
 				});
 			});
 			console.log('this is running 1');
+		},function() {
+			console.log('this is running 2');
+			//dynamic maxanimated rabbits??
+			//maximum number of possible rows given container Height
+			let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+			//maximum number of possible rabbits in a row
+			let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+			//multiply the maximums
+			let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+
+			if(tokensMade < rabbitCeiling) {
+				queueRabbitAnimation(tokensMade);
+			} else {
+				queueRabbitAnimation(rabbitCeiling);
+			}
 		});
 		
-		console.log('this is running 2');
-		//dynamic maxanimated rabbits??
-		//maximum number of possible rows given container Height
-		let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
-		//maximum number of possible rabbits in a row
-		let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
-		//multiply the maximums
-		let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
-
-		if(tokensMade < rabbitCeiling) {
-			queueRabbitAnimation(tokensMade);
-		} else {
-			queueRabbitAnimation(rabbitCeiling);
-		}
 	});
 	$('#back-button').click(function(){
 		existingHares = 0;
@@ -77,9 +78,9 @@ $(document).ready(function () {
 	});
 });
 
-// Given two elements, function fades one element out, executes the callback, and then fades the other element in
+// Given two elements, function fades one element out, executes the first callback, and then fades the other element in, and then executes the second callback
 // Used for transitioning between layouts, and is objectively my best function name to date
-function transitionSandwich (elementLeaving, elementEntering, callback) {
+function transitionSandwich (elementLeaving, elementEntering, callback1, callback2) {
 	// Ensure provided elements are jQuery objects
 	const $elementLeaving = $(elementLeaving);
 	const $elementEntering = $(elementEntering);
@@ -88,14 +89,20 @@ function transitionSandwich (elementLeaving, elementEntering, callback) {
 	if ($elementLeaving.length && $elementEntering.length) {
 		// Fade out first element
 		$elementLeaving.fadeOut(300, function() {
-            // Check if callback function was provided
-            if (typeof callback === 'function') {
+            // Check if first callback function was provided
+            if (typeof callback1 === 'function') {
 				// Execute callback
-                callback();
+                callback1();
             }
 			
 			// Fade second element in
-            $elementEntering.fadeIn(300);
+            $elementEntering.fadeIn(300, function() {
+				// Check if second callback function was provided
+				if (typeof callback2 === 'function') {
+					// Execute callback
+					callback2();
+				}
+			});
         });
 		
 	// If one or both elements don't exist, log an error
