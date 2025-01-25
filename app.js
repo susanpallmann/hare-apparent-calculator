@@ -1,7 +1,7 @@
 // V0.17 // Adjusted timing and animation speeds
 
 // Global constants
-const gravitySpeed = 0.65; // Controls how long it takes the rabbits fall, a higher number results in slower falling
+const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
 const dropRateModifier = 0.3; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
 const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
