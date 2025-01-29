@@ -41,7 +41,6 @@ main {
   display: inline-block;
   border-radius: 8px;
   z-index: 0;
-  transition: width 3s;
 }
 
 .loading-bar[progress="0%"]:after {
@@ -50,6 +49,7 @@ main {
 
 .loading-bar[progress="100%"]:after {
   width: 100%;
+  transition: width 3s;
 }
 
 .loading-bar p {
