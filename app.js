@@ -1,4 +1,4 @@
-// V0.20 // Changed scope and name of some variables, added caclulator function, making sure nothing broke
+// V0.21 // promises promises
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -66,25 +66,43 @@ $(function() {
 	});
 	$('#plus-one-button').click(function(){
 		let timer;
+		let timerInterrupted = false;
 		let rabbitsQueued = 0;
 
-		function setTimer() {
+
+		const setTimer = new Promise((resolve, reject) => {
 			rabbitsQueued++;
 			
 			if (timer) {
 				clearInterval(timer);
+				timerInterrupted = true;
 			}
 			
 			timer = setInterval(function() {
 				clearInterval(timer);
 				timer = null;
 				// action to perform when time runs out
-				return rabbitsQueued;
+				if (timerInterrupted) {
+					reject('timer interrupted');
+				} else {
+					resolve(rabbitsQueued);
+				}
+				timerInterrupted = false;
 			}, 3000);
-		}
-		console.log(setTimer());
+		});
+
+		setTimer
+		.then((rabbits) => {
+			console.log("Timer finished normally, rabbits:", rabbits);
+		})
+		.catch((reason) => {
+			console.log("Timer was interrupted:", reason);
+		});
 	});
 });
+
+
+
 
 // when the +1 button is pressed, check if a timer is in motion - so timer must be outside of scope for this button
 // if it was, get existing number of hares queued, and add 1 to It - also must be out of scope
@@ -94,9 +112,6 @@ $(function() {
 // animate timer
 // end timer
 // load reults
-
-
-
 
 // Given a number of Hare Apparents currently on the battlefield (existingHares) and a number of Hare Apparents entering (enteringHares), returns the number of rabbit tokens to be created (tokensMade)
 function calculateTokens (existingHares, enteringHares) {
