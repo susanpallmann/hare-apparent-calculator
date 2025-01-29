@@ -48,7 +48,7 @@ main {
 }
 
 .loading-bar[progress="10%"]:after {
-  width: `0%;
+  width: 10%;
 }
 
 .loading-bar[progress="20%"]:after {
