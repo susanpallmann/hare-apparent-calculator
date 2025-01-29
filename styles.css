@@ -140,13 +140,13 @@ p.flavor-text {
   color: #fff;
 }
 
-.button.fill-primary:hover, .button.fill-primary:active, .button.fill-primary:focus {
-  background-color: #743B00;
+.button.fill-primary:hover, .button.fill-primary:active {
+  background-color: #141412;
 }
 
 .button.fill-primary:focus-visible {
-  background-color: #743B00;
-  outline: 2px dotted #743B00;
+  background-color: #141412;
+  outline: 2px dotted #141412;
 }
 
 .button.fill-secondary {
@@ -154,13 +154,13 @@ p.flavor-text {
   color: #fff;
 }
 
-.button.fill-secondary:hover, .button.fill-secondary:active, .button.fill-secondary:focus {
-  background-color: #141412;
+.button.fill-secondary:hover, .button.fill-secondary:active {
+  background-color: #743B00;
 }
 
 .button.fill-secondary:focus-visible {
-  background-color: #141412;
-  outline: 2px dotted #141412;
+  background-color: #743B00;
+  outline: 2px dotted #743B00;
 }
 
 .button.outline-primary {
@@ -168,7 +168,7 @@ p.flavor-text {
   color: #3F3C30;
 }
 
-.button.outline-primary:hover, .button.outline-primary:active, .button.outline-primary:focus {
+.button.outline-primary:hover, .button.outline-primary:active {
   color: #A25402;
 }
 
@@ -182,7 +182,7 @@ p.flavor-text {
   color: #A25402;
 }
 
-.button.outline-secondary:hover, .button.outline-secondary:active, .button.outline-secondary:focus {
+.button.outline-secondary:hover, .button.outline-secondary:active {
   color: #3F3C30;
 }
 
@@ -190,7 +190,6 @@ p.flavor-text {
   color: #3F3C30;
   border: 2px dotted #3F3C30;
 }
-
 
 .green-button {
   background-color: #666666;
