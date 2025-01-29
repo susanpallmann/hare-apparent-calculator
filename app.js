@@ -66,7 +66,7 @@ $(function() {
 	});
 	$('#plus-one-button').click(function(){
 		let timer;
-		let rabbitsQueued;
+		let rabbitsQueued = 0;
 
 		function setTimer() {
 			rabbitsQueued++;
@@ -79,7 +79,7 @@ $(function() {
 				clearInterval(timer);
 				timer = null;
 				// action to perform when time runs out
-				return rabbitsQueued
+				console.log(rabbitsQueued);
 			}, 3000);
 		}
 	});
