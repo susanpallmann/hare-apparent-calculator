@@ -49,6 +49,7 @@ main {
 
 .loading-bar[progress="10%"]:after {
   width: 10%;
+  transition: width 200ms linear;
 }
 
 .loading-bar[progress="20%"]:after {
