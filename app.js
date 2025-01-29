@@ -72,25 +72,31 @@ $(function() {
 	$('#plus-one-button').click(function(){
 		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
+			const timerDuration = 2000;
+			let timePassed = 0;
 			let finalRabbits = rabbitsQueued;
 			setTimerUI ($loadingBar, 0, finalRabbits);
 			
 			// if there is a timer running, reset it
 			if (timer) {
 				clearInterval(timer);
-				setTimerUI ($loadingBar, 0, finalRabbits);
 			}
 			
 			setTimerUI ($loadingBar, 100, finalRabbits);
 			// Once our timer completes...
 			timer = setInterval(function() {
-				// reset the timer
-				clearInterval(timer);
-				timer = null;
-				rabbitsQueued = 0;
-				setTimerUI ($loadingBar, 0, finalRabbits);
-				resolve(finalRabbits);
-			}, 3000);
+				if (timePassed < 2000) {
+					timePassed += timerDuration/10;
+					setTimerUI ($loadingBar, timePassed/timerDuration, finalRabbits);
+				} else {
+					// reset the timer
+					clearInterval(timer);
+					timer = null;
+					rabbitsQueued = 0;
+					setTimerUI ($loadingBar, 100, finalRabbits);
+					resolve(finalRabbits);
+				}
+			}, timerDuration/10);
 			
 		});
 		setTimer
@@ -105,13 +111,14 @@ function setTimerUI (loadingBar, loadingPercent, amount) {
 	const $quantity = $loadingBar.find('#loading-quantity');
 	const $plural = $loadingBar.find('#loading-plural');
 
+	$loadingBar.attr('progress', `${loadingPercent}%`);
+
 	$quantity.text(amount);
 	if (amount < 2) {
 		$plural.text('');
 	} else {
 		$plural.text('s');
 	}
-	$loadingBar.attr('progress', `${loadingPercent}%`);
 }
 
 //update ui
