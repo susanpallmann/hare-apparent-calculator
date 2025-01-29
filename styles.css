@@ -130,9 +130,11 @@ p.flavor-text {
   cursor: pointer;
   border: 2px solid transparent;
   transition: 
-    background-color 0.15s,
-    color 0.15s,
-    border 0.15s;
+  background-color 0.15s,
+  color 0.15s,
+  border 0.15s;
+  display: flex;
+  column-gap: 4px;
 }
 
 .button.fill-primary {
