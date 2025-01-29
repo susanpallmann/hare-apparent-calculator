@@ -1,4 +1,4 @@
-// V0.18 // Hopefully fixed infinite loop possibility without breaking anything
+// V0.19 // Changed scope and name of some variables, making sure nothing broke
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -8,16 +8,16 @@ const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 
-// Global variables
-let existingHares = 0; // Number of Hare Apparents on the battlefield
-let enteringHares = 0; // Number of Hare Apparents entering
-let tokensMade = 0; // Number of rabbit tokens created
-
-$(document).ready(function () {
+$(function() {
 	
-	const container = $('#rabbit-container');
-	const containerHeight = container.height();
-	const containerWidth = container.width();
+	// Caching some elements we'll use frequently
+	const $rabbitContainer = $('#rabbit-container');
+	const $answer = $('#answer');
+	const $calculator = $('#calculator');
+	
+	let existingHares = 0; // Number of Hare Apparents on the battlefield
+	let enteringHares = 0; // Number of Hare Apparents entering
+	let tokensMade = 0; // Number of rabbit tokens created
 	
 	$('#calculate-button').click(function(){
 		existingHares = $('#existingHares').val();
@@ -29,8 +29,6 @@ $(document).ready(function () {
 		  existingHares++;
 		}
 		
-		let calculator = $('#calculator');
-		let answer = $('#answer');
 		transitionSandwich (calculator, answer, function() {
 			return new Promise(resolve => {
 				let flavorText = chooseFlavorText(tokensMade);
@@ -43,12 +41,12 @@ $(document).ready(function () {
 					}
 				});
 				$('.flavor-text').text(flavorText);
-				$('#rabbit-container').empty();
+				$rabbitContainer.empty();
 				//dynamic maxanimated rabbits??
 				//maximum number of possible rows given container Height
-				let maxRowsPossible = Math.round(containerHeight / (rabbitHeight - (rabbitHeight-heightBuffer)));
+				let maxRowsPossible = Math.round($rabbitContainer.height() / (rabbitHeight - (rabbitHeight-heightBuffer)));
 				//maximum number of possible rabbits in a row
-				let maxRabbitsPerRow = Math.round(containerWidth / (rabbitWidth - widthBuffer));
+				let maxRabbitsPerRow = Math.round($rabbitContainer.width() / (rabbitWidth - widthBuffer));
 				//multiply the maximums
 				let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 
@@ -66,15 +64,13 @@ $(document).ready(function () {
 		existingHares = 0;
 		enteringHares = 0;
 		tokensMade = 0;
-		let answer = $('#answer');
-		let calculator = $('#calculator');
 		// If there are any rabbits from our falling animation visible, fade them out
 		if ($('.rabbit').length) { 
 			$('.rabbit').fadeOut(300);
 		};
-		transitionSandwich (answer, calculator, function() {
+		transitionSandwich ($answer, $calculator, function() {
 			return new Promise(resolve => {
-				$('#rabbit-container').empty();
+				$rabbitContainer.empty();
 				$('#huge-answer-number').text(0);
 				resolve();
 			});
