@@ -30,6 +30,7 @@ main {
   position: relative;
   overflow: hidden;
 }
+
 .loading-bar:after {
   content: "";
   background-color: #EEDFB1;
@@ -42,6 +43,14 @@ main {
   border-radius: 8px;
   z-index: 0;
   transition: width 3s;
+}
+
+.loading-bar[progress="0%]:after {
+  width: 0%;
+}
+
+.loading-bar[progress="100%]:after {
+  width: 100%;
 }
 
 .loading-bar p {
