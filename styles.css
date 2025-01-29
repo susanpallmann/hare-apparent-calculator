@@ -41,56 +41,11 @@ main {
   display: inline-block;
   border-radius: 8px;
   z-index: 0;
+  width: var(--progress-width, 0%);
 }
 
-.loading-bar[progress="0%"]:after {
-  width: 0%;
-}
-
-.loading-bar[progress="10%"]:after {
-  width: 10%;
-  transition: width 200ms linear;
-}
-
-.loading-bar[progress="20%"]:after {
-  width: 20%;
-  transition: width 200ms linear;
-}
-
-.loading-bar[progress="30%"]:after {
-  width: 30%;
-  transition: width 200ms linear;
-}
-
-.loading-bar[progress="40%"]:after {
-  width: 40%;
-  transition: width 200ms linear;
-}
-
-.loading-bar[progress="50%"]:after {
-  width: 50%;
-  transition: width 200ms linear;
-}
-.loading-bar[progress="60%"]:after {
-  width: 60%;
-  transition: width 200ms linear;
-}
-.loading-bar[progress="70%"]:after {
-  width: 70%;
-  transition: width 200ms linear;
-}
-.loading-bar[progress="80%"]:after {
-  width: 80%;
-  transition: width 200ms linear;
-}
-.loading-bar[progress="90%"]:after {
-  width: 90%;
-  transition: width 200ms linear;
-}
-
-.loading-bar[progress="100%"]:after {
-  width: 100%;
-  transition: width 200ms linear;
+.loading-bar:not([style*="--progress-width: 0%"])::after {
+  transition: width 200ms linear; 
 }
 
 .loading-bar p {
