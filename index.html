@@ -20,17 +20,17 @@
           <form>
             <label>How many <em>Hare Apparent</em>s are on the battlefield currently?</label>
             <div class="number-input">
-              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
+              <button class="button fill-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
               <input id="existingHares" class="quantity" min="0" max="1000" value="0" type="number">
-              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
+              <button class="button fill-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
             </div>
             <label>How many <em>Hare Apparent</em>s are entering?</label>
             <div class="number-input">
-              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
+              <button class="button fill-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><img src="images/icon-subtract.svg"><img src="images/icon-rabbit.svg"></button>
               <input id="enteringHares" class="quantity" min="0" max="1000" value="0" type="number">
-              <button class="iterator-button" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
+              <button class="button fill-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><img src="images/icon-add.svg"><img src="images/icon-rabbit.svg"></button>
             </div>
-            <button id="calculate-button" class="green-button" type="button">Calculate</button>
+            <button id="calculate-button" class="button fill-primary" type="button">Calculate</button>
           </form>
         </div>
       </div>
@@ -42,7 +42,7 @@
             <p class="large-body">1/1 rabbit tokens</p>
             <p class="flavor-text">funny flavor text</p>
           </div>
-          <button id="back-button" class="green-button" type="button">Back to calculator</button>
+          <button id="back-button" class="button outline-secondary" type="button">Full calculator</button>
         </div>
       </div>
       <div id="rabbit-container"></div>
