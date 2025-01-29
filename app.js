@@ -1,4 +1,4 @@
-// V0.21 // promises promises
+// V0.22 // promises and scope, as it happens
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -64,11 +64,12 @@ $(function() {
 			});
 		});
 	});
+	
+	let timer;
+	let timerInterrupted = false;
+	let rabbitsQueued = 0;
+	
 	$('#plus-one-button').click(function(){
-		let timer;
-		let timerInterrupted = false;
-		let rabbitsQueued = 0;
-
 
 		const setTimer = new Promise((resolve, reject) => {
 			rabbitsQueued++;
