@@ -1,4 +1,4 @@
-// V0.17 // Adjusted timing and animation speeds
+// V0.18 // Hopefully fixed infinite loop possibility without breaking anything
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -139,7 +139,7 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 	}
 }
 
-// Given a number of rabbits being created (rabbitsQuantity), chooses and returns appropriate flavor text
+// Given a number of rabbit tokens being created (rabbitsQuantity), chooses and returns appropriate flavor text
 function chooseFlavorText (rabbitsQuantity) {
 	
 	// Flavor text options
@@ -209,7 +209,6 @@ function chooseFlavorText (rabbitsQuantity) {
 	// Error for case where negative number is passed into this function
 	return 'Invalid number of rabbits.';
 }
-
 
 function queueRabbitAnimation (numberRabbits) {
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
@@ -337,13 +336,20 @@ function generateRows (containerWidth, numberRabbits, rows) {
 		// Resets currentRow at the start of each new row
         currentRow = [];
 
+		// Place a first rabbit in this row so that a row cannot be empty
+		currentRow.push(0);
+		// Initialize a randomized trailing space amount
+		let bufferSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
+		rowWidth += rabbitWidth + bufferSpace;
+		rabbitsCalculated++;
+
 		// While the row is not full (the row width sum + the width of an additional rabbit would not exceed the container width)
         while (rowWidth + rabbitWidth <= rowMax && rabbitsCalculated < numberRabbits) {
 
 			// Initialize a variable for storing the x position of the rabbit we're currently calculating for
 			let rabbitX;
 			
-			// Add the row's sum so far and the leading space calculated above
+			// Add the row's sum so far
 			rabbitX = rowWidth;
 			
 			// Add the calculated x value to the row array
@@ -352,8 +358,8 @@ function generateRows (containerWidth, numberRabbits, rows) {
 			// Update the row sum to include the calculated space and the added rabbit's width
             rowWidth += rabbitWidth;
 
-			// Initialize a randomized trailing space between -1*rabbit width buffer and +1*rabbit width buffer
-            let bufferSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
+			// Generate a new randomized trailing space
+            bufferSpace = Math.floor(Math.random() * widthBuffer) - widthBuffer;
 			
 			// Add that trailing space to the row width total
             rowWidth += bufferSpace;
