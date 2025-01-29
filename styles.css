@@ -464,16 +464,17 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 
 @keyframes ambient {
     0% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
-   20% { transform: scaleY(0.9) scaleX(1.1) rotate(0deg) translateY(0); }
-   24% { transform: scaleY(1) scaleX(1) rotate(10deg) translateY(-20%); }
-   28% { transform: scaleY(1) scaleX(1) rotate(15deg) translateY(-50%); }
-   38% { transform: scaleY(1.1) scaleX(0.9) rotate(0deg) translateY(-70%); }
-   48% { transform: scaleY(1) scaleX(1) rotate(-15deg) translateY(-50%); }
-   52% { transform: scaleY(1) scaleX(1) rotate(-10deg) translateY(-20%); }
-   56% { transform: scaleY(0.9) scaleX(1.1) rotate(-2deg) translateY(0); }
+   19% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
+   21% { transform: scaleY(0.9) scaleX(1.1) rotate(0deg) translateY(0); }
+   23% { transform: scaleY(1) scaleX(1) rotate(10deg) translateY(-20%); }
+   25% { transform: scaleY(1) scaleX(1) rotate(15deg) translateY(-50%); }
+   41% { transform: scaleY(1.05) scaleX(0.96) rotate(0deg) translateY(-70%); }
+   46% { transform: scaleY(1) scaleX(1) rotate(-15deg) translateY(-50%); }
+   52% { transform: scaleY(1) scaleX(1) rotate(-20deg) translateY(-20%); }
+   56% { transform: scaleY(0.9) scaleX(1.1) rotate(-15deg) translateY(0); }
    60% { transform: scaleY(0.8) scaleX(1.2) rotate(0deg) translateY(0); }
    64% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
-   68% { transform: scaleY(1.1) scaleX(0.9) rotate(0deg) translateY(0); }
+   68% { transform: scaleY(1.05) scaleX(0.95) rotate(0deg) translateY(0); }
    72% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
   100% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
 }
