@@ -113,6 +113,7 @@ p.flavor-text {
   background-color: #000;
   border: none;
   border-radius: 8px;
+  box-sizing: border-box;
   font-family: 'Solway';
   font-style: normal;
   font-weight: 700;
@@ -127,6 +128,10 @@ p.flavor-text {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.2s;
+  transition: color 0.2s;
+  transition: border 0.2s;
 }
 
 .button.fill-primary {
@@ -134,9 +139,27 @@ p.flavor-text {
   color: #fff;
 }
 
+.button.fill-primary:hover, .button.fill-primary:active {
+  background-color: #743B00;
+}
+
+.button.fill-secondary:focus {
+  background-color: #743B00;
+  outline: 2px dotted #743B00;
+}
+
 .button.fill-secondary {
   background-color: #A25402;
   color: #fff;
+}
+
+.button.fill-secondary:hover, .button.fill-secondary:active {
+  background-color: #141412;
+}
+
+.button.fill-secondary:focus {
+  background-color: #141412;
+  outline: 2px dotted #141412;
 }
 
 .button.outline-primary {
@@ -144,10 +167,29 @@ p.flavor-text {
   color: #3F3C30;
 }
 
+.button.outline-primary:hover, .button.outline-primary:active {
+  color: #A25402;
+}
+
+.button.outline-primary:focus {
+  color: #A25402;
+  border: 2px dotted #A25402;
+}
+
 .button.outline-secondary {
   background-color: transparent;
   color: #A25402;
 }
+
+.button.outline-secondary:hover, .button.outline-secondary:active {
+  color: #3F3C30;
+}
+
+.button.outline-secondary:focus {
+  color: #3F3C30;
+  border: 2px dotted #3F3C30;
+}
+
 
 .green-button {
   background-color: #666666;
