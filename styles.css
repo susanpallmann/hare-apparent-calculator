@@ -39,7 +39,6 @@ main {
   left: 0;
   height: 100%;
   display: inline-block;
-  width: 20%;
   border-radius: 8px;
   z-index: 0;
   transition: width 3s;
