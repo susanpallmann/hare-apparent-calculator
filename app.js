@@ -1,4 +1,4 @@
-// Bugfixing 
+// V0.23 // now with loading bar animation?
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -111,7 +111,7 @@ function setTimerUI (loadingBar, loadingPercent, amount) {
 	const $quantity = $loadingBar.find('#loading-quantity');
 	const $plural = $loadingBar.find('#loading-plural');
 
-	$loadingBar.attr('progress', `${loadingPercent}%`);
+	$loadingBar.css("--progress-width", `${loadingPercent}%`)
 
 	$quantity.text(amount);
 	if (amount < 2) {
