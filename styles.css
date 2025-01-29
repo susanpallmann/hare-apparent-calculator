@@ -243,12 +243,9 @@ input[type="number"].quantity {
   transition: border 0.15s;
 }
 
-input[type="number"].quantity:hover, input[type="number"].quantity:active {
+input[type="number"].quantity:hover, input[type="number"].quantity:active, input[type="number"].quantity:focus {
   border: 2px solid #C79E72;
-}
-
-input[type="number"].quantity:focus-visible {
-  border: 2px dotted #C79E72;
+  outline: none;
 }
 
 input[type="number"].quantity::-webkit-inner-spin-button,
