@@ -211,6 +211,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 #rabbit-container {
+  background-color: #FFFADD;
   height: 100%;
   width: 100%;
   position: absolute;
