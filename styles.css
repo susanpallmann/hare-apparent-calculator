@@ -48,6 +48,16 @@ main {
   width: 100%;
   text-align: center;
   display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3F3C30;
+}
+
+.loading-bar p em {
+  color: #A25402;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .content-container {
