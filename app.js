@@ -70,11 +70,10 @@ $(function() {
 	let timer;
 	
 	$('#plus-one-button').click(function(){
-
+		setTimerUI ($loadingBar, 0, rabbitsQueued + 1);
 		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
 			let finalRabbits = rabbitsQueued;
-			setTimerUI ($loadingBar, 0, finalRabbits);
 			
 			// if there is a timer running, reset it
 			if (timer) {
