@@ -1,4 +1,4 @@
-// V0.23 // How about now?
+// V0.23 // now with loading bar animation?
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -13,6 +13,7 @@ $(function() {
 	const $rabbitContainer = $('#rabbit-container');
 	const $answer = $('#answer');
 	const $calculator = $('#calculator');
+	const $loadingBar = $('.loading-bar');
 	
 	$('#calculate-button').click(function(){
 		// Get our form values
@@ -70,14 +71,6 @@ $(function() {
 	
 	$('#plus-one-button').click(function(){
 
-		// ok I only need one timer, and I can reset that timer at any time
-		// when the button is pressed though, I need to know if the timer is running
-		// when the timer runs out, I want to do something
-		
-		
-		
-		
-
 		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
 			let finalRabbits = rabbitsQueued;
@@ -101,16 +94,27 @@ $(function() {
 		setTimer
 		.then((rabbits) => {
 			console.log("Timer finished normally, rabbits:", rabbits);
+			setTimerUI ($loadingBar, 100, rabbits)
 		});
 	});
 });
 
+function setTimerUI (loadingBar, loadingPercent, amount) {
+	const $loadingBar = $(loadingBar);
+	const loadingPercent = +loadingPercent;
+	const amount = +amount;
+	const $quantity = $timer.find('#loading-quantity');
+	const $plural = $timer.find('#loading-plural');
 
+	$quantity.text(amount);
+	if (amount < 2) {
+		$plural.text('');
+	} else {
+		$plural.text('s');
+	}
+	$loadingBar.attr('progress', `${loadingPercent}%`);
+}
 
-
-// when the +1 button is pressed, check if a timer is in motion - so timer must be outside of scope for this button
-// if it was, get existing number of hares queued, and add 1 to It - also must be out of scope
-// if it wasn't, set hares queued to 1
 //update ui
 // reset timer to start
 // animate timer
