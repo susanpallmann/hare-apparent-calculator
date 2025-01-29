@@ -1,4 +1,4 @@
-// V0.19 // Changed scope and name of some variables, making sure nothing broke
+// V0.20 // Changed scope and name of some variables, added caclulator function, making sure nothing broke
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -15,19 +15,12 @@ $(function() {
 	const $answer = $('#answer');
 	const $calculator = $('#calculator');
 	
-	let existingHares = 0; // Number of Hare Apparents on the battlefield
-	let enteringHares = 0; // Number of Hare Apparents entering
-	let tokensMade = 0; // Number of rabbit tokens created
-	
 	$('#calculate-button').click(function(){
-		existingHares = $('#existingHares').val();
-		enteringHares = $('#enteringHares').val();
-		existingHares = +existingHares;
-		enteringHares = +enteringHares;
-		for(i=0;i<enteringHares;i++){
-		  tokensMade = tokensMade + existingHares;
-		  existingHares++;
-		}
+		// Get our form values
+		let existingHares = $('#existingHares').val();
+		let enteringHares = $('#enteringHares').val();
+		// Calculate number of tokens to create
+		let tokensMade = calculateTokens (existingHares, enteringHares);
 		
 		transitionSandwich (calculator, answer, function() {
 			return new Promise(resolve => {
@@ -57,13 +50,9 @@ $(function() {
 				}
 				resolve();
 			});
-		},function() {		
 		});
 	});
 	$('#back-button').click(function(){
-		existingHares = 0;
-		enteringHares = 0;
-		tokensMade = 0;
 		// If there are any rabbits from our falling animation visible, fade them out
 		if ($('.rabbit').length) { 
 			$('.rabbit').fadeOut(300);
@@ -77,6 +66,30 @@ $(function() {
 		});
 	});
 });
+
+// So if I plan to add a button for +1 hare apparent, I need to do a few things when it's pressed
+// First, I need to update the total of existing hare apparents to include the number of hareapparents added in the last calculations
+// Then I need to basically recalculate how many tokens will enter the same way I did for the base calculator - so maybe a reusable calculator Function
+
+// Given a number of Hare Apparents currently on the battlefield (existingHares) and a number of Hare Apparents entering (enteringHares), returns the number of rabbit tokens to be created (tokensMade)
+function calculateTokens (existingHares, enteringHares) {
+	let tokensMade = 0; // Tokens created
+	existingHares = +existingHares; // Existing Hare Apparents, converted to number
+	enteringHares = +enteringHares; // Entering Hare Apparents, converted to number
+	
+	// For each entering Hare Apparent
+	for (i = 0; i < enteringHares; i++) {
+		// Add a number of tokens equal to the number of Hare Apparents currently on the battlefield
+		tokensMade += existingHares;
+		
+		// There is now an additional Hare Apparent on the battlefield to account for in the next iteration
+		existingHares++;
+	}
+	
+	// When the loop is complete, return the total tokens created
+	return tokensMade;
+}
+
 
 // Given two elements, function fades one element out, executes the first callback, and then fades the other element in, and then executes the second callback
 // Used for transitioning between layouts, and is objectively my best function name to date
@@ -319,6 +332,7 @@ function queueRabbitAnimation (numberRabbits) {
 
 // Function to create one or more rows of x position values
 function generateRows (containerWidth, numberRabbits, rows) {
+	
 	let rabbitsCalculated = 0;
 	let currentRow = [];
 	let rowMax = containerWidth + 2*widthBuffer;
@@ -370,3 +384,6 @@ function generateRows (containerWidth, numberRabbits, rows) {
 	// Return the complete rows array
     return rows;
 }
+
+// Other reusable function ideas:
+Calculate max rabbits
