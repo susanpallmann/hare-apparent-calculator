@@ -1,4 +1,4 @@
-// V0.22 // promises and scope, as it happens
+// V0.23 // How about now?
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -65,39 +65,42 @@ $(function() {
 		});
 	});
 	
-	let timer;
-	let timerInterrupted = false;
 	let rabbitsQueued = 0;
+	let timer;
 	
 	$('#plus-one-button').click(function(){
 
-		const setTimer = new Promise((resolve, reject) => {
+		// ok I only need one timer, and I can reset that timer at any time
+		// when the button is pressed though, I need to know if the timer is running
+		// when the timer runs out, I want to do something
+		
+		
+		
+		
+
+		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
+			let finalRabbits = rabbitsQueued;
 			
+			// if there is a timer running, reset it
 			if (timer) {
 				clearInterval(timer);
-				timerInterrupted = true;
 			}
 			
+			// Once our timer completes...
 			timer = setInterval(function() {
+				// reset the timer
 				clearInterval(timer);
 				timer = null;
-				// action to perform when time runs out
-				if (timerInterrupted) {
-					reject('timer interrupted');
-				} else {
-					resolve(rabbitsQueued);
-				}
-				timerInterrupted = false;
+				rabbitsQueued = 0;
+				resolve(finalRabbits);
 			}, 3000);
+			
 		});
 
 		setTimer
 		.then((rabbits) => {
 			console.log("Timer finished normally, rabbits:", rabbits);
-		})
-		.catch((reason) => {
-			console.log("Timer was interrupted:", reason);
 		});
 	});
 });
