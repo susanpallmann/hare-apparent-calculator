@@ -88,6 +88,7 @@ $(function() {
 				clearInterval(timer);
 				timer = null;
 				rabbitsQueued = 0;
+				setTimerUI ($loadingBar, 0, finalRabbits);
 				resolve(finalRabbits);
 			}, 3000);
 			
