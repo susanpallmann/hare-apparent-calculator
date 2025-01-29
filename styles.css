@@ -376,7 +376,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   right: 0;
   margin-inline: auto;
   z-index: -1;
-  opacity: 0.65;
+  opacity: 0.5;
   border-radius: 24px;
 }
 
