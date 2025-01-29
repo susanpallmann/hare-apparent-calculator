@@ -57,14 +57,17 @@ footer {
   margin: auto;
   display: flex;
   align-items: center;
+  column-gap: 8px;
 }
 
 .footer-primary p {
   color: #F6EEC4;
+  font-weight: 500;
 }
 
 .footer-secondary p {
   color: #B0B0AB;
+  font-weight: 500;
 }
 
 
