@@ -41,6 +41,51 @@ form {
   width: 100%;
   max-width: 1232px;
   padding: 16px 16px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: #3F3C30;
+}
+
+.footer-primary, .footer-secondary {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.footer-primary p {
+  color: #F6EEC4;
+}
+
+.footer-secondary p {
+  color: #B0B0AB;
+}
+
+
+.footer-primary a, .footer-primary a:visited {
+  color: #F6EEC4;
+  text-decoration: underline;
+}
+
+.footer-primary a:hover, .footer-primary a:focus, .footer-primary a:active {
+  color: #B0B0AB;
+  text-decoration: none;
+}
+
+.footer-secondary a, .footer-secondary a:visited {
+  color: #B0B0AB;
+  text-decoration: underline;
+}
+
+.footer-secondary a:hover, .footer-secondary a:focus, .footer-secondary a:active {
+  color: #F6EEC4;
+  text-decoration: none;
 }
 
 h1 {
