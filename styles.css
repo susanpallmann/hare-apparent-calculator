@@ -68,9 +68,9 @@ main {
   margin: auto;
   display: flex;
   flex-direction: column;
-  row-gap: 64px;
-  padding: 64px 24px;
+  row-gap: 16px;
   box-sizing: border-box;
+  padding: 32px 16px 16px 16px;
 }
 
 form {
