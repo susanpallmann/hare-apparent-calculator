@@ -117,19 +117,11 @@ footer {
 }
 
 .footer-primary p {
-  color: #F6EEC4;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
-}
-
-.footer-secondary p {
   color: #B0B0AB;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
 }
-
 
 .footer-primary a, .footer-primary a:visited {
   color: #F6EEC4;
@@ -138,16 +130,6 @@ footer {
 
 .footer-primary a:hover, .footer-primary a:focus, .footer-primary a:active {
   color: #B0B0AB;
-  text-decoration: none;
-}
-
-.footer-secondary a, .footer-secondary a:visited {
-  color: #B0B0AB;
-  text-decoration: underline;
-}
-
-.footer-secondary a:hover, .footer-secondary a:focus, .footer-secondary a:active {
-  color: #F6EEC4;
   text-decoration: none;
 }
 
