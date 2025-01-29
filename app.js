@@ -79,9 +79,10 @@ $(function() {
 				clearInterval(timer);
 				timer = null;
 				// action to perform when time runs out
-				console.log(rabbitsQueued);
+				return rabbitsQueued;
 			}, 3000);
 		}
+		console.log(setTimer());
 	});
 });
 
@@ -95,7 +96,7 @@ $(function() {
 // load reults
 
 
-setTimer();
+
 
 // Given a number of Hare Apparents currently on the battlefield (existingHares) and a number of Hare Apparents entering (enteringHares), returns the number of rabbit tokens to be created (tokensMade)
 function calculateTokens (existingHares, enteringHares) {
