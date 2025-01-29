@@ -116,7 +116,7 @@ footer {
 }
 
 .footer-primary p {
-  color: #B0B0AB;
+  color: #F6EEC4;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -128,7 +128,7 @@ footer {
 }
 
 .footer-primary a:hover, .footer-primary a:focus, .footer-primary a:active {
-  color: #B0B0AB;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
