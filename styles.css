@@ -130,9 +130,9 @@ p.flavor-text {
   cursor: pointer;
   border: 2px solid transparent;
   transition: 
-    background-color 0.2s,
-    color 0.2s,
-    border 0.2s;
+    background-color 0.15s,
+    color 0.15s,
+    border 0.15s;
 }
 
 .button.fill-primary {
@@ -242,9 +242,18 @@ input[type="number"].quantity {
   padding: 0;
   box-sizing: border-box;
   background-color: #F6EEC4;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 8px;
   text-align: center;
+  transition: border 0.15s;
+}
+
+input[type="number"].quantity:hover, input[type="number"].quantity:active {
+  border: 2px solid #C79E72;
+}
+
+input[type="number"].quantity:focus-visible {
+  border: 2px dotted #C79E72;
 }
 
 input[type="number"].quantity::-webkit-inner-spin-button,
