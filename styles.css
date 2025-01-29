@@ -1,5 +1,5 @@
 body {
-  background-color: #E0FDF6;
+  background-color: #F6EEC4;
   margin: 0;
   padding: 0;
 }
@@ -42,48 +42,48 @@ h1 {
   font-size: 36px;
   line-height: 40px;
   text-align: center;
-  color: #4BA815;
+  color: #A25402;
   padding: 0;
   margin: 0;
 }
 
 label {
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #5B5B5B;
+  color: #3F3C30;
   margin-bottom: 16px;
   display: inline-block;
 }
 
 label em {
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  color: #437C22;
+  color: #A25402;
 }
 
 p {
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
   line-height: 20px;
-  color: #5B5B5B;
+  color: #3F3C30;
 }
 
 p.large-body {
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 22px;
   line-height: 24px;
   text-align: center;
-  color: #5B5B5B;
+  color: #3F3C30;
   margin: 0;
 }
 
@@ -94,27 +94,66 @@ p.huge-number {
   font-size: 64px;
   line-height: 72px;
   text-align: center;
-  color: #4BA815;
+  color: #A57207;
   margin: 0 0 8px 0;
 }
 
 p.flavor-text {
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  color: #557777;
+  color: #A25402;
   margin: 64px 0 0 0;
-  font-style: italic;
+}
+
+.button {
+  background-color: #000;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Solway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 19px;
+  color: #FFFFFF;
+  min-height: 52px;
+  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button.fill-primary {
+  background-color: #3F3C30;
+  color: #fff;
+}
+
+.button.fill-secondary {
+  background-color: #A25402;
+  color: #fff;
+}
+
+.button.outline-primary {
+  background-color: transparent;
+  color: #3F3C30;
+}
+
+.button.outline-secondary {
+  background-color: transparent;
+  color: #A25402;
 }
 
 .green-button {
-  background-color: #4BA815;
+  background-color: #666666;
   border: none;
   border-radius: 4px;
-  font-family: 'Noto Sans';
+  font-family: 'Solway';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -149,19 +188,20 @@ input[type="number"].quantity {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
-  font-family: 'Noto Sans';
+  font-family: 'Bagel Fat One';
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
   line-height: 32px;
-  color: #5B5B5B;
+  color: #3F3C30;
   height: 52px;
   width: 100px;
   margin: 0 24px;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgba(0,0,0,0);
+  background-color: #F6EEC4;
   border: none;
+  border-radius: 8px;
   text-align: center;
 }
 
@@ -184,6 +224,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   margin-inline: auto;
   z-index: -1;
   opacity: 0.65;
+  border-radius: 24px;
 }
 
 #rabbit-container::after {
@@ -193,7 +234,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   position: absolute;
   display: block;
   content: '';
-  background-image: linear-gradient(to right, rgba(224,253,246,100), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,0), rgba(224,253,246,100));
+  background-image: linear-gradient(to right, rgba(255,250,221,100), rgba(255,250,221,0), rgba(255,250,221,0), rgba(255,250,221,0), rgba(255,250,221,0), rgba(255,250,221,100));
   background-size: contain;
 }
 
