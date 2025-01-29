@@ -66,12 +66,16 @@ footer {
 
 .footer-primary p {
   color: #F6EEC4;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
 }
 
 .footer-secondary p {
   color: #B0B0AB;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
 }
 
 
