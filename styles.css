@@ -487,7 +487,6 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   height: 114px;
   width: 156px;
   background-image: url('images/rabbit.svg');
-  position: absolute;
   background-repeat: no-repeat;
   animation: ambient 2s infinite;
 }
