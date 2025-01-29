@@ -64,13 +64,38 @@ $(function() {
 			});
 		});
 	});
+	$('#plus-one-button').click(function(){
+		let timer;
+		let rabbitsQueued;
+
+		function setTimer() {
+			rabbitsQueued++;
+			
+			if (timer) {
+				clearInterval(timer);
+			}
+			
+			timer = setInterval(function() {
+				clearInterval(timer);
+				timer = null;
+				// action to perform when time runs out
+				return rabbitsQueued
+			}, 3000);
+		}
+	});
 });
 
-// So if I plan to add a button for +1 hare apparent, I need to do a few things when it's pressed
-// First, I need to update the total of existing hare apparents to include the number of hareapparents added in the last calculations
-// Then I need to basically recalculate how many tokens will enter the same way I did for the base calculator - so maybe a reusable calculator Function
+// when the +1 button is pressed, check if a timer is in motion - so timer must be outside of scope for this button
+// if it was, get existing number of hares queued, and add 1 to It - also must be out of scope
+// if it wasn't, set hares queued to 1
+//update ui
+// reset timer to start
+// animate timer
+// end timer
+// load reults
 
-// Ok I made the calculator. I think I need a way to manage the board state, effectively. Because in some cases I'll return to the form, which may or may not remember my previous values, and may or may not reflect what incrementing I did via the other button, and in other cases I might just increment
+
+setTimer();
 
 // Given a number of Hare Apparents currently on the battlefield (existingHares) and a number of Hare Apparents entering (enteringHares), returns the number of rabbit tokens to be created (tokensMade)
 function calculateTokens (existingHares, enteringHares) {
