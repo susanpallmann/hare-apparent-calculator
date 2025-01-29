@@ -85,7 +85,7 @@ $(function() {
 			setTimerUI ($loadingBar, 100, finalRabbits);
 			// Once our timer completes...
 			timer = setInterval(function() {
-				if (timePassed < 2000) {
+				if (timePassed < timerDuration) {
 					timePassed += timerDuration/10;
 					setTimerUI ($loadingBar, timePassed/timerDuration, finalRabbits);
 				} else {
