@@ -101,7 +101,6 @@ $(function() {
 
 function setTimerUI (loadingBar, loadingPercent, amount) {
 	const $loadingBar = $(loadingBar);
-	const loadingPercent = +loadingPercent;
 	const amount = +amount;
 	const $quantity = $timer.find('#loading-quantity');
 	const $plural = $timer.find('#loading-plural');
