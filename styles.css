@@ -61,7 +61,7 @@ label {
 label em {
   font-family: 'Solway';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 18px;
   line-height: 24px;
   color: #A25402;
@@ -216,16 +216,9 @@ p.flavor-text {
   justify-content: center;
 }
 
-.iterator-button {
-  outline: none;
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 1px solid #A2CACA;
-  border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-  height: 52px;
-  cursor: pointer;
+.number-input .button {
+  width: auto;
+  padding: 0px 16px;
 }
 
 input[type="number"].quantity {
