@@ -40,6 +40,7 @@ main {
   width: 20%;
   border-radius: 8px;
   z-index: 0;
+  transition: width 3s;
 }
 
 .loading-bar p {
