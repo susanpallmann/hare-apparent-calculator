@@ -78,8 +78,10 @@ $(function() {
 			// if there is a timer running, reset it
 			if (timer) {
 				clearInterval(timer);
+				setTimerUI ($loadingBar, 0, rabbits);
 			}
 			
+			setTimerUI ($loadingBar, 100, rabbits);
 			// Once our timer completes...
 			timer = setInterval(function() {
 				// reset the timer
@@ -90,11 +92,9 @@ $(function() {
 			}, 3000);
 			
 		});
-
 		setTimer
 		.then((rabbits) => {
 			console.log("Timer finished normally, rabbits:", rabbits);
-			setTimerUI ($loadingBar, 100, rabbits)
 		});
 	});
 });
