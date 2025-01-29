@@ -8,7 +8,7 @@ main {
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  min-height: calc(100vh - 136px);
+  min-height: calc(100vh - 184px);
 }
 
 #calculator {
