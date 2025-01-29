@@ -9,7 +9,6 @@ const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 
 $(function() {
-	
 	// Caching some elements we'll use frequently
 	const $rabbitContainer = $('#rabbit-container');
 	const $answer = $('#answer');
@@ -70,6 +69,8 @@ $(function() {
 // So if I plan to add a button for +1 hare apparent, I need to do a few things when it's pressed
 // First, I need to update the total of existing hare apparents to include the number of hareapparents added in the last calculations
 // Then I need to basically recalculate how many tokens will enter the same way I did for the base calculator - so maybe a reusable calculator Function
+
+// Ok I made the calculator. I think I need a way to manage the board state, effectively. Because in some cases I'll return to the form, which may or may not remember my previous values, and may or may not reflect what incrementing I did via the other button, and in other cases I might just increment
 
 // Given a number of Hare Apparents currently on the battlefield (existingHares) and a number of Hare Apparents entering (enteringHares), returns the number of rabbit tokens to be created (tokensMade)
 function calculateTokens (existingHares, enteringHares) {
@@ -386,4 +387,4 @@ function generateRows (containerWidth, numberRabbits, rows) {
 }
 
 // Other reusable function ideas:
-Calculate max rabbits
+//Calculate max rabbits
