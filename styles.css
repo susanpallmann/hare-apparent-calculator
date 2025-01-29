@@ -45,6 +45,11 @@ form {
   box-sizing: border-box;
 }
 
+#prefooter {
+  background-image: src(images/prefooter.svg);
+  background-sizing: cover;
+}
+
 footer {
   width: 100%;
   box-sizing: border-box;
