@@ -8,6 +8,7 @@ main {
   width: 100%;
   box-sizing: border-box;
   position: relative;
+  min-height: calc(100vh - 104px);
 }
 
 #calculator {
@@ -88,6 +89,7 @@ form {
 #prefooter {
   padding-top: 16px;
   height: 16px;
+  margin-bottom: -2px;
 }
 
 footer {
