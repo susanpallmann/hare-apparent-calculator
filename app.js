@@ -93,7 +93,6 @@ $(function() {
 					clearInterval(timer);
 					timer = null;
 					rabbitsQueued = 0;
-					setTimerUI ($loadingBar, 100, finalRabbits);
 					resolve(finalRabbits);
 				}
 			}, timerDuration/10);
@@ -101,6 +100,7 @@ $(function() {
 		});
 		setTimer
 		.then((rabbits) => {
+			setTimerUI ($loadingBar, 0, rabbits);
 			console.log("Timer finished normally, rabbits:", rabbits);
 		});
 	});
