@@ -46,8 +46,9 @@ form {
 }
 
 #prefooter {
-  background-image: src(images/prefooter.svg);
-  background-sizing: cover;
+  background-image: url(images/prefooter.svg);
+  background-size: cover;
+  height: 16px;
 }
 
 footer {
