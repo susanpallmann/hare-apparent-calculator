@@ -42,7 +42,7 @@ main {
   z-index: 0;
 }
 
-.loading bar p {
+.loading-bar p {
   position: relative;
   z-index: 1;
   width: 100%;
