@@ -45,11 +45,11 @@ main {
   transition: width 3s;
 }
 
-.loading-bar[progress="0%]:after {
+.loading-bar[progress="0%"]:after {
   width: 0%;
 }
 
-.loading-bar[progress="100%]:after {
+.loading-bar[progress="100%"]:after {
   width: 100%;
 }
 
