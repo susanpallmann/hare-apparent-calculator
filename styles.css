@@ -1,3 +1,20 @@
+:root {
+  --white: #fff;
+  --rust: #a25402;
+  --dark-rust: #743b00;
+  --gray: #3f3c30;
+  --dark-gray: #141412;
+  --mustard-100: #fffadd;
+  --mustard-200: #f6eec4;
+  --mustard-300: #c79e72;
+  --mustard-400: #eedfb1;
+  --mustard-800: #a57207;
+  --action-primary: var(--gray);
+  --action-primary-active: var(--dark-gray);
+  --action-secondary: var(--rust);
+  --action-secondary-active: var(--dark-rust);
+}
+
 body {
   background-color: #F6EEC4;
   margin: 0;
