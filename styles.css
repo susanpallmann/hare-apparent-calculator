@@ -427,3 +427,43 @@ input[type="number"].quantity::-webkit-outer-spin-button {
    50% { transform: scaleY(0.8) scaleX(1.2); }
   100% { transform: scaleY(1) scaleX(1);     }
 }
+
+
+.example-rabbit {
+  height: 114px;
+  width: 156px;
+  background-image: url('images/rabbit.svg');
+  position: absolute;
+  background-repeat: no-repeat;
+  animation: ambient 10s infinite;
+}
+
+.example-rabbit:after {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  content: '';
+  background-image: url('images/rabbit-blink.svg');
+  background-size: contain;
+  animation: blink 10s infinite;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+@keyframes ambient {
+    0% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
+   20% { transform: scaleY(0.9) scaleX(1.1) rotate(10deg) translateY(0); }
+   24% { transform: scaleY(1) scaleX(1) rotate(25deg) translateY(20%); }
+   28% { transform: scaleY(1) scaleX(1) rotate(10deg) translateY(50%); }
+   38% { transform: scaleY(1.1) scaleX(0.9) rotate(0deg) translateY(70%); }
+   48% { transform: scaleY(1) scaleX(1) rotate(-10deg) translateY(50%); }
+   52% { transform: scaleY(1) scaleX(1) rotate(-25deg) translateY(20%); }
+   56% { transform: scaleY(0.9) scaleX(1.1) rotate(-10deg) translateY(0); }
+   60% { transform: scaleY(0.8) scaleX(1.2) rotate(0deg) translateY(0); }
+   64% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
+   68% { transform: scaleY(1.1) scaleX(0.9) rotate(0deg) translateY(0); }
+   72% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
+  100% { transform: scaleY(1) scaleX(1) rotate(0deg) translateY(0); }
+}
