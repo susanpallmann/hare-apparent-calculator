@@ -200,7 +200,7 @@ function transitionSandwich (elementLeaving, elementEntering, callback1, callbac
 			// After the callback's promise resolves, fade in the second element
 			callback1Promise.then(() => {
 				// Fade second element in, then execute the second callback
-				$elementEntering.css('visibility', 'visible').fadeIn(300, function() {
+				$elementEntering.css('display', 'none').css('visibility', 'visible').fadeIn(300, function() {
 					
 					$(this).css('display', ''); // Reset display so fadeIn works correctly.
 					// Check if second callback function was provided
