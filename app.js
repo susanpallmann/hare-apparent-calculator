@@ -385,7 +385,8 @@ function queueRabbitAnimation (numberRabbits, startRow) {
         const randomIndex = Math.floor(Math.random() * availableXPositions.length);
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
-		if (currentRowIndex === 0) {
+		if (currentRowIndex === 0 && rabbitRowHeight > 0) {
+			// For now, reducing the rabbitRowHeight if it's our first row, just to cover our bases; let's add better logic later
 			rabbitRowHeight--;
 		}
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(rabbitRowHeight));
