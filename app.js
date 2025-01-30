@@ -153,8 +153,8 @@ $(function() {
 					//multiply the maximums
 					let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 
-					if(tokensMade < rabbitCeiling) {
-						queueRabbitAnimation(tokensMade, 0);
+					if(plusOneTokens < rabbitCeiling) {
+						queueRabbitAnimation(plusOneTokens, 0);
 					} else {
 						queueRabbitAnimation(rabbitCeiling, 0);
 					}
