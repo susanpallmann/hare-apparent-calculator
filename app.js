@@ -386,9 +386,9 @@ function queueRabbitAnimation (numberRabbits, startRow) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		let destinationModifier = rabbitRowHeight;
-		if (currentRowIndex === 0 && rabbitRowHeight > 0) {
-			// For now, reducing the rabbitRowHeight if it's our first row, just to cover our bases; let's add better logic later
-			destinationModifier = rabbitRowHeight-1;
+		if (rabbitRowHeight > 0) {
+			// For now, reducing the rabbitRowHeight by 1 just so we don't have a mountain stacked on one rabbit, but let's add better collision-like logic later
+			destinationModifier = rabbitRowHeight - 1;
 		}
 		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(destinationModifier));
 		const startPoint = destination-containerHeight; 
