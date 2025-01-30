@@ -1,4 +1,4 @@
-// V0.23 // look at me, I guessed this bug on my couch eating dinner
+// V0.23 // now with loading bar animation?
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -72,7 +72,7 @@ $(function() {
 	$('#plus-one-button').click(function(){
 		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
-			const timerDuration = 2000;
+			const timerDuration = 750;
 			let timePassed = 0;
 			let finalRabbits = rabbitsQueued;
 			setTimerUI ($loadingBar, 0, finalRabbits);
@@ -100,7 +100,6 @@ $(function() {
 		setTimer
 		.then((rabbits) => {
 			setTimerUI ($loadingBar, 0, rabbits);
-			console.log("Timer finished normally, rabbits:", rabbits);
 		});
 	});
 });
