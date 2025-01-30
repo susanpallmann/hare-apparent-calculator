@@ -125,6 +125,7 @@ $(function() {
 		});
 		setTimer
 		.then((rabbits) => {
+			$('#plus-one-button').prop("disabled", true);
 			setTimerUI ($loadingBar, 0, rabbits);
 			// UI stuff
 			existingHares = existingHares + enteringHares;
@@ -161,6 +162,8 @@ $(function() {
 					
 					resolve();
 				});
+			}, function() {
+				$('#plus-one-button').prop("disabled", false);
 			});
 		});
 	});
