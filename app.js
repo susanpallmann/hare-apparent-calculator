@@ -375,7 +375,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
 		 // Start a new row if the available x positions array is empty
         if (availableXPositions.length === 0) {
 			currentRowIndex++;
-			rabbitRowHeight++;
+			rabbitRowHeight = currentRowIndex;
 			if (currentRowIndex >= rows.length) return;
 			availableXPositions = [...rows[currentRowIndex]];
 		}
@@ -385,7 +385,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
-		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex + rabbitRowHeight - 1));
+		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(rabbitRowHeight));
 		const startPoint = destination-containerHeight; 
 		
 		const adjustedGravitySpeed = gravitySpeed*containerHeight/800;
