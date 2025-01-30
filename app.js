@@ -375,7 +375,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
 		 // Start a new row if the available x positions array is empty
         if (availableXPositions.length === 0) {
 			currentRowIndex++;
-			rabbitRowHeight = currentRowIndex;
+			rabbitRowHeight++;
 			if (currentRowIndex >= rows.length) return;
 			availableXPositions = [...rows[currentRowIndex]];
 		}
