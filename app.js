@@ -12,6 +12,8 @@ $(function() {
 	// Caching some elements we'll use frequently
 	const $rabbitContainer = $('#rabbit-container');
 	const $answer = $('#answer');
+	const $answerContent = $('#answer-content');
+	const $loadingContent = $('#loading-content');
 	const $calculator = $('#calculator');
 	const $loadingBar = $('.loading-bar');
 	
@@ -70,6 +72,14 @@ $(function() {
 	let timer;
 	
 	$('#plus-one-button').click(function(){
+		if ($loadingContent.css('visibility') === 'hidden') {
+			transitionSandwich ($answerContent, $loadingContent, function() {
+				return new Promise(resolve => {
+					// do some UI stuff, like setting the loading text
+					resolve();
+				});
+			});
+		}
 		const setTimer = new Promise((resolve) => {
 			rabbitsQueued++;
 			const timerDuration = 750;
@@ -100,6 +110,13 @@ $(function() {
 		setTimer
 		.then((rabbits) => {
 			setTimerUI ($loadingBar, 0, rabbits);
+			// UI stuff
+			transitionSandwich ($loadingContent, $answerContent, function() {
+				return new Promise(resolve => {
+					// do some UI stuff
+					resolve();
+				});
+			});
 		});
 	});
 });
