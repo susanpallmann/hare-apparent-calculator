@@ -1,4 +1,4 @@
-// V0.23 // now with loading bar animation?
+// V0.23 // look at me, I guessed this bug on my couch eating dinner
 
 // Global constants
 const gravitySpeed = 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
@@ -82,7 +82,6 @@ $(function() {
 				clearInterval(timer);
 			}
 			
-			setTimerUI ($loadingBar, 100, finalRabbits);
 			// Once our timer completes...
 			timer = setInterval(function() {
 				if (timePassed < timerDuration) {
