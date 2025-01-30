@@ -99,6 +99,7 @@ main {
   width: 100%;
   position: absolute;
   top: 0;
+  display: inline-block;
 }
 
 form {
@@ -524,7 +525,9 @@ input[type="number"].quantity::-webkit-outer-spin-button {
   width: 156px;
   background-image: url('images/rabbit.svg');
   background-repeat: no-repeat;
-  animation: ambientHop 2s infinite;
+  animation: ambientHop 0.8s infinite;
+  margin: auto;
+  opacity: 50%;
 }
 
 #loading-rabbit:after {
