@@ -359,6 +359,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
 	
 	// This variable tracks the current row for the generated x position rows
 	let currentRowIndex = +startRow - 1;
+	console.log(`start row is ${startRow}`);
 	
 	// Tracks available x positions for the current row
 	let availableXPositions = [];
