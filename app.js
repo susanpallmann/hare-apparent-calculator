@@ -9,6 +9,90 @@ const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 let rabbitRowHeight = 0;
 
+/*
+class HareCalculator {
+	
+	// Object to store static physics values our calculator will use
+	static physics = {
+		gravitySpeed: 0.85; // Controls how long it takes the rabbits fall, a higher number results in slower falling
+		dropRateModifier: 0.3; // Modifies the rate at which rabbits are dropped, a higher number means more time between each rabbit being dropped
+		rabbitWidth: 156; // Width of rabbits (must match CSS)
+		rabbitHeight: 114; // Height of rabbits (must match CSS)
+		heightBuffer: rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
+		widthBuffer: rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
+	}
+	
+	// Constructor to create the calculator
+	constructor(existingHares = 0) {
+		// Container for our rabbit animation
+		this.$rabbitContainer = $('#rabbit-container');
+		if (this.$rabbitContainer.length === 0) {
+            console.error("Rabbit container not found.");
+            return;
+        }
+		// And get some details about our container for reference later
+		this.containerHeight = this.$rabbitContainer.height();
+		this.containerWidth = this.$rabbitContainer.width();
+		
+		// Hares on the battlefield
+		this.existingHares = existingHares;
+		
+		// Store information about the top row of rabbits in our animation
+		this.rowsPlaced = 0;
+		this.topRowRabbits = [];
+		
+		// Other UI elements we'll be controlling or referencing
+		this.$calculator = $('#calculator');
+		
+		this.$answer = $('#answer');
+		this.$answerContent = $('#answer-content');
+		this.$loadingBar = $('.loading-bar');
+		
+		this.$loadingContent = $('#loading-content');
+		this.$loadingText = $('#loading-text');
+	}
+	
+	// Initialize jQuery elements
+	//initialize() {
+        // Any setup that needs to happen when a HareCalculator is created.
+        // For example, you could calculate initial positions here if needed.
+		// Now you can use this.$element within your class methods
+		//this.$element.click(() => {
+			//this.handleClick();
+		//});
+	 }
+		
+	//handleClick() {
+		// Do something with the element
+		//console.log("Element clicked!");
+		//this.$element.toggleClass("active");
+	//}
+    }
+
+	
+	// Manage information about the top row rabbits' x positions
+	setTopRow(topRowRabbits) {
+		this.topRowRabbits = topRowRabbits;
+	}
+	getTopRow() {
+		return this.topRowRabbits;
+	}
+	
+	// Manage the number of hares on the battlefield
+	setExistingHares(existingHares) {
+		this.existingHares = existingHares;
+	}
+	getExistingHares() {
+		return this.existingHares;
+	}
+}
+*/
+// So if I want a calculator class, what would it track?
+// Animation properties, like the row height, x positions of the top row, the maximum number of rabbits we can create
+// Board state properties, like the number of hares on the battlefield
+// And I guess it can also store global constants like physics?
+
+
 $(function() {
 	// Caching some elements we'll use frequently
 	const $rabbitContainer = $('#rabbit-container');
