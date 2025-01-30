@@ -8,6 +8,9 @@ const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
 
+let existingHares = 0;
+let enteringHares = 0;
+
 $(function() {
 	// Caching some elements we'll use frequently
 	const $rabbitContainer = $('#rabbit-container');
@@ -25,8 +28,7 @@ $(function() {
 	"Consulting the Hare Apparent oracle...",
 	"Assembling the bunny brigade..."
 	];
-	let existingHares = 0;
-	let enteringHares = 0;
+	
 	
 	$('#calculate-button').click(function(){
 		// Get our form values
