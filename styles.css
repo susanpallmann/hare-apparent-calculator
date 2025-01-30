@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: #F6EEC4;
+  background-color: var(--mustard-200);
   margin: 0;
   padding: 0;
 }
@@ -40,7 +40,7 @@ main {
 }
 
 .loading-bar {
-  background-color: #F6EEC4;
+  background-color: var(--mustard-200);
   border-radius: 8px;
   min-width: 52px;
   padding: 0px 16px;
@@ -50,7 +50,7 @@ main {
 
 .loading-bar:after {
   content: "";
-  background-color: #EEDFB1;
+  background-color: var(--mustard-400);
   position: absolute;
   top: 0;
   left: 0;
@@ -74,11 +74,11 @@ main {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #3F3C30;
+  color: var(--gray);
 }
 
 .loading-bar p em {
-  color: #A25402;
+  color: var(--action-secondary);
   font-weight: 700;
   font-style: normal;
 }
@@ -117,7 +117,7 @@ footer {
   width: 100%;
   box-sizing: border-box;
   padding: 16px;
-  background-color: #3F3C30;
+  background-color: var(--gray);
 }
 
 .footer-primary, .footer-secondary {
@@ -129,19 +129,19 @@ footer {
 }
 
 .footer-primary p {
-  color: #F6EEC4;
+  color: var(--mustard-200);
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
 }
 
 .footer-primary a, .footer-primary a:visited {
-  color: #F6EEC4;
+  color: var(--mustard-200);
   text-decoration: underline;
 }
 
 .footer-primary a:hover, .footer-primary a:focus, .footer-primary a:active {
-  color: #FFFFFF;
+  color: #var(--white)var(--white);
   text-decoration: none;
 }
 
@@ -152,7 +152,7 @@ h1 {
   font-size: 24px;
   line-height: 24px;
   text-align: left;
-  color: #A25402;
+  color: var(--action-secondary);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -164,7 +164,7 @@ label {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  color: #3F3C30;
+  color: var(--gray);
   margin-bottom: 16px;
   display: inline-block;
 }
@@ -175,7 +175,7 @@ label em {
   font-weight: 800;
   font-size: 18px;
   line-height: 24px;
-  color: #A25402;
+  color: var(--action-secondary);
 }
 
 p {
@@ -184,7 +184,7 @@ p {
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
-  color: #3F3C30;
+  color: var(--gray);
   letter-spacing: -1.5%;
 }
 
@@ -195,7 +195,7 @@ p.large-body {
   font-size: 22px;
   line-height: 24px;
   text-align: center;
-  color: #3F3C30;
+  color: var(--gray);
   margin: 0;
 }
 
@@ -206,7 +206,7 @@ p.huge-number {
   font-size: 64px;
   line-height: 72px;
   text-align: center;
-  color: #A57207;
+  color: var(--mustard-800);
   margin: 0 0 8px 0;
 }
 
@@ -217,7 +217,7 @@ p.flavor-text {
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  color: #A25402;
+  color: var(--action-secondary);
   margin: 64px 0 0 0;
 }
 
@@ -231,7 +231,7 @@ p.flavor-text {
   font-weight: 700;
   font-size: 19px;
   line-height: 19px;
-  color: #FFFFFF;
+  color: #var(--white)var(--white);
   min-height: 52px;
   width: 100%;
   outline: none;
@@ -250,59 +250,59 @@ p.flavor-text {
 }
 
 .button.fill-primary {
-  background-color: #3F3C30;
-  color: #fff;
+  background-color: var(--gray);
+  color: #var(--white);
 }
 
 .button.fill-primary:hover, .button.fill-primary:active {
-  background-color: #141412;
+  background-color: var(--action-primary-active);
 }
 
 .button.fill-primary:focus-visible {
-  background-color: #141412;
-  outline: 2px dotted #141412;
+  background-color: var(--action-primary-active);
+  outline: 2px dotted var(--action-primary-active);
 }
 
 .button.fill-secondary {
-  background-color: #A25402;
-  color: #fff;
+  background-color: var(--action-secondary);
+  color: #var(--white);
 }
 
 .button.fill-secondary:hover, .button.fill-secondary:active {
-  background-color: #743B00;
+  background-color: var(--action-secondary-active);
 }
 
 .button.fill-secondary:focus-visible {
-  background-color: #743B00;
-  outline: 2px dotted #743B00;
+  background-color: var(--action-secondary-active);
+  outline: 2px dotted var(--action-secondary-active);
 }
 
 .button.outline-primary {
   background-color: transparent;
-  color: #3F3C30;
+  color: var(--gray);
 }
 
 .button.outline-primary:hover, .button.outline-primary:active {
-  color: #A25402;
+  color: var(--action-secondary);
 }
 
 .button.outline-primary:focus-visible {
-  color: #A25402;
-  border: 2px dotted #A25402;
+  color: var(--action-secondary);
+  border: 2px dotted var(--action-secondary);
 }
 
 .button.outline-secondary {
   background-color: transparent;
-  color: #A25402;
+  color: var(--action-secondary);
 }
 
 .button.outline-secondary:hover, .button.outline-secondary:active {
-  color: #3F3C30;
+  color: var(--gray);
 }
 
 .button.outline-secondary:focus-visible {
-  color: #3F3C30;
-  border: 2px dotted #3F3C30;
+  color: var(--gray);
+  border: 2px dotted var(--gray);
 }
 
 .green-button {
@@ -314,7 +314,7 @@ p.flavor-text {
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
-  color: #FFFFFF;
+  color: #var(--white)var(--white);
   min-height: 52px;
   width: 100%;
   outline: none;
@@ -342,13 +342,13 @@ input[type="number"].quantity {
   font-weight: 400;
   font-size: 32px;
   line-height: 32px;
-  color: #3F3C30;
+  color: var(--gray);
   height: 52px;
   width: 100%;
   margin: 0 24px;
   padding: 0;
   box-sizing: border-box;
-  background-color: #F6EEC4;
+  background-color: var(--mustard-200);
   border: 2px solid transparent;
   border-radius: 8px;
   text-align: center;
@@ -356,7 +356,7 @@ input[type="number"].quantity {
 }
 
 input[type="number"].quantity:hover, input[type="number"].quantity:active, input[type="number"].quantity:focus {
-  border: 2px solid #C79E72;
+  border: 2px solid var(--mustard-300);
   outline: none;
 }
 
@@ -366,7 +366,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 #rabbit-container {
-  background-color: #FFFADD;
+  background-color: #var(--white)ADD;
   height: 100%;
   width: 100%;
   position: absolute;
