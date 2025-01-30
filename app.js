@@ -361,8 +361,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
 	let rabbitsDropped = 0;
 	
 	// This variable tracks the current row for the generated x position rows
-	let currentRowIndex = +startRow - 1;
-	console.log(`start row is ${startRow}`);
+	let currentRowIndex =  -1;
 	
 	// Tracks available x positions for the current row
 	let availableXPositions = [];
@@ -386,7 +385,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
-		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex));
+		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex + rabbitRowHeight));
 		const startPoint = destination-containerHeight; 
 		
 		const adjustedGravitySpeed = gravitySpeed*containerHeight/800;
