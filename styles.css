@@ -92,6 +92,13 @@ main {
   row-gap: 16px;
   box-sizing: border-box;
   padding: 32px 16px 16px 16px;
+  position: relative;
+}
+
+#loading-content {
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 form {
