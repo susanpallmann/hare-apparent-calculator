@@ -126,7 +126,8 @@ $(function() {
 			// UI stuff
 			transitionSandwich ($loadingContent, $answerContent, function() {
 				return new Promise(resolve => {
-					existingHares += rabbits;
+					existingHares = existingHares + enteringHares;
+					enteringHares = 0;
 					let plusOneTokens = calculateTokens(existingHares, rabbits);
 					
 					let flavorText = chooseFlavorText(plusOneTokens);
