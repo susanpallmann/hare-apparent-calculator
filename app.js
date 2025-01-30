@@ -7,6 +7,7 @@ const rabbitWidth = 156; // Width of rabbits (must match CSS)
 const rabbitHeight = 114; // Height of rabbits (must match CSS)
 const heightBuffer = rabbitHeight * 0.46; // The amount 2 rabbits should overlap on y axis
 const widthBuffer = rabbitWidth * 0.49; // The max 2 rabbits can overlap on x axis
+let rabbitRowHeight = 0;
 
 $(function() {
 	// Caching some elements we'll use frequently
@@ -59,9 +60,9 @@ $(function() {
 				let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
 
 				if(tokensMade < rabbitCeiling) {
-					queueRabbitAnimation(tokensMade);
+					queueRabbitAnimation(tokensMade, 0);
 				} else {
-					queueRabbitAnimation(rabbitCeiling);
+					queueRabbitAnimation(rabbitCeiling, 0);
 				}
 				resolve();
 			});
@@ -144,6 +145,19 @@ $(function() {
 						}
 					});
 					$('.flavor-text').text(flavorText);
+					//dynamic maxanimated rabbits??
+					//maximum number of possible rows given container Height
+					let maxRowsPossible = Math.round($rabbitContainer.height() / (rabbitHeight - (rabbitHeight-heightBuffer)));
+					//maximum number of possible rabbits in a row
+					let maxRabbitsPerRow = Math.round($rabbitContainer.width() / (rabbitWidth - widthBuffer));
+					//multiply the maximums
+					let rabbitCeiling = maxRowsPossible*maxRabbitsPerRow;
+
+					if(tokensMade < rabbitCeiling) {
+						queueRabbitAnimation(tokensMade, 0);
+					} else {
+						queueRabbitAnimation(rabbitCeiling, 0);
+					}
 					
 					resolve();
 				});
@@ -321,7 +335,7 @@ function chooseFlavorText (rabbitsQuantity) {
 	return 'Invalid number of rabbits.';
 }
 
-function queueRabbitAnimation (numberRabbits) {
+function queueRabbitAnimation (numberRabbits, startRow) {
 	// Declaring some more constants here, as these require the scene to have loaded to be retrieved
 	// We first are grabbing the container DOM element and then getting the height and width from this element for use in later calculations
 	const container = $('#rabbit-container');
@@ -344,7 +358,7 @@ function queueRabbitAnimation (numberRabbits) {
 	let rabbitsDropped = 0;
 	
 	// This variable tracks the current row for the generated x position rows
-	let currentRowIndex = -1;
+	let currentRowIndex = +startRow - 1;
 	
 	// Tracks available x positions for the current row
 	let availableXPositions = [];
@@ -358,6 +372,7 @@ function queueRabbitAnimation (numberRabbits) {
 		 // Start a new row if the available x positions array is empty
         if (availableXPositions.length === 0) {
 			currentRowIndex++;
+			rabbitRowHeight++;
 			if (currentRowIndex >= rows.length) return;
 			availableXPositions = [...rows[currentRowIndex]];
 		}
