@@ -32,6 +32,8 @@ $(function() {
 		// Get our form values
 		existingHares = $('#existingHares').val();
 		enteringHares = $('#enteringHares').val();
+		existingHares = +existingHares;
+		enteringHares = +enteringHares;
 		// Calculate number of tokens to create
 		let tokensMade = calculateTokens (existingHares, enteringHares);
 		
