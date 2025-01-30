@@ -385,7 +385,7 @@ function queueRabbitAnimation (numberRabbits, startRow) {
         let xPos = availableXPositions.splice(randomIndex, 1)[0]; // Remove the selected x position
 		xPos += (containerWidth - (rows[currentRowIndex][(rows[currentRowIndex]).length-1] - rows[currentRowIndex][0] + rabbitWidth))/2;
 		
-		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex + rabbitRowHeight));
+		const destination = containerHeight - rabbitHeight - ((rabbitHeight-heightBuffer)*(currentRowIndex + rabbitRowHeight - 1));
 		const startPoint = destination-containerHeight; 
 		
 		const adjustedGravitySpeed = gravitySpeed*containerHeight/800;
@@ -414,7 +414,6 @@ function queueRabbitAnimation (numberRabbits, startRow) {
 		
 		rabbitPromise.then((rabbit) => {
 			rabbit.data('yPos', destination);
-			
 			
 			rabbit.css({
 				'top': destination + 'px',
