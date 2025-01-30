@@ -127,7 +127,7 @@ $(function() {
 			setTimerUI ($loadingBar, 0, rabbits);
 			// UI stuff
 			existingHares = existingHares + enteringHares;
-			enteringHares = 0;
+			enteringHares = rabbits;
 			transitionSandwich ($loadingContent, $answerContent, function() {
 				return new Promise(resolve => {
 					
