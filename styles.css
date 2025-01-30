@@ -141,7 +141,7 @@ footer {
 }
 
 .footer-primary a:hover, .footer-primary a:focus, .footer-primary a:active {
-  color: #var(--white)var(--white);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -231,7 +231,7 @@ p.flavor-text {
   font-weight: 700;
   font-size: 19px;
   line-height: 19px;
-  color: #var(--white)var(--white);
+  color: var(--white);
   min-height: 52px;
   width: 100%;
   outline: none;
@@ -251,7 +251,7 @@ p.flavor-text {
 
 .button.fill-primary {
   background-color: var(--gray);
-  color: #var(--white);
+  color: var(--white);
 }
 
 .button.fill-primary:hover, .button.fill-primary:active {
@@ -265,7 +265,7 @@ p.flavor-text {
 
 .button.fill-secondary {
   background-color: var(--action-secondary);
-  color: #var(--white);
+  color: var(--white);
 }
 
 .button.fill-secondary:hover, .button.fill-secondary:active {
@@ -314,7 +314,7 @@ p.flavor-text {
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
-  color: #var(--white)var(--white);
+  color: var(--white);
   min-height: 52px;
   width: 100%;
   outline: none;
@@ -366,7 +366,7 @@ input[type="number"].quantity::-webkit-outer-spin-button {
 }
 
 #rabbit-container {
-  background-color: #var(--white)ADD;
+  background-color: var(--mustard-100);
   height: 100%;
   width: 100%;
   position: absolute;
