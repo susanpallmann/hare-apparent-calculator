@@ -14,8 +14,17 @@ $(function() {
 	const $answer = $('#answer');
 	const $answerContent = $('#answer-content');
 	const $loadingContent = $('#loading-content');
+	const $loadingText = $('#loading-text');
 	const $calculator = $('#calculator');
 	const $loadingBar = $('.loading-bar');
+	const loadingText = [
+	"Feeding carrots to the calculation engine.",
+	"The warren is calculating.",
+	"Factoring in fluff.",
+	"The answer is hopping closer.",
+	"Consulting the Hare Apparent oracle...",
+	"Assembling the bunny brigade..."
+	];
 	
 	$('#calculate-button').click(function(){
 		// Get our form values
@@ -75,7 +84,9 @@ $(function() {
 		if ($loadingContent.css('visibility') === 'hidden') {
 			transitionSandwich ($answerContent, $loadingContent, function() {
 				return new Promise(resolve => {
+					
 					// do some UI stuff, like setting the loading text
+					$loadingText.text(loadingText[Math.floor(Math.random() * loadingText.length)]);
 					resolve();
 				});
 			});
