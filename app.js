@@ -51,6 +51,7 @@ $(function() {
 				});
 				$('.flavor-text').text(flavorText);
 				$rabbitContainer.empty();
+				rabbitRowHeight = 0;
 				//dynamic maxanimated rabbits??
 				//maximum number of possible rows given container Height
 				let maxRowsPossible = Math.round($rabbitContainer.height() / (rabbitHeight - (rabbitHeight-heightBuffer)));
