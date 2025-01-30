@@ -25,11 +25,13 @@ $(function() {
 	"Consulting the Hare Apparent oracle...",
 	"Assembling the bunny brigade..."
 	];
+	let existingHares = 0;
+	let enteringHares = 0;
 	
 	$('#calculate-button').click(function(){
 		// Get our form values
-		let existingHares = $('#existingHares').val();
-		let enteringHares = $('#enteringHares').val();
+		existingHares = $('#existingHares').val();
+		enteringHares = $('#enteringHares').val();
 		// Calculate number of tokens to create
 		let tokensMade = calculateTokens (existingHares, enteringHares);
 		
@@ -124,7 +126,21 @@ $(function() {
 			// UI stuff
 			transitionSandwich ($loadingContent, $answerContent, function() {
 				return new Promise(resolve => {
-					// do some UI stuff
+					existingHares += rabbits;
+					let plusOneTokens = calculateTokens(existingHares, rabbits);
+					
+					let flavorText = chooseFlavorText(plusOneTokens);
+
+					$('#huge-answer-number').text(0);
+					jQuery({ Counter: 0 }).animate({ Counter: plusOneTokens }, {
+						duration: 500,
+						easing: 'linear',
+						step: function (now) {
+							$('#huge-answer-number').text(Math.ceil(now));
+						}
+					});
+					$('.flavor-text').text(flavorText);
+					
 					resolve();
 				});
 			});
